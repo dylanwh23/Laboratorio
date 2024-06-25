@@ -1,0 +1,24 @@
+/*
+ * Profesor.h
+ *
+ *  Created on: Jun 25, 2024
+ *      Author: dylan
+ */
+
+#ifndef MODELS_PROFESOR_H_
+#define MODELS_PROFESOR_H_
+#include "../ICollections/interfaces/IDictionary.h"
+#include "Usuario.h"
+
+class Profesor: public Usuario {
+private:
+	IDictionary *idiomas;
+	string instituto;
+public:
+	Profesor();
+	Profesor(string nickname, string contraseña, string nombre, string descripcion, string instituto);
+	virtual ~Profesor();
+	set<string> mostrarInfo();
+};
+
+#endif /* MODELS_PROFESOR_H_ */
