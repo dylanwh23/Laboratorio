@@ -8,6 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/dto/subdir.mk
 -include src/Views/subdir.mk
 -include src/Models/subdir.mk
 -include src/ICollections/interfaces/subdir.mk

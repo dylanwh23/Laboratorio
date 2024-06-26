@@ -29,6 +29,7 @@ public:
 	virtual ~Sistema();
 	set<string> listarIdiomas();
 	set<string>  listarUsuarios();
+	bool verificarNickname(string nickname);
 
 };
 

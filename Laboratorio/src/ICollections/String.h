@@ -7,28 +7,18 @@
 
 #ifndef STRING_H
 #define STRING_H
-#include "interfaces/ICollectible.h"
 #include "interfaces/OrderedKey.h"
+#include <iostream>
+using namespace std;
 
-/**
- *  Implementación simple del datatype String que hereda tanto de ICollectible
- *  como de HashedKey
- */
-class String: public ICollectible, public OrderedKey
-{
-private:
-    char *s;
+class String: public OrderedKey {
+
 public:
-    // construye el Datatype a partir de un puntero a caracter
-    String(const char *s = "");
-
-    // da el valor del string
-    const char *getValue() const;
-
-    ComparisonRes compare(OrderedKey *k) const;
-
-    virtual ~String();
-
+	string nick;
+	String();
+	String(string key);
+	virtual ~String();
+	ComparisonRes compare(OrderedKey *k) const;
 };
 
 #endif	/* PROG4_STRING_H */

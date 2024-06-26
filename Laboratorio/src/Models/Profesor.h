@@ -12,11 +12,11 @@
 
 class Profesor: public Usuario {
 private:
-	IDictionary *idiomas;
 	string instituto;
 public:
 	Profesor();
 	Profesor(string nickname, string contraseña, string nombre, string descripcion, string instituto);
+	IDictionary *idiomas;
 	virtual ~Profesor();
 	set<string> mostrarInfo();
 };

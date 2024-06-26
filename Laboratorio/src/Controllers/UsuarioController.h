@@ -9,6 +9,7 @@
 #define CONTROLLERS_USUARIOCONTROLLER_H_
 #include "Sistema.h"
 #include "IUsuario.h"
+#include "../ICollections/interfaces/IIterator.h"
 class UsuarioController : public IUsuario{
 private:
 	Sistema* sistema;
@@ -17,10 +18,10 @@ public:
 	UsuarioController();
 	virtual ~UsuarioController();
 
-	virtual bool verificarNick(string nick);
-	virtual set<string> listarIdiomas();
-	virtual void altaProfesor();
-	virtual void altaEstudiante();//
+	set<string> listarIdiomas();
+	bool verificarNickname(string nickname);
+	DTOProfesor altaProfesor(DTOProfesor* dto);
+	DTOEstudiante altaEstudiante(DTOEstudiante* dto);
 };
 
 #endif /* CONTROLLERS_USUARIOCONTROLLER_H_ */

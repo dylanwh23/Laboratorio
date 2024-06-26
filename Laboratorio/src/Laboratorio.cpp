@@ -11,7 +11,6 @@
 using namespace std;
 
 int main() {
-	//desde el main se llama al menu principal, desde este se accede a todas las otras vistas, mirar MenuPrincipal.cpp
 	MenuPrincipal mp;
 	mp.mostrarMenu();
 	return 0;
