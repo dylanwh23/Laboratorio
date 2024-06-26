@@ -14,8 +14,8 @@ class IUsuario {
 public:
 	virtual bool verificarNickname(string nick)=0;
 	virtual set<string> listarIdiomas()=0;
-	virtual DTOProfesor altaProfesor(DTOProfesor* dto)=0;
-	virtual DTOEstudiante altaEstudiante(DTOEstudiante* dto)=0;
+	virtual void altaProfesor(DTOProfesor* dto)=0;
+	virtual void altaEstudiante(DTOEstudiante* dto)=0;
 };
 
 #endif /* CONTROLLERS_IUSUARIO_H_ */

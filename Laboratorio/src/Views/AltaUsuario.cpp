@@ -17,7 +17,7 @@ AltaUsuario::AltaUsuario() {
 
 AltaUsuario::~AltaUsuario() {
 	// TODO Auto-generated destructor stub
-	delete this->iusuario;
+	//delete this->iusuario;
 }
 DTOEstudiante* AltaUsuario::ingresarEstudiante(string nick){
 	string pass;
@@ -67,7 +67,6 @@ DTOProfesor* AltaUsuario::ingresarProfesor(string nick){
 
 	DTOProfesor *nuevoProfesor = new DTOProfesor(nick, pass, nom, descrip,
 			instituto, idiomas);
-
 	return nuevoProfesor;
 }
 set<string> AltaUsuario::seleccionarIdiomas() {
@@ -119,9 +118,11 @@ void AltaUsuario::altaUsuario() {
 			nuevoUsuario = ingresarEstudiante(nick);
 			this->iusuario->altaEstudiante(nuevoUsuario);
 		} else {
+
 			DTOProfesor* nuevoUsuario;
 			nuevoUsuario = ingresarProfesor(nick);
 			this->iusuario->altaProfesor(nuevoUsuario);
+
 
 		}
 

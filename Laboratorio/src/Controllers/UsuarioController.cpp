@@ -8,6 +8,7 @@
 #include "UsuarioController.h"
 #include <set>
 #include "../ICollections/interfaces/IIterator.h"
+#include "../ICollections/collections/OrderedDictionary.h"
 #include <iterator>
 using namespace std;
 
@@ -29,21 +30,26 @@ bool UsuarioController::verificarNickname(string nickname) {
 
 	return this->sistema->verificarNickname(nickname);
 }
-DTOProfesor UsuarioController::altaProfesor(DTOProfesor* dto){
+void UsuarioController::altaProfesor(DTOProfesor* dto){
+
 	Profesor* usr = new Profesor(dto->nick,dto->pass,dto->nom,dto->descrip, dto->instituto);
 
 
-	set<string> idiomaRecibido = dto->idiomas;
+	set<string> idiomasRecibido = dto->idiomas;
 
 	set<string>::iterator it;
+
+	IDictionary* aux = new OrderedDictionary();
 	//recorro los idiomas del sistema obteniendo las intancias de los idiomas seleccionados, para cargarlos a la lista de idiomas del profesor
-	for (it = idiomaRecibido.begin(); it != idiomaRecibido.end(); it++) {
+	for (it = idiomasRecibido.begin(); it != idiomasRecibido.end(); it++) {
 		Idioma* idiomaObtenido = dynamic_cast<Idioma*>(this->sistema->idiomas->find(new String(*it)));
-		usr->idiomas->add(new String(*it),idiomaObtenido);
+		aux->add(new String(*it),idiomaObtenido);
+
 	}
 
 	this->sistema->usuarios->add(new String(dto->nick), usr);
 }
-DTOEstudiante UsuarioController::altaEstudiante(DTOEstudiante* dto){
-
+void UsuarioController::altaEstudiante(DTOEstudiante* dto){
+	Estudiante* usr = new Estudiante(dto->nick,dto->pass,dto->nom,dto->descrip, dto->paisResidencia);
+	this->sistema->usuarios->add(new String(dto->nick), usr);
 }

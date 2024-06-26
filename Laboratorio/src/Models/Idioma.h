@@ -15,6 +15,8 @@ class Idioma : public ICollectible{
 private:
 	string nomIdioma;
 public:
+
+
 	Idioma();
 	Idioma(string idioma);
 	virtual ~Idioma();

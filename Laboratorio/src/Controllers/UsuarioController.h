@@ -20,8 +20,8 @@ public:
 
 	set<string> listarIdiomas();
 	bool verificarNickname(string nickname);
-	DTOProfesor altaProfesor(DTOProfesor* dto);
-	DTOEstudiante altaEstudiante(DTOEstudiante* dto);
+	void altaProfesor(DTOProfesor* dto);
+	void altaEstudiante(DTOEstudiante* dto);
 };
 
 #endif /* CONTROLLERS_USUARIOCONTROLLER_H_ */

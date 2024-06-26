@@ -12,6 +12,7 @@
 #include "../Models/Idioma.h"
 #include "../Models/Usuario.h"
 #include "../Models/Profesor.h"
+#include "../Models/Estudiante.h"
 #include <set>
 
 using namespace std;

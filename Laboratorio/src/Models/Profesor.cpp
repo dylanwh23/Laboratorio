@@ -32,7 +32,7 @@ set<string> Profesor::mostrarInfo(){
 	aux.insert(this->nombre);
 	aux.insert(this->descripcion);
 	aux.insert(this->instituto);
-
+	return aux;
 }
 
 
