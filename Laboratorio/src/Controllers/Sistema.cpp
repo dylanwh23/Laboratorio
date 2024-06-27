@@ -71,9 +71,9 @@ set<string> Sistema::listarIdiomas() {
 bool Sistema::verificarNickname(string nickname){
 	bool existeNombre = this->usuarios->find(new String(nickname));
 	if(existeNombre){
-		return true;
+		return false;
 	}
-	return false;
+	return true;
 }
 
 bool Sistema::verificarIdioma(string nombreIdioma){
