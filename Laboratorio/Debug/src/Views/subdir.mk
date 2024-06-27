@@ -4,14 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Views/AltaIdioma.cpp \
 ../src/Views/AltaUsuario.cpp \
 ../src/Views/MenuPrincipal.cpp 
 
 CPP_DEPS += \
+./src/Views/AltaIdioma.d \
 ./src/Views/AltaUsuario.d \
 ./src/Views/MenuPrincipal.d 
 
 OBJS += \
+./src/Views/AltaIdioma.o \
 ./src/Views/AltaUsuario.o \
 ./src/Views/MenuPrincipal.o 
 
@@ -28,7 +31,7 @@ src/Views/%.o: ../src/Views/%.cpp src/Views/subdir.mk
 clean: clean-src-2f-Views
 
 clean-src-2f-Views:
-	-$(RM) ./src/Views/AltaUsuario.d ./src/Views/AltaUsuario.o ./src/Views/MenuPrincipal.d ./src/Views/MenuPrincipal.o
+	-$(RM) ./src/Views/AltaIdioma.d ./src/Views/AltaIdioma.o ./src/Views/AltaUsuario.d ./src/Views/AltaUsuario.o ./src/Views/MenuPrincipal.d ./src/Views/MenuPrincipal.o
 
 .PHONY: clean-src-2f-Views
 

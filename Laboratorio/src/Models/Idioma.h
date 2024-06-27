@@ -16,9 +16,7 @@ private:
 	string nomIdioma;
 public:
 
-
-	Idioma();
-	Idioma(string idioma);
+	Idioma(string nomIdioma);
 	virtual ~Idioma();
 	string getNomIdioma();
 };

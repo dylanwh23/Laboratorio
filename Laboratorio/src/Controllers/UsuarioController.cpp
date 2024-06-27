@@ -30,6 +30,12 @@ bool UsuarioController::verificarNickname(string nickname) {
 
 	return this->sistema->verificarNickname(nickname);
 }
+
+bool UsuarioController::verificarIdioma(string nombreIdioma){
+
+	return this->sistema->verificarIdioma(nombreIdioma);
+}
+
 void UsuarioController::altaProfesor(DTOProfesor* dto){
 
 	Profesor* usr = new Profesor(dto->nick,dto->pass,dto->nom,dto->descrip, dto->instituto);
@@ -53,3 +59,13 @@ void UsuarioController::altaEstudiante(DTOEstudiante* dto){
 	Estudiante* usr = new Estudiante(dto->nick,dto->pass,dto->nom,dto->descrip, dto->paisResidencia);
 	this->sistema->usuarios->add(new String(dto->nick), usr);
 }
+
+void UsuarioController::altaIdioma(string nombreIdioma){
+
+	Idioma* Idm = new Idioma(nombreIdioma);
+
+	this->sistema->idiomas->add(new String(nombreIdioma), Idm);
+
+}
+
+

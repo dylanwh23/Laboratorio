@@ -16,6 +16,7 @@ public:
 	virtual set<string> listarIdiomas()=0;
 	virtual void altaProfesor(DTOProfesor* dto)=0;
 	virtual void altaEstudiante(DTOEstudiante* dto)=0;
+	virtual void altaIdioma(string nomreIdioma)=0;
 };
 
 #endif /* CONTROLLERS_IUSUARIO_H_ */

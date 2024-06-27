@@ -31,7 +31,7 @@ public:
 	set<string> listarIdiomas();
 	set<string>  listarUsuarios();
 	bool verificarNickname(string nickname);
-
+	bool verificarIdioma(string nombreIdioma);
 };
 
 

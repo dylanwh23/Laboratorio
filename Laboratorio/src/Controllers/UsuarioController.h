@@ -22,6 +22,8 @@ public:
 	bool verificarNickname(string nickname);
 	void altaProfesor(DTOProfesor* dto);
 	void altaEstudiante(DTOEstudiante* dto);
+	bool verificarIdioma(string nombreIdioma);
+	 void altaIdioma(string nomreIdioma);
 };
 
 #endif /* CONTROLLERS_USUARIOCONTROLLER_H_ */

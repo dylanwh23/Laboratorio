@@ -8,10 +8,6 @@
 
 #include "Idioma.h"
 
-Idioma::Idioma() {
-	// TODO Auto-generated constructor stub
-
-}
 
 Idioma::Idioma(string nomIdioma) {
 	this->nomIdioma = nomIdioma;
