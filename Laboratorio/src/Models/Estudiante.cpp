@@ -30,3 +30,8 @@ set<string> Estudiante::mostrarInfo(){
 	aux.insert(this->paisResidencia);
 	return aux;
 }
+
+string Estudiante::getNick(){
+
+	return this->nickname;
+}

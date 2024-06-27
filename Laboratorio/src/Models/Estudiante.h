@@ -17,6 +17,6 @@ public:
 	Estudiante(string nick, string pass, string nom,	string descrip, string pais);
 	virtual ~Estudiante();
 	set<string> mostrarInfo();
-
+	string getNick();
 };
 #endif /* MODELS_ESTUDIANTE_H_ */

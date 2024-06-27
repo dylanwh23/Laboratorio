@@ -19,6 +19,8 @@ public:
 	IDictionary* idiomas;
 	virtual ~Profesor();
 	set<string> mostrarInfo();
+	string getNick();
+	void listaridiomas();
 };
 
 #endif /* MODELS_PROFESOR_H_ */

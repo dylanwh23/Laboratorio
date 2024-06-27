@@ -14,6 +14,7 @@
 #include "../ICollections/interfaces/IIterator.h"
 #include "../ICollections/String.h"
 Sistema *Sistema::miSistema = nullptr;
+using namespace std;
 
 Sistema::Sistema() {
 	// TODO Auto-generated constructor stub
@@ -94,4 +95,53 @@ bool Sistema::verificarIdioma(string nombreIdioma){
 		return true;
 
 }
+
+set <string> Sistema::listarIdiomasProfesor(string profesor){
+
+	string nick;
+	Profesor user;
+	set<string> aux;
+		IDictionary *auxit = this->usuarios;
+		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+			Profesor *auxnom = dynamic_cast<Profesor*>(it->getCurrent());
+
+			if(auxnom->getNick()== profesor){
+
+				set<string> aux2;
+				IDictionary *auxit = auxnom->idiomas;
+				for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+					Idioma *auxidioma = dynamic_cast<Idioma*>(it->getCurrent());
+					aux2.insert(auxidioma->getNomIdioma());
+				}
+
+				return aux2;
+
+			}
+
+
+		}
+
+}
+
+set<string> Sistema::listarProfesores(){
+
+		set<string> aux;
+
+			IDictionary *auxit = this->usuarios;
+			for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+				Profesor *auxnom = dynamic_cast<Profesor*>(it->getCurrent());
+
+				aux.insert(auxnom->getNick());
+
+
+				}
+
+			 return aux;
+
+			}
+
+
 

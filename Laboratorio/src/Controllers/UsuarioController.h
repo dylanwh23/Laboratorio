@@ -18,6 +18,7 @@ public:
 	void altaProfesor(DTOProfesor* dto);
 	void altaEstudiante(DTOEstudiante* dto);
 	bool verificarIdioma(string nombreIdioma);
+
 };
 
 #endif /* CONTROLLERS_USUARIOCONTROLLER_H_ */

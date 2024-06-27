@@ -27,6 +27,8 @@ public:
 	virtual ~Usuario();
 	virtual set<string> mostrarInfo() = 0;
 	string getNomUsuario();
+	string getNick();
+	void listaridiomas();
 };
 
 

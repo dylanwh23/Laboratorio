@@ -25,11 +25,14 @@ private:
 public:
 	IDictionary* usuarios;
 	IDictionary* idiomas;
+	IDictionary* cursos;
 
 	static Sistema* getInstance(); //metodo de clase que devuele siempre la misma instancia
 	virtual ~Sistema();
 	set<string> listarIdiomas();
+	set<string> listarProfesores();
 	set<string>  listarUsuarios();
+	set<string> listarIdiomasProfesor(string profesor);
 	bool verificarNickname(string nickname);
 	bool verificarIdioma(string nombreIdioma);
 };

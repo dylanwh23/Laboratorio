@@ -4,17 +4,23 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Controllers/CursoController.cpp \
 ../src/Controllers/IdiomaController.cpp \
+../src/Controllers/ProfesorController.cpp \
 ../src/Controllers/Sistema.cpp \
 ../src/Controllers/UsuarioController.cpp 
 
 CPP_DEPS += \
+./src/Controllers/CursoController.d \
 ./src/Controllers/IdiomaController.d \
+./src/Controllers/ProfesorController.d \
 ./src/Controllers/Sistema.d \
 ./src/Controllers/UsuarioController.d 
 
 OBJS += \
+./src/Controllers/CursoController.o \
 ./src/Controllers/IdiomaController.o \
+./src/Controllers/ProfesorController.o \
 ./src/Controllers/Sistema.o \
 ./src/Controllers/UsuarioController.o 
 
@@ -31,7 +37,7 @@ src/Controllers/%.o: ../src/Controllers/%.cpp src/Controllers/subdir.mk
 clean: clean-src-2f-Controllers
 
 clean-src-2f-Controllers:
-	-$(RM) ./src/Controllers/IdiomaController.d ./src/Controllers/IdiomaController.o ./src/Controllers/Sistema.d ./src/Controllers/Sistema.o ./src/Controllers/UsuarioController.d ./src/Controllers/UsuarioController.o
+	-$(RM) ./src/Controllers/CursoController.d ./src/Controllers/CursoController.o ./src/Controllers/IdiomaController.d ./src/Controllers/IdiomaController.o ./src/Controllers/ProfesorController.d ./src/Controllers/ProfesorController.o ./src/Controllers/Sistema.d ./src/Controllers/Sistema.o ./src/Controllers/UsuarioController.d ./src/Controllers/UsuarioController.o
 
 .PHONY: clean-src-2f-Controllers
 

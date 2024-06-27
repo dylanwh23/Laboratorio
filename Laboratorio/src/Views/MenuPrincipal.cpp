@@ -9,6 +9,7 @@
 #include <iostream>
 #include "AltaUsuario.h"
 #include "AltaIdioma.h"
+#include "AltaCurso.h"
 using namespace std;
 MenuPrincipal::MenuPrincipal() {
 	// TODO Auto-generated constructor stub
@@ -24,7 +25,8 @@ void MenuPrincipal::mostrarMenu(){
 			cout << endl << "*** Menu principal ***" << endl;
 			cout <<"1) Alta Usuario" << endl;
 			cout <<"2) Alta Idioma" << endl;
-			cout <<"3) Salir " << endl;
+			cout <<"3) Alta Curso" << endl;
+			cout <<"4) Salir " << endl;
 			cout <<"Ingrese una opcion: " << endl;
 
 			cin >> op;
@@ -41,12 +43,16 @@ void MenuPrincipal::mostrarMenu(){
 				}
 				break;
 			case 3:
+			{
+				AltaCurso altaCurso;
+				altaCurso.altaCurso();
+			}
 				break;
 			default:
 				cout << "Opcion desconocida" << endl;
 			}
 
-		} while (op != 3);
+		} while (op != 4);
 
 	cout << "Fin del programa" << endl;
 }

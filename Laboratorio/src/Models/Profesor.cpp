@@ -35,11 +35,24 @@ set<string> Profesor::mostrarInfo(){
 	return aux;
 }
 
+string Profesor::getNick(){
+
+	return this->nickname;
+}
 
 
 
+void Profesor::listaridiomas(){
 
+	set<string> aux;
 
+		IDictionary *auxit = this->idiomas;
+		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+				Idioma *auxnom = dynamic_cast<Idioma*>(it->getCurrent());
+				cout << "Idioma: " << auxnom->getNomIdioma() << endl;
+			}
+}
 
 
 
