@@ -48,16 +48,27 @@ void Sistema::inicializarDatos() {
 	this->idiomas->add(new String("Ingles"), idioma1);
 	this->idiomas->add(new String("Espaniol"), idioma2);
 	this->idiomas->add(new String("Aleman"), idioma3);
-	this->idiomas->find(new String("Ingles"));
+
 	Usuario *usr1 = new Profesor("gualberto666", "asd", "berto", "profesor","cure");
 	Usuario *usr2 = new Profesor("gualberto777", "asd", "berto", "profesor","cure");
 	Usuario *usr3 = new Profesor("gualberto888", "asd", "berto", "profesor","cure");
-
+	this->usuarios->add(new String("gualberto666"), idioma1);
+	this->usuarios->add(new String("gualberto777"), idioma2);
+	this->usuarios->add(new String("gualberto888"), idioma3);
 
 
 	cout << "Fin inicializacion Sistema " << endl;
 }
+set<string> Sistema::listarUsuarios() {
+	set<string> aux;
+	IDictionary *auxit = this->usuarios;
+	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
+		Usuario *auxnom = dynamic_cast<Usuario*>(it->getCurrent());
+		aux.insert(auxnom->getNomUsuario());
+	}
+	return aux;
+}
 set<string> Sistema::listarIdiomas() {
 	set<string> aux;
 	IDictionary *auxit = this->idiomas;
@@ -69,21 +80,18 @@ set<string> Sistema::listarIdiomas() {
 	return aux;
 }
 bool Sistema::verificarNickname(string nickname){
-	bool existeNombre = this->usuarios->find(new String(nickname));
-	if(existeNombre){
+	if(this->usuarios->member(new String(nickname))==true){
 		return false;
 	}
 	return true;
+
 }
 
 bool Sistema::verificarIdioma(string nombreIdioma){
-
-	bool existeIdioma = this->idiomas->find(new String(nombreIdioma));
-		if(existeIdioma){
+	if(this->idiomas->member(new String(nombreIdioma))==true){
 			return false;
 		}
 		return true;
-
 
 }
 

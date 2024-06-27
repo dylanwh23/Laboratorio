@@ -26,6 +26,7 @@ public:
 	Usuario(string nickname);
 	virtual ~Usuario();
 	virtual set<string> mostrarInfo() = 0;
+	string getNomUsuario();
 };
 
 

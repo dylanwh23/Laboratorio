@@ -23,18 +23,19 @@ UsuarioController::~UsuarioController() {
 }
 
 set<string> UsuarioController::listarIdiomas() {
-
 	return this->sistema->listarIdiomas();
+
+}
+set<string> UsuarioController::listarUsuarios(){
+	return this->sistema->listarUsuarios();
+
 }
 bool UsuarioController::verificarNickname(string nickname) {
 
 	return this->sistema->verificarNickname(nickname);
 }
 
-bool UsuarioController::verificarIdioma(string nombreIdioma){
 
-	return this->sistema->verificarIdioma(nombreIdioma);
-}
 
 void UsuarioController::altaProfesor(DTOProfesor* dto){
 
@@ -60,12 +61,5 @@ void UsuarioController::altaEstudiante(DTOEstudiante* dto){
 	this->sistema->usuarios->add(new String(dto->nick), usr);
 }
 
-void UsuarioController::altaIdioma(string nombreIdioma){
-
-	Idioma* Idm = new Idioma(nombreIdioma);
-
-	this->sistema->idiomas->add(new String(nombreIdioma), Idm);
-
-}
 
 

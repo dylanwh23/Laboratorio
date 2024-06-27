@@ -19,3 +19,6 @@ Usuario::Usuario(string nick) {
 	// TODO Auto-generated constructor stub
 	this->nickname = nick;
 }
+string Usuario::getNomUsuario(){
+	return this->nickname;
+}

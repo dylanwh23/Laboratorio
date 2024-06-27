@@ -108,7 +108,7 @@ void AltaUsuario::altaUsuario() {
 	set<string>::iterator it;
 
 
-	if (this->iusuario->verificarNickname(nick)) {
+	if (this->iusuario->verificarNickname(nick) == true) {
 		cout << "Es estudiante o profesor? (1 estudiante 2 profesor" << endl;
 		int tipoUsuario;
 
