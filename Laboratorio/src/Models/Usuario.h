@@ -12,6 +12,7 @@
 #include <iostream>
 #include "../ICollections/interfaces/IDictionary.h"
 #include <set>
+#include <list>
 using namespace std;
 
 class Usuario : public ICollectible{
@@ -25,7 +26,7 @@ public:
 	Usuario();
 	Usuario(string nickname);
 	virtual ~Usuario();
-	virtual set<string> mostrarInfo() = 0;
+	virtual list<string> mostrarInfo() = 0;
 	string getNomUsuario();
 	string getNick();
 	void listaridiomas();

@@ -17,7 +17,7 @@ AltaUsuario::AltaUsuario() {
 
 AltaUsuario::~AltaUsuario() {
 	// TODO Auto-generated destructor stub
-	//delete this->iusuario;
+	delete this->iusuario;
 }
 DTOEstudiante* AltaUsuario::ingresarEstudiante(string nick){
 	string pass;

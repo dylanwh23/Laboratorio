@@ -69,8 +69,7 @@ set<string> Sistema::listarUsuarios() {
 	IDictionary *auxit = this->usuarios;
 	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
-		Usuario *auxnom = dynamic_cast<Usuario*>(it->getCurrent());
-		aux.insert(auxnom->getNomUsuario());
+		Usuario *auxnom = static_cast<Usuario*>(it->getCurrent());		aux.insert(auxnom->getNomUsuario());
 	}
 	return aux;
 }

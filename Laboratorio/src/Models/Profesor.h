@@ -9,7 +9,7 @@
 #define MODELS_PROFESOR_H_
 #include "../ICollections/interfaces/IDictionary.h"
 #include "Usuario.h"
-
+#include <list>
 class Profesor: public Usuario {
 private:
 	string instituto;
@@ -18,7 +18,7 @@ public:
 	Profesor(string nickname, string contraseña, string nombre, string descripcion, string instituto);
 	IDictionary* idiomas;
 	virtual ~Profesor();
-	set<string> mostrarInfo();
+	list<string> mostrarInfo();
 	string getNick();
 	void listaridiomas();
 };

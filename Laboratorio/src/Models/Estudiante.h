@@ -9,14 +9,15 @@
 #define MODELS_ESTUDIANTE_H_
 
 #include "Usuario.h"
-
+#include <list>
+using namespace std;
 class Estudiante: public Usuario {
 private:
 	string paisResidencia;
 public:
 	Estudiante(string nick, string pass, string nom,	string descrip, string pais);
 	virtual ~Estudiante();
-	set<string> mostrarInfo();
+	list<string> mostrarInfo();
 	string getNick();
 };
 #endif /* MODELS_ESTUDIANTE_H_ */

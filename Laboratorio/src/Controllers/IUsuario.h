@@ -17,7 +17,7 @@ public:
 	virtual void altaProfesor(DTOProfesor* dto)=0;
 	virtual void altaEstudiante(DTOEstudiante* dto)=0;
 	virtual set<string> listarUsuarios()=0;
-
+	virtual Usuario* getUsuarioSistema(string nick)= 0;
 };
 
 #endif /* CONTROLLERS_IUSUARIO_H_ */

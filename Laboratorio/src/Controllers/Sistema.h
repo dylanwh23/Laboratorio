@@ -32,7 +32,7 @@ public:
 	virtual ~Sistema();
 	set<string> listarIdiomas();
 	set<string> listarProfesores();
-	set<string>  listarUsuarios();
+	set<string> listarUsuarios();
 	set<string> listarCursosHabilitados();
 	set<string> listarIdiomasProfesor(string profesor);
 	bool verificarNickname(string nickname);

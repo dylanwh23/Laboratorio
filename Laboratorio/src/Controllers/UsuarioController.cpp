@@ -60,6 +60,9 @@ void UsuarioController::altaEstudiante(DTOEstudiante* dto){
 	Estudiante* usr = new Estudiante(dto->nick,dto->pass,dto->nom,dto->descrip, dto->paisResidencia);
 	this->sistema->usuarios->add(new String(dto->nick), usr);
 }
+Usuario* UsuarioController::getUsuarioSistema(string nickname) {
 
+	return dynamic_cast<Usuario*>(this->sistema->usuarios->find(new String(nickname)));
+}
 
 
