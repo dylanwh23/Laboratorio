@@ -87,6 +87,7 @@ set<string> AltaCurso::seleccionarPreviaturas() {
 
 	set<string> previas;
 	string previa;
+	bool bandera=true;
 	bool quiereIngresarPrevias = true;
 
 	set<string> cursosHabilitados = this->Icurso->listarCursosHabilitados();
@@ -98,10 +99,21 @@ set<string> AltaCurso::seleccionarPreviaturas() {
 	do {
 		cout << "Ingrese un curso como previatura: (S/s para salir)" << endl;
 		cin >> previa;
-		if (previa != "S" && previa != "s") {
+		if (previa != "S" && previa != "s" ) {
 
-			previas.insert(previa);
-			cout << "Curso agregado como previa: " << previa << endl;
+			for (it = cursosHabilitados.begin(); it != cursosHabilitados.end(); it++) {
+
+				if(*it == previa){
+					previas.insert(previa);
+					cout << "Curso agregado como previa: " << previa << endl;
+					bandera = false;
+				}
+			}
+
+			if(bandera==true){
+				cout << "El curso ingresado no existe, ingrese un curso existente: " << endl;
+			}
+
 		} else {
 			quiereIngresarPrevias = false;
 		}
@@ -121,18 +133,17 @@ void AltaCurso::altaCurso(){
 	string idioma;
 	string nombre;
 	string dificultad;
+	int agregarIdioma;
 	bool habilitado = false;
 	set <string> previaturas;
 
 	profesor = this->seleccionarProfesor();
 	idioma = this->seleccionarIdioma(profesor);
 
-	cout << "Ingrese nombre del curso: " << endl;
+	cout << "Ingrese nombre del curso(sin espacios): " << endl;
 	cin >> nombre;
 	cout << "Ingrese dificultad del curso: " << endl;
 	cin >> dificultad;
-
-	int agregarIdioma;
 	cout << " ¿Desea agregar previaturas? (1=si 2 =no)? " << endl;
 	cin >> agregarIdioma;
 	if (agregarIdioma == 1) {
