@@ -11,6 +11,7 @@
 #include "AltaIdioma.h"
 #include "AltaCurso.h"
 #include "ConsultaUsuario.h"
+#include "ConsultaIdioma.h"
 using namespace std;
 MenuPrincipal::MenuPrincipal() {
 	// TODO Auto-generated constructor stub
@@ -28,7 +29,8 @@ void MenuPrincipal::mostrarMenu() {
 		cout << "2) Alta Idioma" << endl;
 		cout << "3) Alta Curso" << endl;
 		cout << "4) Consultar Usuario" << endl;
-		cout << "5) Salir " << endl;
+		cout << "5) Consultar Idiomas" << endl;
+		cout << "6) Salir " << endl;
 		cout << "Ingrese una opcion: " << endl;
 
 		cin >> op;
@@ -53,13 +55,16 @@ void MenuPrincipal::mostrarMenu() {
 			consultarusuario.consultaUsuario();
 		}
 			break;
-		case 5:
+		case 5:{
+			ConsultaIdioma consultaidioma;
+			consultaidioma.consultaIdioma();
+		}
 			break;
 		default:
 			cout << "Opcion desconocida" << endl;
 		}
 
-	} while (op != 5);
+	} while (op != 6);
 
 	cout << "Fin del programa" << endl;
 }
