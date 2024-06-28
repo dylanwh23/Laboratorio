@@ -53,7 +53,7 @@ void UsuarioController::altaProfesor(DTOProfesor* dto){
 		aux->add(new String(*it),idiomaObtenido);
 
 	}
-
+	usr->idiomas = aux;
 	this->sistema->usuarios->add(new String(dto->nick), usr);
 }
 void UsuarioController::altaEstudiante(DTOEstudiante* dto){

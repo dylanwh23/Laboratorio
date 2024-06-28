@@ -13,6 +13,7 @@
 #include "../Models/Usuario.h"
 #include "../Models/Profesor.h"
 #include "../Models/Estudiante.h"
+#include "../Models/Curso.h"
 #include <set>
 
 using namespace std;
@@ -32,9 +33,11 @@ public:
 	set<string> listarIdiomas();
 	set<string> listarProfesores();
 	set<string>  listarUsuarios();
+	set<string> listarCursosHabilitados();
 	set<string> listarIdiomasProfesor(string profesor);
 	bool verificarNickname(string nickname);
 	bool verificarIdioma(string nombreIdioma);
+
 };
 
 

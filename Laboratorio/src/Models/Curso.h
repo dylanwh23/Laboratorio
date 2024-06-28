@@ -22,6 +22,7 @@ public:
 	Curso(string nombre, string dificultad, bool habilitado, set<string> previaturas);
 	virtual ~Curso();
 	string getNomCurso();
+	bool esHabilitado();
 };
 
 #endif /* MODELS_CURSO_H_ */

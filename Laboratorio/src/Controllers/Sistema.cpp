@@ -13,6 +13,9 @@
 #include "../ICollections/collections/OrderedDictionary.h"
 #include "../ICollections/interfaces/IIterator.h"
 #include "../ICollections/String.h"
+#include "../Models/Profesor.h"
+
+
 Sistema *Sistema::miSistema = nullptr;
 using namespace std;
 
@@ -39,6 +42,7 @@ void Sistema::inicializarDatos() {
 
 	this->idiomas = new OrderedDictionary();
 	this->usuarios = new OrderedDictionary();
+	this->cursos = new OrderedDictionary();
 
 	cout << "Comienza inicializacion Sistema " << endl;
 
@@ -53,10 +57,10 @@ void Sistema::inicializarDatos() {
 	Usuario *usr1 = new Profesor("gualberto666", "asd", "berto", "profesor","cure");
 	Usuario *usr2 = new Profesor("gualberto777", "asd", "berto", "profesor","cure");
 	Usuario *usr3 = new Profesor("gualberto888", "asd", "berto", "profesor","cure");
-	this->usuarios->add(new String("gualberto666"), idioma1);
-	this->usuarios->add(new String("gualberto777"), idioma2);
-	this->usuarios->add(new String("gualberto888"), idioma3);
 
+	this->usuarios->add(new String("gualberto666"), usr1);
+	this->usuarios->add(new String("gualberto777"), usr2);
+	this->usuarios->add(new String("gualberto888"), usr3);
 
 	cout << "Fin inicializacion Sistema " << endl;
 }
@@ -70,6 +74,19 @@ set<string> Sistema::listarUsuarios() {
 	}
 	return aux;
 }
+
+set<string> Sistema::listarCursosHabilitados() {
+	set<string> aux;
+	IDictionary *auxit = this->cursos;
+	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+		if (static_cast<Curso*>(it->getCurrent())->esHabilitado() == true) {
+			Curso *auxcur = dynamic_cast<Curso*>(it->getCurrent());
+			aux.insert(auxcur->getNomCurso());
+		}
+	}
+	return aux;
+}
+
 set<string> Sistema::listarIdiomas() {
 	set<string> aux;
 	IDictionary *auxit = this->idiomas;
@@ -96,52 +113,39 @@ bool Sistema::verificarIdioma(string nombreIdioma){
 
 }
 
-set <string> Sistema::listarIdiomasProfesor(string profesor){
-
+set<string> Sistema::listarIdiomasProfesor(string profesor) {
 	string nick;
-	Profesor user;
 	set<string> aux;
-		IDictionary *auxit = this->usuarios;
-		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+	//casteo la instancia de profesor para luego obtener sus idiomas, recorrerlos y devolverlos
 
-			Profesor *auxnom = dynamic_cast<Profesor*>(it->getCurrent());
+	Usuario* usuarioSeleccionado = dynamic_cast<Usuario*>(this->usuarios->find(new String(profesor)));
 
-			if(auxnom->getNick()== profesor){
+	Profesor *profesorSeleccionado = static_cast<Profesor*>(usuarioSeleccionado);
+	IDictionary *auxit = profesorSeleccionado->idiomas;
+	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
-				set<string> aux2;
-				IDictionary *auxit = auxnom->idiomas;
-				for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+	aux.insert(static_cast<Idioma*>(it->getCurrent())->getNomIdioma());
 
-					Idioma *auxidioma = dynamic_cast<Idioma*>(it->getCurrent());
-					aux2.insert(auxidioma->getNomIdioma());
-				}
-
-				return aux2;
-
-			}
-
-
-		}
+	}
+	return aux;
 
 }
 
-set<string> Sistema::listarProfesores(){
+set<string> Sistema::listarProfesores() {
 
-		set<string> aux;
+	set<string> aux;
 
-			IDictionary *auxit = this->usuarios;
-			for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+	IDictionary *auxit = this->usuarios;
+	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
-				Profesor *auxnom = dynamic_cast<Profesor*>(it->getCurrent());
+		Profesor* auxnom = static_cast<Profesor*>(it->getCurrent());
+		aux.insert(auxnom->getNick());
 
-				aux.insert(auxnom->getNick());
+	}
 
+	return aux;
 
-				}
-
-			 return aux;
-
-			}
+}
 
 
 

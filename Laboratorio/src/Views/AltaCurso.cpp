@@ -6,10 +6,10 @@
  */
 #include "../Controllers/IUsuario.h"
 #include "AltaCurso.h"
-
+#include "../Controllers/CursoController.h"
 AltaCurso::AltaCurso() {
 	// TODO Auto-generated constructor stub
-
+	this->Icurso = new CursoController();
 }
 
 AltaCurso::~AltaCurso() {
@@ -19,7 +19,6 @@ AltaCurso::~AltaCurso() {
 string AltaCurso::seleccionarProfesor(){
 
 	set<string> profesoresExistentes = this->Icurso->listarProfesores();
-
 
 	set<string>::iterator it;
 	for (it = profesoresExistentes.begin(); it != profesoresExistentes.end();
@@ -47,62 +46,70 @@ string AltaCurso::seleccionarProfesor(){
 	return profesor;
 }
 
-string AltaCurso::seleccionarIdioma(string profesor){
+string AltaCurso::seleccionarIdioma(string profesor) {
 
-		set<string> idiomasExistentes = this->Icurso->listarIdiomasProfesor(profesor);
-		set<string> idiomasSeleccionados;
+	set<string> idiomasExistentes = this->Icurso->listarIdiomasProfesor(
+			profesor);
+	set<string> idiomasSeleccionados;
 
-		set<string>::iterator it;
-		for (it = idiomasExistentes.begin(); it != idiomasExistentes.end(); it++) {
-			cout << "Idioma: " << *it << endl;
-		}
-		string idioma;
-		bool quiereIngresarIdiomas = true;
-		do {
-			cout << "Ingrese un idioma de la lista: (S/s para salir)" << endl;
-			cin >> idioma;
-			if (idioma != "S" && idioma != "s") {
-				it = idiomasExistentes.find(idioma);
-				if (it != idiomasExistentes.end()) {
-					//solo selecciono los idiomas que existen
-					return idioma;
-					cout << "Idioma ingresado: " << idioma  << endl;
-				} else {
-					cout << "El idioma ingresado no existe, ingrese un idioma de la lista" << endl;
-				}
+	set<string>::iterator it;
+	for (it = idiomasExistentes.begin(); it != idiomasExistentes.end(); it++) {
+		cout << "Idioma: " << *it << endl;
+	}
+	string idioma;
+	bool quiereIngresarIdiomas = true;
+	do {
+		cout << "Ingrese un idioma de la lista: (S/s para salir)" << endl;
+		cin >> idioma;
+		if (idioma != "S" && idioma != "s") {
+			it = idiomasExistentes.find(idioma);
+			if (it != idiomasExistentes.end()) {
+				//solo selecciono los idiomas que existen
+				return idioma;
+				cout << "Idioma ingresado: " << idioma << endl;
 			} else {
-				quiereIngresarIdiomas = false;
+				cout
+						<< "El idioma ingresado no existe, ingrese un idioma de la lista"
+						<< endl;
 			}
+		} else {
+			quiereIngresarIdiomas = false;
+		}
 
-		} while (quiereIngresarIdiomas);
+	} while (quiereIngresarIdiomas);
 
+}
+
+
+
+
+set<string> AltaCurso::seleccionarPreviaturas() {
+
+	set<string> previas;
+	string previa;
+	bool quiereIngresarPrevias = true;
+
+	set<string> cursosHabilitados = this->Icurso->listarCursosHabilitados();
+	set<string>::iterator it;
+	for (it = cursosHabilitados.begin(); it != cursosHabilitados.end(); it++) {
+		cout << "Curso: " << *it << endl;
 	}
 
+	do {
+		cout << "Ingrese un curso como previatura: (S/s para salir)" << endl;
+		cin >> previa;
+		if (previa != "S" && previa != "s") {
 
-
-
-set<string> AltaCurso::seleccionarPreviaturas(){
-
-	set <string> previas;
-	string previa;
-			bool quiereIngresarPrevias = true;
-			do {
-				cout << "Ingrese un curso como previatura: (S/s para salir)" << endl;
-				cin >> previa;
-				if (previa != "S" && previa != "s") {
-
-					previas.insert(previa);
-					cout << "Curso agregado como previa: " << previa << endl;
-				} else {
-
-					previas.insert("Ninguna");
-					quiereIngresarPrevias = false;
-				}
-
-			} while (quiereIngresarPrevias);
-
-			return previas;
+			previas.insert(previa);
+			cout << "Curso agregado como previa: " << previa << endl;
+		} else {
+			quiereIngresarPrevias = false;
 		}
+
+	} while (quiereIngresarPrevias);
+
+	return previas;
+}
 
 
 
@@ -135,7 +142,7 @@ void AltaCurso::altaCurso(){
 	}
 
 
-
+	cout << "Curso Agregado Corectamente";
 	this->Icurso->altaCurso(nombre, dificultad, habilitado, previaturas);
 
 }

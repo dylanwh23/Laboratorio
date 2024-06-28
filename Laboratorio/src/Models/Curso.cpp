@@ -12,7 +12,7 @@ Curso::Curso(string nombre, string dificultad, bool habilitado, set<string> prev
 	this->dificultad = dificultad;
 	this->habilitado = habilitado;
 	this->previaturas= previaturas;
-
+	this->habilitado = true; //como no hay habilitarCurso aun
 }
 
 Curso::~Curso() {
@@ -21,4 +21,10 @@ Curso::~Curso() {
 
 string Curso::getNomCurso(){
 	return this->nombre;
+}
+bool Curso::esHabilitado(){
+	if(this->habilitado == true){
+		return true;
+	}
+	return false;
 }

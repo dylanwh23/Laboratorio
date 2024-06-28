@@ -15,7 +15,7 @@ using namespace std;
 
 CursoController::CursoController() {
 	// TODO Auto-generated constructor stub
-
+	this->sistema = Sistema::getInstance();
 }
 
 CursoController::~CursoController() {
@@ -31,7 +31,6 @@ set<string> CursoController::listarIdiomasProfesor(string profesor) {
 
 void CursoController::altaCurso(string nombreCurso, string dificultad, bool habilitado, set<string> previaturas){
 
-
 	Curso* curso = new Curso(nombreCurso, dificultad, habilitado, previaturas);
 
 	this->sistema->cursos->add(new String(nombreCurso), curso);
@@ -42,6 +41,12 @@ void CursoController::altaCurso(string nombreCurso, string dificultad, bool habi
 set<string> CursoController::listarProfesores(){
 
 	return this->sistema->listarProfesores();
+
+}
+
+set<string> CursoController::listarCursosHabilitados(){
+
+	return this->sistema->listarCursosHabilitados();
 
 }
 
