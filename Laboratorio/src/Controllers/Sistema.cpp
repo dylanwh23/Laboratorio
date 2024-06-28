@@ -52,9 +52,9 @@ void Sistema::inicializarDatos() {
 	Usuario *usr1 = new Profesor("gualberto666", "asd", "berto", "profesor","cure");
 	Usuario *usr2 = new Profesor("gualberto777", "asd", "berto", "profesor","cure");
 	Usuario *usr3 = new Profesor("gualberto888", "asd", "berto", "profesor","cure");
-	this->usuarios->add(new String("gualberto666"), idioma1);
-	this->usuarios->add(new String("gualberto777"), idioma2);
-	this->usuarios->add(new String("gualberto888"), idioma3);
+	this->usuarios->add(new String("gualberto666"), usr1);
+	this->usuarios->add(new String("gualberto777"), usr2);
+	this->usuarios->add(new String("gualberto888"), usr3);
 
 
 	cout << "Fin inicializacion Sistema " << endl;
@@ -64,7 +64,8 @@ set<string> Sistema::listarUsuarios() {
 	IDictionary *auxit = this->usuarios;
 	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
-		Usuario *auxnom = dynamic_cast<Usuario*>(it->getCurrent());
+		Usuario *auxnom = static_cast<Usuario*>(it->getCurrent());
+
 		aux.insert(auxnom->getNomUsuario());
 	}
 	return aux;

@@ -21,12 +21,12 @@ Estudiante::~Estudiante() {
 	// TODO Auto-generated destructor stub
 }
 
-set<string> Estudiante::mostrarInfo(){
-	set<string> aux;
-	aux.insert(this->nickname);
-	aux.insert(this->contraseña);
-	aux.insert(this->nombre);
-	aux.insert(this->descripcion);
-	aux.insert(this->paisResidencia);
+list<string> Estudiante::mostrarInfo(){
+	list<string> aux;
+	aux.push_back(this->nickname);
+	aux.push_back(this->contraseña);
+	aux.push_back(this->nombre);
+	aux.push_back(this->descripcion);
+	aux.push_back(this->paisResidencia);
 	return aux;
 }

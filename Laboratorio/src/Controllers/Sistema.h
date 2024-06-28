@@ -29,7 +29,7 @@ public:
 	static Sistema* getInstance(); //metodo de clase que devuele siempre la misma instancia
 	virtual ~Sistema();
 	set<string> listarIdiomas();
-	set<string>  listarUsuarios();
+	set<string> listarUsuarios();
 	bool verificarNickname(string nickname);
 	bool verificarIdioma(string nombreIdioma);
 };

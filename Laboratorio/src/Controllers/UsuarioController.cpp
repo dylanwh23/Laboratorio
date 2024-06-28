@@ -34,6 +34,10 @@ bool UsuarioController::verificarNickname(string nickname) {
 
 	return this->sistema->verificarNickname(nickname);
 }
+Usuario* UsuarioController::getUsuarioSistema(string nickname) {
+
+	return dynamic_cast<Usuario*>(this->sistema->usuarios->find(new String(nickname)));
+}
 
 
 
