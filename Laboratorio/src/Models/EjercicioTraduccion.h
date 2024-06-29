@@ -10,11 +10,13 @@
 #include "../ICollections/interfaces/IDictionary.h"
 #include "Ejercicio.h"
 
+
 class EjercicioTraduccion: public Ejercicio{
 private:
 	string traduccion;
 public:
 	EjercicioTraduccion();
+	EjercicioTraduccion(string nombre, string descripcion, string frase, string traduccion);
 	virtual ~EjercicioTraduccion();
 };
 

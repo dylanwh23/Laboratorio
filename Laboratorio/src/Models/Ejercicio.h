@@ -20,7 +20,9 @@ private:
 	string frase;
 public:
 	Ejercicio();
+	Ejercicio(string nombre);
 	virtual ~Ejercicio();
+	string getNom();
 };
 
 #endif /* MODELS_EJERCICIO_H_ */

@@ -12,6 +12,7 @@
 #include "AltaCurso.h"
 #include "AgregarLeccion.h"
 #include "ConsultaUsuario.h"
+#include "AgregarEjercicio.h"
 #include "ConsultaIdioma.h"
 using namespace std;
 MenuPrincipal::MenuPrincipal() {
@@ -74,7 +75,8 @@ void MenuPrincipal::mostrarMenu() {
 		}
 			break;
 		case 7: {
-
+				AgregarEjercicio agregarejercicio;
+				agregarejercicio.llamarAgregarEjercicio();
 		}
 
 			break;

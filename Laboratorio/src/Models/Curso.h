@@ -29,6 +29,8 @@ public:
 	string getNomCurso();
 	bool esHabilitado();
 	void agregarLeccion(Leccion *lec);
+	set<string> listarLecciones();
+	IDictionary* getLecciones();
 };
 
 #endif /* MODELS_CURSO_H_ */

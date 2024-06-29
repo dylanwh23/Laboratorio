@@ -38,5 +38,28 @@ bool Curso::esHabilitado(){
 void Curso::agregarLeccion(Leccion *lec){
 	this->lecciones = new OrderedDictionary();
 	this->lecciones->add(new String(lec->getTemaLec()), lec);
-	cout<<"je";
+}
+
+
+set<string> Curso::listarLecciones(){
+
+		set<string> auxlecciones;
+		IDictionary *auxit = this->lecciones;
+
+		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+			Leccion* auxnom = dynamic_cast<Leccion*>(it->getCurrent());
+
+				auxlecciones.insert(auxnom->getTemaLec());
+
+		}
+
+		return auxlecciones;
+
+}
+
+IDictionary* Curso::getLecciones(){
+
+	IDictionary* auxit = this->lecciones;
+	return auxit;
 }

@@ -6,6 +6,8 @@
  */
 
 #include "Leccion.h"
+#include "../ICollections/String.h"
+#include "../ICollections/collections/OrderedDictionary.h"
 
 Leccion::Leccion(string tema, string objetivo, IDictionary* ejercicios) {
 // TODO Auto-generated constructor stub
@@ -22,3 +24,10 @@ string Leccion::getTemaLec(){
 return this->tema;
 }
 
+void Leccion::agregarEjercicio(Ejercicio *eje){
+
+	this->ejercicios = new OrderedDictionary();
+	this->ejercicios->add(new String(eje->getNom()), eje);
+
+
+}

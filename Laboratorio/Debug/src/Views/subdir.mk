@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Views/AgregarEjercicio.cpp \
 ../src/Views/AgregarLeccion.cpp \
 ../src/Views/AltaCurso.cpp \
 ../src/Views/AltaIdioma.cpp \
@@ -14,6 +15,7 @@ CPP_SRCS += \
 ../src/Views/MenuPrincipal.cpp 
 
 CPP_DEPS += \
+./src/Views/AgregarEjercicio.d \
 ./src/Views/AgregarLeccion.d \
 ./src/Views/AltaCurso.d \
 ./src/Views/AltaIdioma.d \
@@ -24,6 +26,7 @@ CPP_DEPS += \
 ./src/Views/MenuPrincipal.d 
 
 OBJS += \
+./src/Views/AgregarEjercicio.o \
 ./src/Views/AgregarLeccion.o \
 ./src/Views/AltaCurso.o \
 ./src/Views/AltaIdioma.o \
@@ -46,7 +49,7 @@ src/Views/%.o: ../src/Views/%.cpp src/Views/subdir.mk
 clean: clean-src-2f-Views
 
 clean-src-2f-Views:
-	-$(RM) ./src/Views/AgregarLeccion.d ./src/Views/AgregarLeccion.o ./src/Views/AltaCurso.d ./src/Views/AltaCurso.o ./src/Views/AltaIdioma.d ./src/Views/AltaIdioma.o ./src/Views/AltaUsuario.d ./src/Views/AltaUsuario.o ./src/Views/ConsultaIdioma.d ./src/Views/ConsultaIdioma.o ./src/Views/ConsultaUsuario.d ./src/Views/ConsultaUsuario.o ./src/Views/IncribirseACurso.d ./src/Views/IncribirseACurso.o ./src/Views/MenuPrincipal.d ./src/Views/MenuPrincipal.o
+	-$(RM) ./src/Views/AgregarEjercicio.d ./src/Views/AgregarEjercicio.o ./src/Views/AgregarLeccion.d ./src/Views/AgregarLeccion.o ./src/Views/AltaCurso.d ./src/Views/AltaCurso.o ./src/Views/AltaIdioma.d ./src/Views/AltaIdioma.o ./src/Views/AltaUsuario.d ./src/Views/AltaUsuario.o ./src/Views/ConsultaIdioma.d ./src/Views/ConsultaIdioma.o ./src/Views/ConsultaUsuario.d ./src/Views/ConsultaUsuario.o ./src/Views/IncribirseACurso.d ./src/Views/IncribirseACurso.o ./src/Views/MenuPrincipal.d ./src/Views/MenuPrincipal.o
 
 .PHONY: clean-src-2f-Views
 

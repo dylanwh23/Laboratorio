@@ -9,13 +9,14 @@
 #define MODELS_EJERCICIOCOMPLETAR_H_
 #include "../ICollections/interfaces/IDictionary.h"
 #include "Ejercicio.h"
-#include <set>
+
 
 class EjercicioCompletar: public Ejercicio {
 private:
-	set<string> palabrasFaltantes;
+	string palabrasFaltantes;
 public:
 	EjercicioCompletar();
+	EjercicioCompletar(string nombre, string descripcion, string frase, string palabrasFaltantes);
 	virtual ~EjercicioCompletar();
 };
 
