@@ -16,6 +16,8 @@ public:
 	virtual set<string> listarIdiomasProfesor(string profesor)=0;
 	virtual set<string> listarCursosHabilitados()=0;
 	virtual list<string> listarCursosHabilitadosParaElEstudiante(string nickname) = 0;
+	virtual set<string> listarCursos()=0;
+	virtual Curso* getCursoSistema(string curso)= 0;
 };
 
 

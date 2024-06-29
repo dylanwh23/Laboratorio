@@ -35,6 +35,7 @@ public:
 	set<string> listarProfesores();
 	set<string> listarUsuarios();
 	set<string> listarCursosHabilitados();
+	set<string> listarCursos();
 	set<string> listarIdiomasProfesor(string profesor);
 	bool verificarNickname(string nickname);
 	bool verificarIdioma(string nombreIdioma);

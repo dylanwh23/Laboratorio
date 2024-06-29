@@ -8,6 +8,7 @@ CPP_SRCS += \
 ../src/Views/AltaCurso.cpp \
 ../src/Views/AltaIdioma.cpp \
 ../src/Views/AltaUsuario.cpp \
+../src/Views/ConsultaCurso.cpp \
 ../src/Views/ConsultaIdioma.cpp \
 ../src/Views/ConsultaUsuario.cpp \
 ../src/Views/IncribirseACurso.cpp \
@@ -18,6 +19,7 @@ CPP_DEPS += \
 ./src/Views/AltaCurso.d \
 ./src/Views/AltaIdioma.d \
 ./src/Views/AltaUsuario.d \
+./src/Views/ConsultaCurso.d \
 ./src/Views/ConsultaIdioma.d \
 ./src/Views/ConsultaUsuario.d \
 ./src/Views/IncribirseACurso.d \
@@ -28,6 +30,7 @@ OBJS += \
 ./src/Views/AltaCurso.o \
 ./src/Views/AltaIdioma.o \
 ./src/Views/AltaUsuario.o \
+./src/Views/ConsultaCurso.o \
 ./src/Views/ConsultaIdioma.o \
 ./src/Views/ConsultaUsuario.o \
 ./src/Views/IncribirseACurso.o \
@@ -46,7 +49,7 @@ src/Views/%.o: ../src/Views/%.cpp src/Views/subdir.mk
 clean: clean-src-2f-Views
 
 clean-src-2f-Views:
-	-$(RM) ./src/Views/AgregarLeccion.d ./src/Views/AgregarLeccion.o ./src/Views/AltaCurso.d ./src/Views/AltaCurso.o ./src/Views/AltaIdioma.d ./src/Views/AltaIdioma.o ./src/Views/AltaUsuario.d ./src/Views/AltaUsuario.o ./src/Views/ConsultaIdioma.d ./src/Views/ConsultaIdioma.o ./src/Views/ConsultaUsuario.d ./src/Views/ConsultaUsuario.o ./src/Views/IncribirseACurso.d ./src/Views/IncribirseACurso.o ./src/Views/MenuPrincipal.d ./src/Views/MenuPrincipal.o
+	-$(RM) ./src/Views/AgregarLeccion.d ./src/Views/AgregarLeccion.o ./src/Views/AltaCurso.d ./src/Views/AltaCurso.o ./src/Views/AltaIdioma.d ./src/Views/AltaIdioma.o ./src/Views/AltaUsuario.d ./src/Views/AltaUsuario.o ./src/Views/ConsultaCurso.d ./src/Views/ConsultaCurso.o ./src/Views/ConsultaIdioma.d ./src/Views/ConsultaIdioma.o ./src/Views/ConsultaUsuario.d ./src/Views/ConsultaUsuario.o ./src/Views/IncribirseACurso.d ./src/Views/IncribirseACurso.o ./src/Views/MenuPrincipal.d ./src/Views/MenuPrincipal.o
 
 .PHONY: clean-src-2f-Views
 
