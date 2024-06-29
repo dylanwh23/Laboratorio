@@ -18,7 +18,7 @@ public:
 	void agregarEjercicio(string curso, string leccion);
 	void listarCursosInhabilitados();
 	void listarLeccionesCurso(string curso);
-	void ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase);
+	void ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion);
 	void ingresarEjercicioCompletar(string curso, string leccion, string nombreEjercicio, string desc, string frase,string palabrasFaltantes);
 	void llamarAgregarEjercicio();
 };

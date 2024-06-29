@@ -14,7 +14,7 @@
 using namespace std;
 
 class Ejercicio : public ICollectible{
-private:
+protected:
 	string nombre;
 	string descripcion;
 	string frase;

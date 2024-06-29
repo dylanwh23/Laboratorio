@@ -18,7 +18,7 @@ public:
 	set <string> listarCursosInhabilitados();
 	set <string> listarLeccionesCurso(string curso);
 	void ingresarEjercicioCompletar(string curso, string leccion, string nombreEjercicio, string desc, string frase, string palabrasFaltantes);
-	void ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase);
+	void ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion);
 
 };
 

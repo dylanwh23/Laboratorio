@@ -25,6 +25,7 @@ void AgregarEjercicio::agregarEjercicio(string curso, string leccion) {
 	string frase;
 	string desc;
 	string palabrasFaltantes;
+	string traduccion;
 	cout << "Ingrese tipo de ejercicio:" << endl << "(1-Completar 2-Traduccion"<< endl;
 
 	cin >> tipoEjercicio;
@@ -47,7 +48,9 @@ void AgregarEjercicio::agregarEjercicio(string curso, string leccion) {
 		cin >> desc;
 		cout << "Ingrese la frase del ejercicio: " << endl;
 		cin >> frase;
-		this->Iejercicio->ingresarEjercicioTraducir(curso, leccion, nombreEjercicio, desc, frase);
+		cout << "Ingrese la traduccion del ejercicio: " << endl;
+				cin >> traduccion;
+		this->Iejercicio->ingresarEjercicioTraducir(curso, leccion, nombreEjercicio, desc, frase, traduccion);
 	}
 
 	cout << "Ejercicio ingresado " << endl;
@@ -95,8 +98,8 @@ void AgregarEjercicio::llamarAgregarEjercicio(){
 
 }
 
-void AgregarEjercicio::ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase){
-	this->Iejercicio->ingresarEjercicioTraducir(curso, leccion, nombreEjercicio, desc, frase);
+void AgregarEjercicio::ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion){
+	this->Iejercicio->ingresarEjercicioTraducir(curso, leccion, nombreEjercicio, desc, frase, traduccion);
 }
 
 

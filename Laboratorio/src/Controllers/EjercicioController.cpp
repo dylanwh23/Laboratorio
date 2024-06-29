@@ -79,12 +79,12 @@ void EjercicioController::ingresarEjercicioCompletar(string curso, string leccio
 				}
 			}
 
-			Ejercicio* eje = new Ejercicio*(nombreEjercicio, desc, frase, palabrasFaltantes);
+			Ejercicio* eje = new EjercicioCompletar(nombreEjercicio, desc, frase, palabrasFaltantes);
 			leccionfinal->agregarEjercicio(eje);
 
 }
 
-void EjercicioController::ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase){
+void EjercicioController::ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion){
 
 	IDictionary *auxit = this->sistema->cursos;
 		Curso *cursofinal;
@@ -114,7 +114,7 @@ void EjercicioController::ingresarEjercicioTraducir(string curso, string leccion
 				}
 			}
 
-			Ejercicio* eje = new Ejercicio*(nombreEjercicio, desc, frase);
+			Ejercicio* eje = new EjercicioTraduccion(nombreEjercicio, desc, frase, traduccion);
 						leccionfinal->agregarEjercicio(eje);
 
 }
