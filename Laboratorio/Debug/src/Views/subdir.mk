@@ -8,6 +8,7 @@ CPP_SRCS += \
 ../src/Views/AltaCurso.cpp \
 ../src/Views/AltaIdioma.cpp \
 ../src/Views/AltaUsuario.cpp \
+../src/Views/ConsultaIdioma.cpp \
 ../src/Views/ConsultaUsuario.cpp \
 ../src/Views/IncribirseACurso.cpp \
 ../src/Views/MenuPrincipal.cpp 
@@ -17,6 +18,7 @@ CPP_DEPS += \
 ./src/Views/AltaCurso.d \
 ./src/Views/AltaIdioma.d \
 ./src/Views/AltaUsuario.d \
+./src/Views/ConsultaIdioma.d \
 ./src/Views/ConsultaUsuario.d \
 ./src/Views/IncribirseACurso.d \
 ./src/Views/MenuPrincipal.d 
@@ -26,6 +28,7 @@ OBJS += \
 ./src/Views/AltaCurso.o \
 ./src/Views/AltaIdioma.o \
 ./src/Views/AltaUsuario.o \
+./src/Views/ConsultaIdioma.o \
 ./src/Views/ConsultaUsuario.o \
 ./src/Views/IncribirseACurso.o \
 ./src/Views/MenuPrincipal.o 

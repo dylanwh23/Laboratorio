@@ -12,6 +12,7 @@
 #include "AltaCurso.h"
 #include "AgregarLeccion.h"
 #include "ConsultaUsuario.h"
+#include "ConsultaIdioma.h"
 using namespace std;
 MenuPrincipal::MenuPrincipal() {
 	// TODO Auto-generated constructor stub
