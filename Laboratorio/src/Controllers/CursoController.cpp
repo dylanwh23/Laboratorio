@@ -40,7 +40,7 @@ void CursoController::altaCurso(string nombreCurso, string dificultad, bool habi
 		}
 
 
-	Curso* curso = new Curso(nombreCurso, dificultad, habilitado, previas, 0);
+		Curso* curso = new Curso(nombreCurso, dificultad, habilitado);
 
 	this->sistema->cursos->add(new String(nombreCurso), curso);
 
@@ -58,7 +58,13 @@ set<string> CursoController::listarCursosHabilitados(){
 	return this->sistema->listarCursosHabilitados();
 
 }
+set<string> CursoController::listarCursos(){
 
+	return this->sistema->listarCursos();
+}
+Curso* CursoController::getCursoSistema(string curso) {
+	return dynamic_cast<Curso*>(this->sistema->cursos->find(new String(curso)));
+}
 
 list<string> CursoController::listarCursosHabilitadosParaElEstudiante(string nickname){
 	this->sistema->listarCursosHabilitados();

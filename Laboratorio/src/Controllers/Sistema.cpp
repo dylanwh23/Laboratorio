@@ -14,6 +14,7 @@
 #include "../ICollections/interfaces/IIterator.h"
 #include "../ICollections/String.h"
 #include "../Models/Profesor.h"
+#include "../Models/Leccion.h"
 
 
 Sistema *Sistema::miSistema = nullptr;
@@ -62,9 +63,22 @@ void Sistema::inicializarDatos() {
 	this->usuarios->add(new String("gualberto777"), usr2);
 	this->usuarios->add(new String("gualberto888"), usr3);
 
-	Curso *curso1 = new Curso("Ingles", "Facil",true);
-	Curso *curso2 = new Curso("Aleman", "Facil",false);
-	Curso *curso3 = new Curso("Espaniol", "Facil",false);
+	IDictionary* lecciones = new OrderedDictionary();
+	Leccion *leccion1 = new Leccion("historia", "Facil",this->idiomas);
+	lecciones->add(new String("historia"), leccion1);
+
+	IDictionary* lecciones2 = new OrderedDictionary();
+	Leccion *leccion2 = new Leccion("historia", "Facil",this->idiomas);
+	lecciones2->add(new String("historia"), leccion2);
+
+	IDictionary* previaturas = new OrderedDictionary();
+	Curso *curso4 = new Curso("indu", "Facil",true);
+	previaturas->add(new String("indu"), curso4);
+
+	Curso *curso1 = new Curso("Ingles", "Facil",true,usr1,idioma1,previaturas,lecciones);
+	Curso *curso2 = new Curso("Aleman", "Facil",false,usr2,idioma1,previaturas,lecciones2);
+	Curso *curso3 = new Curso("Espaniol", "Facil",false,usr3,idioma1,previaturas,lecciones);
+
 
 	this->cursos->add(new String("Ingles"), curso1);
 	this->cursos->add(new String("Aleman"), curso2);
@@ -92,6 +106,15 @@ set<string> Sistema::listarCursosHabilitados() {
 			Curso *auxcur = dynamic_cast<Curso*>(it->getCurrent());
 			aux.insert(auxcur->getNomCurso());
 		}
+	}
+	return aux;
+}
+set<string> Sistema::listarCursos() {
+	set<string> aux;
+	IDictionary *auxit = this->cursos;
+	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+			Curso *auxcur = dynamic_cast<Curso*>(it->getCurrent());
+			aux.insert(auxcur->getNomCurso());
 	}
 	return aux;
 }

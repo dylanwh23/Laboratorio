@@ -10,7 +10,10 @@
 #include "../ICollections/interfaces/ICollectible.h"
 #include <iostream>
 #include <set>
+#include <list>
 #include "../ICollections/interfaces/IDictionary.h"
+#include "Leccion.h"
+#include "Profesor.h"
 #include "Leccion.h"
 using namespace std;
 
@@ -19,12 +22,14 @@ private:
 	bool habilitado;
 	string nombre;
 	string dificultad;
+	Usuario* profesor;
+	Idioma* idioma;
 	IDictionary* previaturas;
 	IDictionary* lecciones;
 public:
-	Curso(string nombre, string dificultad, bool habilitado, IDictionary* previaturas, IDictionary* lecciones);
 	Curso(string nombre, string dificultad, bool habilitado);
-
+	Curso(string nombre, string dificultad, bool habilitado,Usuario* profesor,Idioma* idioma, IDictionary* previaturas, IDictionary* lecciones);
+	list<string> mostrarInfo();
 	virtual ~Curso();
 	string getNomCurso();
 	bool esHabilitado();

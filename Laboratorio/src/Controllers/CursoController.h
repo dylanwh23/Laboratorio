@@ -22,7 +22,10 @@ public:
 	 void altaCurso(string nombreCurso, string dificultad, bool habilitado, set<string> previaturas);
 	 set<string> listarProfesores();
 	 set<string> listarCursosHabilitados();
+	 set<string> listarCursos();
 	 list<string> listarCursosHabilitadosParaElEstudiante(string nickname);
+	 Curso* getCursoSistema(string curso);
+
 
 };
 
