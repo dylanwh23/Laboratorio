@@ -36,6 +36,8 @@ list<string> Profesor::mostrarInfo(){
 	aux.push_back(this->descripcion);
 
 	aux.push_back(this->instituto);
+
+	return aux;
 }
 
 string Profesor::getNick(){
@@ -45,16 +47,17 @@ string Profesor::getNick(){
 
 
 
-void Profesor::listaridiomas(){
+list<string> Profesor::listaridiomas() {
 
-	set<string> aux;
+	list<string> aux;
 
-		IDictionary *auxit = this->idiomas;
-		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+	IDictionary *auxit = this->idiomas;
+	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
-				Idioma *auxnom = dynamic_cast<Idioma*>(it->getCurrent());
-				cout << "Idioma: " << auxnom->getNomIdioma() << endl;
-			}
+		Idioma *auxnom = dynamic_cast<Idioma*>(it->getCurrent());
+		aux.push_back(auxnom->getNomIdioma());
+	}
+	return aux;
 }
 
 

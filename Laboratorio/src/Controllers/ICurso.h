@@ -15,6 +15,7 @@ public:
 	virtual void altaCurso(string nombreCurso, string dificultad, bool habilitado, set<string> previaturas)=0;
 	virtual set<string> listarIdiomasProfesor(string profesor)=0;
 	virtual set<string> listarCursosHabilitados()=0;
+	virtual list<string> listarCursosHabilitadosParaElEstudiante(string nickname) = 0;
 };
 
 

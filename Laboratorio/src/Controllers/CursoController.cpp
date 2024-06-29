@@ -11,7 +11,7 @@
 #include "../ICollections/collections/OrderedDictionary.h"
 #include <iterator>
 using namespace std;
-
+#include "../ICollections/String.h"
 
 CursoController::CursoController() {
 	// TODO Auto-generated constructor stub
@@ -31,7 +31,16 @@ set<string> CursoController::listarIdiomasProfesor(string profesor) {
 
 void CursoController::altaCurso(string nombreCurso, string dificultad, bool habilitado, set<string> previaturas){
 
-	Curso* curso = new Curso(nombreCurso, dificultad, habilitado, previaturas);
+	IDictionary* previas = new OrderedDictionary();
+
+		set<string>::iterator it;
+		for (it = previaturas.begin(); it != previaturas.end(); it++) {
+			Curso *aux = dynamic_cast<Curso*>(this->sistema->cursos->find(new String(*it)));
+			previas->add(new String(*it), aux);
+		}
+
+
+	Curso* curso = new Curso(nombreCurso, dificultad, habilitado, previas, 0);
 
 	this->sistema->cursos->add(new String(nombreCurso), curso);
 
@@ -51,4 +60,20 @@ set<string> CursoController::listarCursosHabilitados(){
 }
 
 
+list<string> CursoController::listarCursosHabilitadosParaElEstudiante(string nickname){
+	this->sistema->listarCursosHabilitados();
 
+	Estudiante* estudiante;
+	estudiante = dynamic_cast<Estudiante*>(this->sistema->usuarios->find(new String(nickname)));
+	if(estudiante){
+		//accedo a las incripciones del estudiante
+
+		//recorro estas creando una lista de cursos a los que ya esta inscripto
+		//creo una nueva lista de cursos habilitados a los que no esta inscripto
+		//accedo a la lista de inscripciones aprobadas del estudiante y recupero los cursos
+		//recorro la lista de cursos en los que no se ha inscripto y estan habilitados, comparando con la lista de arriba
+		//y agrego a la lista definitiva solo los cursos en los que el estudiante ya aprobo sus previaturas
+	}else{
+		cout<<"Ingrese un estudiante"<<endl;
+	}
+}

@@ -20,7 +20,7 @@ public:
 	virtual ~Profesor();
 	list<string> mostrarInfo();
 	string getNick();
-	void listaridiomas();
+	list<string> listaridiomas();
 };
 
 #endif /* MODELS_PROFESOR_H_ */

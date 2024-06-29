@@ -28,6 +28,7 @@ list<string> Estudiante::mostrarInfo(){
 	aux.push_back(this->nombre);
 	aux.push_back(this->descripcion);
 	aux.push_back(this->paisResidencia);
+	return aux;
 }
 
 string Estudiante::getNick(){

@@ -62,6 +62,16 @@ void Sistema::inicializarDatos() {
 	this->usuarios->add(new String("gualberto777"), usr2);
 	this->usuarios->add(new String("gualberto888"), usr3);
 
+	Curso *curso1 = new Curso("Ingles", "Facil",true);
+	Curso *curso2 = new Curso("Aleman", "Facil",false);
+	Curso *curso3 = new Curso("Espaniol", "Facil",false);
+
+	this->cursos->add(new String("Ingles"), curso1);
+	this->cursos->add(new String("Aleman"), curso2);
+	this->cursos->add(new String("Espaniol"), curso3);
+
+
+
 	cout << "Fin inicializacion Sistema " << endl;
 }
 set<string> Sistema::listarUsuarios() {
@@ -133,18 +143,32 @@ set<string> Sistema::listarIdiomasProfesor(string profesor) {
 set<string> Sistema::listarProfesores() {
 
 	set<string> aux;
-
 	IDictionary *auxit = this->usuarios;
+
 	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
-		Profesor* auxnom = static_cast<Profesor*>(it->getCurrent());
-		aux.insert(auxnom->getNick());
-
+		Profesor* auxnom = dynamic_cast<Profesor*>(it->getCurrent());
+		if(auxnom){
+			aux.insert(auxnom->getNick());
+		}
 	}
 
 	return aux;
 
 }
 
+set<string> Sistema::listarCursosInhabilitados() {
+
+    	set<string> aux;
+        IDictionary* auxit = this->cursos;
+
+        for (IIterator* it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+            if (dynamic_cast<Curso*>(it->getCurrent())->esHabilitado() == false) {
+                Curso* auxcur = dynamic_cast<Curso*>(it->getCurrent());
+                aux.insert(auxcur->getNomCurso());
+            }
+        }
+        return aux;
+}
 
 

@@ -14,6 +14,7 @@ using namespace std;
 class Estudiante: public Usuario {
 private:
 	string paisResidencia;
+	IDictionary* inscripciones;
 public:
 	Estudiante(string nick, string pass, string nom,	string descrip, string pais);
 	virtual ~Estudiante();

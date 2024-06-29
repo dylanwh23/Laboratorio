@@ -29,7 +29,6 @@ public:
 	virtual list<string> mostrarInfo() = 0;
 	string getNomUsuario();
 	string getNick();
-	void listaridiomas();
 };
 
 

@@ -13,6 +13,7 @@
 #include "../Models/Usuario.h"
 #include "../Models/Profesor.h"
 #include "../Models/Estudiante.h"
+#include "../Models/Leccion.h"
 #include "../Models/Curso.h"
 #include <set>
 
@@ -37,6 +38,7 @@ public:
 	set<string> listarIdiomasProfesor(string profesor);
 	bool verificarNickname(string nickname);
 	bool verificarIdioma(string nombreIdioma);
+	set<string> listarCursosInhabilitados();
 
 };
 

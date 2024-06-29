@@ -6,15 +6,20 @@
  */
 
 #include "Curso.h"
-
-Curso::Curso(string nombre, string dificultad, bool habilitado, set<string> previaturas) {
+#include "Leccion.h"
+#include "../ICollections/String.h"
+Curso::Curso(string nombre, string dificultad, bool habilitado, IDictionary* previaturas, IDictionary* lecciones) {
 	this->nombre = nombre;
 	this->dificultad = dificultad;
-	this->habilitado = habilitado;
+	this->habilitado = habilitado; //como no hay habilitarCurso aun
 	this->previaturas= previaturas;
-	this->habilitado = true; //como no hay habilitarCurso aun
+	this->lecciones = lecciones;
 }
-
+Curso::Curso(string nombre, string dificultad, bool habilitado) {
+	this->nombre = nombre;
+	this->dificultad = dificultad;
+	this->habilitado = habilitado; //como no hay habilitarCurso aun
+}
 Curso::~Curso() {
 	// TODO Auto-generated destructor stub
 }
@@ -27,4 +32,10 @@ bool Curso::esHabilitado(){
 		return true;
 	}
 	return false;
+}
+
+void Curso::agregarLeccion(Leccion *lec){
+
+	this->lecciones->add(new String(lec->getTemaLec()), lec);
+
 }
