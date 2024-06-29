@@ -26,15 +26,21 @@ void MenuPrincipal::mostrarMenu() {
 	int op = 0;
 	do {
 		cout << endl << "*** Menu principal ***" << endl;
-		cout << "1) Alta Usuario" << endl;
-		cout << "2) Alta Idioma" << endl;
-		cout << "3) Alta Curso" << endl;
-		cout << "4) Consultar Usuario" << endl;
-		cout << "5) Agregar Leccion" << endl;
-		cout << "6) Consulta Idioma" << endl;
-		cout << "7) Salir " << endl;
-		cout << "Ingrese una opcion: " << endl;
-
+				cout << "1) Alta Usuario" << endl;
+				cout << "2) Alta Idioma" << endl;
+				cout << "3) Alta Curso" << endl;
+				cout << "4) Consulta de usuario" << endl;
+				cout << "5) Consultar idiomas "<< endl;
+				cout << "6) Agregar Lecciones" << endl;
+				cout << "7) Agregar Ejercicio" << endl;
+				cout << "8) Habilitar curso" << endl;
+				cout << "9) Eliminar curso" << endl;
+				cout << "10) Consultar curso" << endl;
+				cout << "11) Inscribirse a curso" << endl;
+				cout << "12) Realizar ejercicio" << endl;
+				cout << "13) Consultar estadísticas" << endl;
+				cout << "14) Salir " << endl;
+				cout << "Ingrese una opcion: " << endl;
 		cin >> op;
 		switch (op) {
 		case 1: {
@@ -58,23 +64,51 @@ void MenuPrincipal::mostrarMenu() {
 		}
 			break;
 		case 5: {
-			AgregarLeccion agregarleccion;
-			agregarleccion.llamarAgregarLeccion();
-		}
-			break;
-		case 6: {
 			ConsultaIdioma consultaidioma;
 			consultaidioma.consultaIdioma();
 		}
 			break;
-		case 7:
+		case 6: {
+				AgregarLeccion agregarleccion;
+			agregarleccion.llamarAgregarLeccion();
+		}
+			break;
+		case 7: {
 
+		}
+
+			break;
+		case 8: {
+
+		}
+			break;
+		case 9: {
+
+		}
+			break;
+		case 10: {
+
+		}
+			break;
+		case 11: {
+
+		}
+			break;
+		case 12: {
+
+		}
+			break;
+		case 13: {
+
+		}
+			break;
+		case 14:
 			break;
 		default:
 			cout << "Opcion desconocida" << endl;
 		}
 
-	} while (op != 7);
+	} while (op != 14);
 
 	cout << "Fin del programa" << endl;
 }
