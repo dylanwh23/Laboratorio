@@ -7,6 +7,7 @@
 #include "../Controllers/IUsuario.h"
 #include "AltaCurso.h"
 #include "../Controllers/CursoController.h"
+#include "AgregarLeccion.h"
 AltaCurso::AltaCurso() {
 	// TODO Auto-generated constructor stub
 	this->Icurso = new CursoController();
@@ -128,15 +129,16 @@ set<string> AltaCurso::seleccionarPreviaturas() {
 
 
 
-void AltaCurso::altaCurso(){
+void AltaCurso::altaCurso() {
 
 	string profesor;
 	string idioma;
 	string nombre;
 	string dificultad;
 	int agregarIdioma;
+	int agregarLeccion;
 	bool habilitado = false;
-	set <string> previaturas;
+	set<string> previaturas;
 
 	profesor = this->seleccionarProfesor();
 	idioma = this->seleccionarIdioma(profesor);
@@ -153,8 +155,16 @@ void AltaCurso::altaCurso(){
 		cout << "El curso no tendra cursos previos " << endl;
 	}
 
+	cout << " ¿Desea agregar lecciones? (1=si 2 =no)? " << endl;
+	cin >> agregarLeccion;
+	if (agregarLeccion == 1) {
+		AgregarLeccion agregarleccion;
+		agregarleccion.agregarLeccion(nombre);
+	} else {
+		cout << "El curso no tendra cursos previos " << endl;
+	}
 
-	cout << "Curso Agregado Corectamente";
+	cout << "Curso Agregado Correctamente";
 	this->Icurso->altaCurso(nombre, dificultad, habilitado, previaturas);
 
 }

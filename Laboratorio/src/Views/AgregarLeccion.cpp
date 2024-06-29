@@ -38,7 +38,7 @@ void AgregarLeccion::listarCursosInhabilitados() {
 
 void AgregarLeccion::llamarAgregarLeccion() {
 	string curso;
-	cout<<"xd";
+
 	this->listarCursosInhabilitados();
 
 	cout << "Ingrese un curso de la lista: " << endl;

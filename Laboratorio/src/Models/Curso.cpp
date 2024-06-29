@@ -8,6 +8,7 @@
 #include "Curso.h"
 #include "Leccion.h"
 #include "../ICollections/String.h"
+#include "../ICollections/collections/OrderedDictionary.h"
 Curso::Curso(string nombre, string dificultad, bool habilitado, IDictionary* previaturas, IDictionary* lecciones) {
 	this->nombre = nombre;
 	this->dificultad = dificultad;
@@ -35,7 +36,7 @@ bool Curso::esHabilitado(){
 }
 
 void Curso::agregarLeccion(Leccion *lec){
-
+	this->lecciones = new OrderedDictionary();
 	this->lecciones->add(new String(lec->getTemaLec()), lec);
-
+	cout<<"je";
 }
