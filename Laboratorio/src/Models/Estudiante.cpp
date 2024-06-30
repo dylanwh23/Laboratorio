@@ -76,3 +76,55 @@ void Estudiante::borrarInscripcionesCurso(Curso *curso){
 	        }
 	   }
 }
+set<string> Estudiante::getCursosNoAprobados(){
+	set<string> aux;
+
+	        list<Incripcion> auxit = this->inscripciones;
+
+	        list<Incripcion>::iterator it;
+	        	for (it = auxit.begin(); it != auxit.end(); it++) {
+
+	        		if(it->getAprobado()== false){
+	        			aux.insert(it->getNomCurso());
+	        		}
+
+	        	}
+
+	        return aux;
+
+}
+
+void Estudiante::insertarEjercicio(string curso, Ejercicio* eje){
+
+	list<Incripcion> inscripciones = this->inscripciones;
+
+	 list<Incripcion>::iterator it;
+	for (it = inscripciones.begin(); it != inscripciones.end(); it++) {
+
+		if (it->getNomCurso() == curso) {
+			it->ingresarEjercicio(eje);
+		}
+	}
+}
+
+set<string> Estudiante::listarEjerciciosAprobados(){
+
+	list<Incripcion> inscripciones = this->inscripciones;
+	list<Incripcion>::iterator it;
+	set<string>::iterator it2;
+	set<string> ejercicios;
+	set<string> aux;
+
+	for (it = inscripciones.begin(); it != inscripciones.end(); it++) {
+
+			aux = (it->getEjercicios());
+
+
+		for (it2 = aux.begin(); it2 != aux.end(); it2++) {
+
+					ejercicios.insert(*it2);
+				}
+
+		}
+	return ejercicios;
+}

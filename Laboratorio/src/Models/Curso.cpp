@@ -61,19 +61,22 @@ void Curso::agregarLeccion(Leccion *lec){
 
 
 set<string> Curso::listarLecciones(){
-
 		set<string> auxlecciones;
 		IDictionary *auxit = this->lecciones;
-
 		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 			Leccion* auxnom = dynamic_cast<Leccion*>(it->getCurrent());
-				cout <<"--lecciones:"<< auxnom->getTemaLec()<<endl;
-				auxnom->listarEjercicios();
+			auxlecciones.insert("--lecciones:"+auxnom->getTemaLec());
+			set<string> auxEjercicios = auxnom->listarEjercicios();
+			set<string>::iterator it2;
+			for (it2 = auxEjercicios.begin(); it2 != auxEjercicios.end(); it2++) {
+				auxlecciones.insert("----Ejercicio:"+ *it2);
+				}
 		}
 
 		return auxlecciones;
 
 }
+
 
 IDictionary* Curso::getLecciones(){
 
@@ -96,3 +99,30 @@ Profesor* Curso::getProfesor(){
 	return this->profesor;
 
 }
+
+set<string> Curso::listarEjercicios(){
+
+	set<string> auxlecciones;
+
+	IDictionary *auxit = this->lecciones;
+
+		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+			Leccion* auxnom = dynamic_cast<Leccion*>(it->getCurrent());
+
+			set<string> auxit2 = auxnom->listarEjercicios();
+
+	        set<string>::iterator it2;
+
+	        for (it2 = auxit2.begin(); it2 != auxit2.end(); it2++) {
+
+	        			auxlecciones.insert(*it2);
+
+	        	}
+
+		}
+
+		return auxlecciones;
+
+}
+

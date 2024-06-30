@@ -16,6 +16,7 @@
 #include "ConsultaCurso.h"
 #include "ConsultarEstadisticas.h"
 #include "borrarCurso.h"
+#include "RealizarEjercicio.h"
 #include "ConsultaIdioma.h"
 using namespace std;
 MenuPrincipal::MenuPrincipal() {
@@ -102,7 +103,8 @@ void MenuPrincipal::mostrarMenu() {
 		}
 			break;
 		case 12: {
-
+			RealizarEjercicio realizarejercicio;
+			realizarejercicio.buscarEstudiante();
 		}
 			break;
 		case 13: {

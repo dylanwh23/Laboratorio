@@ -38,6 +38,7 @@ public:
 	int cantidadEjercicios();
 	set<string> listarLecciones();
 	IDictionary* getLecciones();
+	set<string>listarEjercicios();
 };
 
 #endif /* MODELS_CURSO_H_ */

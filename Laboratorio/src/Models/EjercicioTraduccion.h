@@ -9,7 +9,7 @@
 #define MODELS_EJERCICIOTRADUCCION_H_
 #include "../ICollections/interfaces/IDictionary.h"
 #include "Ejercicio.h"
-
+#include <list>
 
 class EjercicioTraduccion: public Ejercicio{
 private:
@@ -18,6 +18,9 @@ public:
 	EjercicioTraduccion();
 	EjercicioTraduccion(string nombre, string descripcion, string frase, string traduccion);
 	virtual ~EjercicioTraduccion();
+	list<string> getInfo();
+	string getNom();
+	string getSolucion();
 };
 
 #endif /* MODELS_EJERCICIOTRADUCCION_H_ */

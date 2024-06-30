@@ -11,6 +11,7 @@
 #include "../ICollections/interfaces/IDictionary.h"
 #include <iostream>
 #include <set>
+#include <list>
 using namespace std;
 
 class Ejercicio : public ICollectible{
@@ -22,8 +23,11 @@ public:
 	Ejercicio();
 	Ejercicio(string nombre);
 	virtual ~Ejercicio();
-	string getNom();
+	//string getNick();
 	string getDesc();
+	virtual string getNom()=0;
+	virtual list<string> getInfo()=0;
+	virtual string getSolucion()=0;
 };
 
 #endif /* MODELS_EJERCICIO_H_ */

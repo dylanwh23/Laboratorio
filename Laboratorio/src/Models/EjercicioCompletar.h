@@ -18,6 +18,9 @@ public:
 	EjercicioCompletar();
 	EjercicioCompletar(string nombre, string descripcion, string frase, string palabrasFaltantes);
 	virtual ~EjercicioCompletar();
+	list<string> getInfo();
+	string getSolucion();
+	string getNom();
 };
 
 #endif /* MODELS_EJERCICIOCOMPLETAR_H_ */

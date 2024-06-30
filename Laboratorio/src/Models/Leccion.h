@@ -23,9 +23,10 @@ public:
 	virtual ~Leccion();
 	string getTemaLec();
 	void agregarEjercicio(Ejercicio* eje);
-	void listarEjercicios();
 	int contarEjercicios();
 	void borrarLecciones();
+	set<string> listarEjercicios();
+	IDictionary* getEjercicios();
 };
 
 #endif /* MODELS_LECCION_H_ */

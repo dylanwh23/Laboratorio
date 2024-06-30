@@ -19,11 +19,12 @@ Ejercicio::~Ejercicio() {
 	// TODO Auto-generated destructor stub
 }
 
-string Ejercicio::getNom(){
-
-	return this->nombre;
-}
+//string Ejercicio::getNick(){
+//
+//	return this->nombre;
+//}
 string Ejercicio::getDesc(){
 
 	return this->descripcion;
+
 }

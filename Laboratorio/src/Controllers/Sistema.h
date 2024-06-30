@@ -48,6 +48,11 @@ public:
 	void BorrarCurso(Curso *curso);
 	set<string> listarEstudiantes();
 
+	set<string> listarCursosNoAprobados(string nick);
+	set<string> listarEjerciciosEstudiante(string nick, string curso);
+	list<string> mostrarEjercicio(string nick, string curso, string ejercicio);
+	string getSolucion(string curso, string ejercicio);
+
 };
 
 

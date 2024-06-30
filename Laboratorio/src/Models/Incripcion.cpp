@@ -30,3 +30,36 @@ bool Incripcion::compararCursos(Curso *curso){
 IDictionary* Incripcion::getEjerciciosAprobados(){
 	return this->ejerciciosAprobados;
 }
+bool Incripcion::getAprobado(){
+
+	return this->aprobado;
+
+}
+
+string Incripcion::getNomCurso(){
+
+	return this->curso->getNomCurso();
+
+}
+
+void Incripcion::ingresarEjercicio(Ejercicio* eje){
+
+	this->ejerciciosAprobados->add(new String(eje->getNom()), eje);
+
+}
+
+
+set<string> Incripcion::getEjercicios(){
+
+	set<string> auxlecciones;
+				IDictionary *auxit = this->ejerciciosAprobados;
+
+				for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+					Ejercicio* auxnom = dynamic_cast<Ejercicio*>(it->getCurrent());
+
+						auxlecciones.insert(auxnom->getNom());
+
+				}
+			return auxlecciones;
+}

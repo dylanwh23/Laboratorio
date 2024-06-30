@@ -24,3 +24,30 @@ EjercicioTraduccion::~EjercicioTraduccion() {
 	// TODO Auto-generated destructor stub
 }
 
+list<string> EjercicioTraduccion::getInfo(){
+
+	list<string> aux;
+
+	aux.push_back(this->nombre);
+
+	aux.push_back(this->descripcion);
+
+	aux.push_back(this->frase);
+
+	return aux;
+
+}
+
+
+string EjercicioTraduccion::getSolucion(){
+
+	return this->traduccion;
+
+}
+
+
+string EjercicioTraduccion::getNom(){
+
+	return this->nombre;
+}
+

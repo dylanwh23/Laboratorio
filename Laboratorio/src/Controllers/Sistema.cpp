@@ -346,3 +346,104 @@ set<string> Sistema::listarCursosStats(Curso *curso) {
 
 	return aux;
 }
+set<string> Sistema::listarCursosNoAprobados(string nick) {
+
+	set<string> aux;
+	Usuario *usuarioSeleccionado = dynamic_cast<Usuario*>(this->usuarios->find(new String(nick)));
+
+	Estudiante* EstudianteSeleccionado = dynamic_cast<Estudiante*>(usuarioSeleccionado);
+
+	aux = EstudianteSeleccionado->getCursosNoAprobados();
+
+	return aux;
+}
+
+set<string> Sistema::listarEjerciciosEstudiante(string nick, string curso){
+
+	set<string> aux;
+	set<string> aux2;
+		Usuario *usuarioSeleccionado = dynamic_cast<Usuario*>(this->usuarios->find(new String(nick)));
+		Estudiante *EstudianteSeleccionado = static_cast<Estudiante*>(usuarioSeleccionado);
+		Curso *cursoSeleccionado = dynamic_cast<Curso*>(this->cursos->find(new String(curso)));
+
+		aux2 = EstudianteSeleccionado->listarEjerciciosAprobados();
+		aux = cursoSeleccionado->listarEjercicios();
+
+		set<string>::iterator it;
+		set<string>::iterator it2;
+		set<string> ejercicios;
+		set<string> devolver;
+
+			for (it = aux.begin(); it != aux.end(); it++) {
+
+					string eje1 = *it;
+
+				for (it2 = aux2.begin(); it2 != aux2.end(); it2++) {
+
+						string eje2 = *it2;
+						if(eje1 != eje2){
+							devolver.insert(eje1);
+						}
+				}
+
+			}
+
+
+		return devolver;
+
+}
+
+list<string> Sistema::mostrarEjercicio(string nick, string curso,string ejercicio) {
+
+	IDictionary *lecciones;
+	list<string> aux;
+
+
+	Curso *cursoSeleccionado = dynamic_cast<Curso*>(this->cursos->find(new String(curso)));
+	lecciones = dynamic_cast<IDictionary*>(cursoSeleccionado->getLecciones());
+
+	for (IIterator *it = lecciones->getIterator(); it->hasCurrent();it->next()) {
+
+
+		if(dynamic_cast<Leccion*>(it->getCurrent())->getEjercicios()->find(new String(ejercicio))){
+
+			Ejercicio* eje = dynamic_cast <Ejercicio*>(dynamic_cast<Leccion*>(it->getCurrent())->getEjercicios()->find(new String(ejercicio)));
+			aux = eje->getInfo();
+		}
+
+
+
+	}
+
+	return aux;
+
+}
+
+
+
+
+string Sistema::getSolucion(string curso, string ejercicio) {
+
+	IDictionary *lecciones;
+	string aux;
+
+
+	Curso *cursoSeleccionado = dynamic_cast<Curso*>(this->cursos->find(new String(curso)));
+	lecciones = dynamic_cast<IDictionary*>(cursoSeleccionado->getLecciones());
+
+	for (IIterator *it = lecciones->getIterator(); it->hasCurrent();it->next()) {
+
+
+		if(dynamic_cast<Leccion*>(it->getCurrent())->getEjercicios()->find(new String(ejercicio))){
+
+			Ejercicio* eje = dynamic_cast <Ejercicio*>(dynamic_cast<Leccion*>(it->getCurrent())->getEjercicios()->find(new String(ejercicio)));
+			aux = eje->getSolucion();
+		}
+
+
+
+	}
+
+	return aux;
+
+}

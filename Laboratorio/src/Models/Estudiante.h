@@ -25,5 +25,8 @@ public:
 	bool revisarInscripcionesCurso(Curso *curso);
 	int ejerciciosHechosInscripciones(Curso *curso);
 	void borrarInscripcionesCurso(Curso *curso);
+	set<string> getCursosNoAprobados();
+	set<string> listarEjerciciosAprobados();
+	void insertarEjercicio(string curso, Ejercicio* eje);
 };
 #endif /* MODELS_ESTUDIANTE_H_ */

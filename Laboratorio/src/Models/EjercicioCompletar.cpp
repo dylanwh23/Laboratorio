@@ -21,3 +21,26 @@ EjercicioCompletar::EjercicioCompletar(string nombre, string descripcion, string
 EjercicioCompletar::~EjercicioCompletar() {
 	// TODO Auto-generated destructor stub
 }
+list<string> EjercicioCompletar::getInfo(){
+
+	 list<string> aux;
+
+		aux.push_back(this->nombre);
+
+		aux.push_back(this->descripcion);
+
+		aux.push_back(this->frase);
+
+		return aux;
+
+}
+
+string EjercicioCompletar::getSolucion(){
+
+	return this->palabrasFaltantes;
+
+}
+
+string EjercicioCompletar::getNom(){
+	return this->nombre;
+}

@@ -19,6 +19,12 @@ public:
 	set <string> listarLeccionesCurso(string curso);
 	void ingresarEjercicioCompletar(string curso, string leccion, string nombreEjercicio, string desc, string frase, string palabrasFaltantes);
 	void ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion);
+	bool verificarNickname(string nickname);
+	set<string> listarCursosNoAprobados(string nick);
+	set<string> listarEjerciciosEstudiante(string nick, string curso);
+	void realizarEjercicio(string nick,string curso, string ejercicio);
+	list<string> mostrarEjercicio(string nick, string curso, string ejercicio);
+	string getSolucion(string curso, string ejercicio);
 
 };
 

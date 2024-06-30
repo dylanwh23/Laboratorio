@@ -31,15 +31,7 @@ void Leccion::agregarEjercicio(Ejercicio *eje){
 
 
 }
-void Leccion::listarEjercicios(){
-	for (IIterator *it = this->ejercicios->getIterator(); it->hasCurrent();it->next()) {
-		Ejercicio *auxEje = dynamic_cast<Ejercicio*>(it->getCurrent());
-		cout << "-----Ejercicio:" << auxEje->getNom() << endl;
-		cout<<"-----Descripcion:"<< auxEje->getDesc() << endl;
 
-	}
-
-}
 int Leccion::contarEjercicios(){
 	return this->ejercicios->getSize();
 }
@@ -52,3 +44,22 @@ void Leccion::borrarLecciones(){
 
 
 }
+
+
+set<string> Leccion::listarEjercicios(){
+	set<string> auxlecciones;
+				IDictionary *auxit = this->ejercicios;
+				for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+					Ejercicio* auxnom = dynamic_cast<Ejercicio*>(it->getCurrent());
+						auxlecciones.insert(auxnom->getNom());
+
+				}
+
+			return auxlecciones;
+}
+
+
+IDictionary* Leccion::getEjercicios(){
+	return this->ejercicios;
+}
+

@@ -44,12 +44,18 @@ void ConsultaCurso::consultaCurso() {
 		advance(itCursoInfo, 1);
 		cout << "Idioma:" << *itCursoInfo << endl;
 		set<string> lecciones = cursoSeleccionadoIntancia->listarLecciones();
+		set<string>::iterator itL;
 		set<string> estudiantesInscriptos = this->icurso->listarEstudiantes(cursoSeleccionadoIntancia);
-
+		cout << "lecciones: " << endl;
+		for (it = lecciones.begin();
+				it != lecciones.end(); it++) {
+			cout << *it << endl;
+		}
 		set<string>::iterator it;
-		cout << "estudiantes inscriptos: "<<endl;
-			for (it = estudiantesInscriptos.begin(); it != estudiantesInscriptos.end(); it++) {
-				cout << "e:" << *it << endl;
+		cout << "estudiantes inscriptos: " << endl;
+		for (it = estudiantesInscriptos.begin();
+				it != estudiantesInscriptos.end(); it++) {
+			cout << "e:" << *it << endl;
 			}
 
 	}
