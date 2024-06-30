@@ -39,6 +39,7 @@ public:
 	set<string> listarLecciones();
 	IDictionary* getLecciones();
 	set<string>listarEjercicios();
+	void HabilitarCurso();
 };
 
 #endif /* MODELS_CURSO_H_ */

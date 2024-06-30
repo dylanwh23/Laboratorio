@@ -27,6 +27,12 @@ public:
 	virtual set<string> listarCursosStats(Curso *curso)=0;
 	virtual Estudiante* getEstudianteSistema(string usuario)= 0;
 	virtual Profesor* getProfesorSistema(string usuario)= 0;
+	virtual void habilitarCurso(string curso)=0;
+	virtual set <string> listarCursosInhabilitados()=0;
+	virtual void ingresarEjercicioCompletar(string curso, string leccion, string nombreEjercicio, string desc, string frase, string palabrasFaltantes)=0;
+	virtual void ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion)=0;
+	virtual void agregarLeccion(string tema, string objetivo, IDictionary* ejercicios,string nombreCurso)=0;
+
 
 };
 

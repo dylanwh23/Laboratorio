@@ -111,3 +111,116 @@ set<string> CursoController::listarCursos(Profesor *profesor){
 set<string> CursoController::listarCursosStats(Curso *curso){
 	return this->sistema->listarCursosStats(curso);
 }
+
+set <string> CursoController::listarCursosInhabilitados(){
+return this->sistema->listarCursosInhabilitados();
+}
+
+void CursoController::ingresarEjercicioCompletar(string curso, string leccion, string nombreEjercicio, string desc, string frase, string palabrasFaltantes){
+
+	IDictionary *auxit = this->sistema->cursos;
+		Curso *cursofinal;
+		set<string> lecciones;
+
+		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+			Curso *auxnom = dynamic_cast<Curso*>(it->getCurrent());
+			if (auxnom->getNomCurso() == curso) {
+				cursofinal = auxnom;
+				break;
+			}
+		}
+
+		lecciones = cursofinal->listarLecciones();
+
+
+		IDictionary *auxit2 = cursofinal->getLecciones();
+			Leccion *leccionfinal;
+
+			for (IIterator *it = auxit2->getIterator(); it->hasCurrent(); it->next()) {
+
+				Leccion *auxlec = dynamic_cast<Leccion*>(it->getCurrent());
+				if (auxlec->getTemaLec() == leccion) {
+					leccionfinal = auxlec;
+					break;
+				}
+			}
+
+			Ejercicio* eje = new EjercicioCompletar(nombreEjercicio, desc, frase, palabrasFaltantes);
+			leccionfinal->agregarEjercicio(eje);
+
+}
+
+void CursoController::ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion){
+
+	IDictionary *auxit = this->sistema->cursos;
+		Curso *cursofinal;
+		set<string> lecciones;
+
+		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+			Curso *auxnom = dynamic_cast<Curso*>(it->getCurrent());
+			if (auxnom->getNomCurso() == curso) {
+				cursofinal = auxnom;
+				break;
+			}
+		}
+
+		lecciones = cursofinal->listarLecciones();
+
+
+		IDictionary *auxit2 = cursofinal->getLecciones();
+			Leccion *leccionfinal;
+
+			for (IIterator *it = auxit2->getIterator(); it->hasCurrent(); it->next()) {
+
+				Leccion *auxlec = dynamic_cast<Leccion*>(it->getCurrent());
+				if (auxlec->getTemaLec() == leccion) {
+					leccionfinal = auxlec;
+					break;
+				}
+			}
+
+			Ejercicio* eje = new EjercicioTraduccion(nombreEjercicio, desc, frase, traduccion);
+						leccionfinal->agregarEjercicio(eje);
+
+}
+void CursoController::habilitarCurso(string curso){
+	IDictionary *auxit = this->sistema->cursos;
+			Curso *cursofinal;
+			set<string> lecciones;
+
+			for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+				Curso *auxnom = dynamic_cast<Curso*>(it->getCurrent());
+				if (auxnom->getNomCurso() == curso) {
+					cursofinal = auxnom;
+					break;
+				}
+			}
+cursofinal->HabilitarCurso();
+
+}
+ void CursoController::agregarLeccion(string tema, string objetivo, IDictionary* ejercicios,string nombreCurso){
+	 Leccion* lec = new Leccion(tema, objetivo, ejercicios);
+	 	Curso *cursofinal;
+	 	IDictionary *auxit = this->sistema->cursos;
+
+
+
+	 	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+	 			Curso *auxnom = dynamic_cast<Curso*>(it->getCurrent());
+	 			if (auxnom->getNomCurso() == nombreCurso) {
+	 				cursofinal = auxnom;
+	 				break;
+	 			}
+
+	 		}
+
+	 	cursofinal->agregarLeccion(lec);
+
+
+ }
+
+

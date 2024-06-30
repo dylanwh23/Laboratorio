@@ -34,6 +34,12 @@ public:
 	 set<string> listarEstudiantes();
 	 Estudiante* getEstudianteSistema(string usuario);
 	 Profesor* getProfesorSistema(string usuario);
+	 void habilitarCurso(string curso);
+	 set <string> listarCursosInhabilitados();
+	 void ingresarEjercicioCompletar(string curso, string leccion, string nombreEjercicio, string desc, string frase, string palabrasFaltantes);
+	 void ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion);
+	 void agregarLeccion(string tema, string objetivo, IDictionary* ejercicios,string nombreCurso);
+
 };
 
 #endif /* CONTROLLERS_CURSOCONTROLLER_H_ */

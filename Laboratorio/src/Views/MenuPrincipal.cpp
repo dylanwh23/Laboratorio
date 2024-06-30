@@ -13,6 +13,7 @@
 #include "AgregarLeccion.h"
 #include "ConsultaUsuario.h"
 #include "AgregarEjercicio.h"
+#include "HabilitarCurso.h"
 #include "ConsultaCurso.h"
 #include "ConsultarEstadisticas.h"
 #include "borrarCurso.h"
@@ -85,7 +86,8 @@ void MenuPrincipal::mostrarMenu() {
 
 			break;
 		case 8: {
-
+			HabilitarCurso habilitarcurso;
+			habilitarcurso.listarCursosInhabilitados();
 		}
 			break;
 		case 9: {

@@ -61,19 +61,19 @@ void Curso::agregarLeccion(Leccion *lec){
 
 
 set<string> Curso::listarLecciones(){
-		set<string> auxlecciones;
-		IDictionary *auxit = this->lecciones;
-		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
-			Leccion* auxnom = dynamic_cast<Leccion*>(it->getCurrent());
-			auxlecciones.insert("--lecciones:"+auxnom->getTemaLec());
-			set<string> auxEjercicios = auxnom->listarEjercicios();
-			set<string>::iterator it2;
-			for (it2 = auxEjercicios.begin(); it2 != auxEjercicios.end(); it2++) {
-				auxlecciones.insert("----Ejercicio:"+ *it2);
-				}
-		}
 
-		return auxlecciones;
+    set<string> auxlecciones;
+    IDictionary* auxit = this->lecciones;
+
+    for (IIterator* it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+        Leccion* auxnom = dynamic_cast<Leccion*>(it->getCurrent());
+
+            auxlecciones.insert(auxnom->getTemaLec());
+
+    }
+
+    return auxlecciones;
 
 }
 
@@ -126,3 +126,7 @@ set<string> Curso::listarEjercicios(){
 
 }
 
+void Curso::HabilitarCurso(){
+	this->habilitado=true;
+
+}
