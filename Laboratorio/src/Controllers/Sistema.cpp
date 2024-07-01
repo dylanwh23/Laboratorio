@@ -378,13 +378,9 @@ set<string> Sistema::listarEjerciciosEstudiante(string nick, string curso){
 
 					string eje1 = *it;
 
-				for (it2 = aux2.begin(); it2 != aux2.end(); it2++) {
-
-						string eje2 = *it2;
-						if(eje1 != eje2){
-							devolver.insert(eje1);
-						}
-				}
+					if(aux2.find(eje1) == aux2.end()){
+						devolver.insert(eje1);
+					}
 
 			}
 
