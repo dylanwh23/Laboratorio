@@ -25,6 +25,7 @@ Sistema::~Sistema() {
 Sistema* Sistema::getInstance() {
 	if (Sistema::miSistema == nullptr) {
 		Sistema::miSistema = new Sistema();
+		Sistema::miSistema->inicializarDatos();
 	}
 	return Sistema::miSistema;
 
