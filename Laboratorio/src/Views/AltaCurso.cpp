@@ -181,12 +181,12 @@ void AltaCurso::altaCurso() {
 					cin >> agregarLeccion;
 					cin.ignore();
 					if (agregarLeccion == 1) {
-						this->Icurso->altaCurso(nombre, dificultad,descripcion,profe, idi, habilitado, previaturas);
+						this->Icurso->altaCurso(nombre, dificultad, habilitado);
 						AgregarLeccion agregarleccion;
 						agregarleccion.agregarLeccion(nombre);
 
 					} else {
-						this->Icurso->altaCurso(nombre, dificultad,descripcion,profe, idi, habilitado, previaturas);
+						this->Icurso->altaCurso(nombre, dificultad,descripcion,profe, idi, habilitado);
 						cout << "El curso no tendra lecciones" << endl;
 
 					}
