@@ -38,6 +38,7 @@ BorrarCurso::~BorrarCurso(){
 				cursoInfo->remove(new String(auxnom->getTemaLec()));
 				auxnom->~Leccion();
 				}
+		//cursoInfo->~IDictionary();
 			}
 	this->icurso->BorrarIncripciones(cursoSeleccionadoIntancia);
 	this->icurso->BorrarCurso(cursoSeleccionadoIntancia);

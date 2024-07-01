@@ -41,6 +41,7 @@ void Leccion::borrarLecciones(){
 		this->ejercicios->remove(new String(auxEje->getNom()));
 		auxEje->~Ejercicio();
 	}
+	//this->ejercicios->~IDictionary();
 }
 set<string> Leccion::listarEjercicios(){
 	set<string> auxlecciones;
