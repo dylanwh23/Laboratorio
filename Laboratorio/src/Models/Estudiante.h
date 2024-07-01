@@ -15,8 +15,9 @@ using namespace std;
 class Estudiante: public Usuario {
 private:
 	string paisResidencia;
-	list<Incripcion> inscripciones;
+
 public:
+	list<Incripcion> inscripciones;
 	Estudiante(string nick, string pass, string nom,string descrip, string pais);
 	void insertarInscripciones(list<Incripcion> inscripciones);
 	virtual ~Estudiante();
@@ -28,5 +29,7 @@ public:
 	set<string> getCursosNoAprobados();
 	set<string> listarEjerciciosAprobados();
 	void insertarEjercicio(string curso, Ejercicio* eje);
+	list<Incripcion> getInscripciones();
+	list<Curso*> getCursosAprobados();
 };
 #endif /* MODELS_ESTUDIANTE_H_ */

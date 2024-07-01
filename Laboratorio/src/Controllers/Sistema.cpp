@@ -54,12 +54,15 @@ void Sistema::inicializarDatos() {
 	Usuario *usr3 = new Profesor("gualberto888", "asd", "berto", "profesor","cure");
 	Usuario *usr4 = new Estudiante("est1", "asd", "berto", "profesor","cure");
 	Usuario *usr5 = new Estudiante("est2", "asd", "berto", "profesor","cure");
+	Usuario *usr6 = new Estudiante("dylan", "asd", "asd", "jiji","uy");
+
 
 	this->usuarios->add(new String("gualberto666"), usr1);
 	this->usuarios->add(new String("gualberto777"), usr2);
 	this->usuarios->add(new String("gualberto888"), usr3);
 	this->usuarios->add(new String("est1"), usr4);
 	this->usuarios->add(new String("est2"), usr5);
+	this->usuarios->add(new String("dylan"), usr6);
 
 	IDictionary* ejercicios = new OrderedDictionary();
 	Ejercicio *ej1 = new EjercicioCompletar("deber", "comprtaralgomijo","abnansd", "habansa");

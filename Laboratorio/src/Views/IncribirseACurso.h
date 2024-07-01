@@ -19,6 +19,7 @@ private:
 public:
 	IncribirseACurso();
 	virtual ~IncribirseACurso();
+	void incribirseACurso();
 	list<string> seleccionarCursos(string nickname);
 };
 

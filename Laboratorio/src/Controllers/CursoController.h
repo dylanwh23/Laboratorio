@@ -30,6 +30,9 @@ public:
 	 set<string> listarEstudiantes(Curso *curso);
 	 Curso* getCursoSistema(string curso);
 	 void BorrarIncripciones(Curso *curso);
+	 bool exixteEstudiante(string nick);
+	 void nuevaInscripcion(Curso* curso, string nick);
+	 set<string> mostrarInfoCurso(string cur);
 	 void BorrarCurso(Curso *curso);
 	 set<string> listarEstudiantes();
 	 Estudiante* getEstudianteSistema(string usuario);

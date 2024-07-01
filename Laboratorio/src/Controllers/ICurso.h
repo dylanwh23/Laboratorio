@@ -20,6 +20,9 @@ public:
 	virtual set<string> listarCursos(Estudiante *estudiante)=0;
 	virtual set<string> listarCursos(Profesor *profesor)=0;
 	virtual Curso* getCursoSistema(string curso)= 0;
+	virtual bool exixteEstudiante(string nick)= 0;
+	virtual void nuevaInscripcion(Curso* curso, string nick) = 0;
+	virtual set<string> mostrarInfoCurso(string cur)=0;
 	virtual set<string> listarEstudiantes(Curso *curso)=0;
 	virtual void BorrarIncripciones(Curso *curso)=0;
 	virtual void BorrarCurso(Curso *curso)=0;

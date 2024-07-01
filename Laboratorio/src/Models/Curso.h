@@ -41,6 +41,10 @@ public:
 	IDictionary* getLecciones();
 	set<string>listarEjercicios();
 	void HabilitarCurso();
+	void AgregarPreviaturas(IDictionary* previaturas);
+	list<Curso*> getPrevias();
+	int getTotalLecciones();
+	int getTotalEjercicios();
 };
 
 #endif /* MODELS_CURSO_H_ */

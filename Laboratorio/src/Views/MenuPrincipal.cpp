@@ -19,6 +19,7 @@
 #include "borrarCurso.h"
 #include "RealizarEjercicio.h"
 #include "ConsultaIdioma.h"
+#include "IncribirseACurso.h"
 using namespace std;
 MenuPrincipal::MenuPrincipal() {
 	// TODO Auto-generated constructor stub
@@ -101,6 +102,8 @@ void MenuPrincipal::mostrarMenu() {
 		}
 			break;
 		case 11: {
+			IncribirseACurso incirbirseacurso;
+			incirbirseacurso.incribirseACurso();
 
 		}
 			break;

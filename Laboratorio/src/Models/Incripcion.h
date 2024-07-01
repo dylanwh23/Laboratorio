@@ -28,6 +28,8 @@ public:
 	string getNomCurso();
 	void ingresarEjercicio(Ejercicio* eje);
 	set<string> getEjercicios();
+	Curso* getCurso();
+	bool esAprobado();
 };
 
 #endif /* MODELS_INCRIPCION_H_ */

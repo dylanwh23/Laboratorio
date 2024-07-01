@@ -10,8 +10,10 @@
 #include "../ICollections/interfaces/IIterator.h"
 #include "../ICollections/collections/OrderedDictionary.h"
 #include <iterator>
-using namespace std;
 #include "../ICollections/String.h"
+#include "UsuarioController.h"
+#include "algorithm"
+using namespace std;
 
 CursoController::CursoController() {
 	// TODO Auto-generated constructor stub
@@ -70,23 +72,6 @@ Curso* CursoController::getCursoSistema(string curso) {
 	return dynamic_cast<Curso*>(this->sistema->cursos->find(new String(curso)));
 }
 
-list<string> CursoController::listarCursosHabilitadosParaElEstudiante(string nickname){
-	this->sistema->listarCursosHabilitados();
-
-	Estudiante* estudiante;
-	estudiante = dynamic_cast<Estudiante*>(this->sistema->usuarios->find(new String(nickname)));
-	if(estudiante){
-		//accedo a las incripciones del estudiante
-
-		//recorro estas creando una lista de cursos a los que ya esta inscripto
-		//creo una nueva lista de cursos habilitados a los que no esta inscripto
-		//accedo a la lista de inscripciones aprobadas del estudiante y recupero los cursos
-		//recorro la lista de cursos en los que no se ha inscripto y estan habilitados, comparando con la lista de arriba
-		//y agrego a la lista definitiva solo los cursos en los que el estudiante ya aprobo sus previaturas
-	}else{
-		cout<<"Ingrese un estudiante"<<endl;
-	}
-}
 set<string> CursoController::listarEstudiantes(Curso *curso){
 	return this->sistema->listarEstudiantes(curso);
 }
@@ -220,6 +205,124 @@ cursofinal->HabilitarCurso();
 
 	 	cursofinal->agregarLeccion(lec);
 
+
+ }
+
+//incripcion curso
+ list<string> CursoController::listarCursosHabilitadosParaElEstudiante(
+ 		string nickname) {
+
+ 	Estudiante *estudiante =
+ 			static_cast<Estudiante*>(this->sistema->usuarios->find(
+ 					new String(nickname)));
+ 	list<Curso*> cursos;
+
+
+ 	if (estudiante) {
+
+ 		//accedo a las incripciones del estudiante
+
+ 		list<Incripcion> auxInscripciones = estudiante->getInscripciones();
+ 		list<Incripcion> Inscripciones = auxInscripciones;
+ 		//recorro estas creando una lista de cursos a los que ya esta inscripto
+ 		list<Incripcion>::iterator it;
+ 		list<Curso*> cursosYaInscripto;
+ 		for (it = auxInscripciones.begin() ; it != auxInscripciones.end() ; it++) {
+
+ 			Incripcion auxinc = *(it);
+ 			cursosYaInscripto.push_back(
+ 					auxinc.getCurso());
+ 		}
+ 		//creo una nueva lista de cursos habilitados a los que no esta inscripto
+
+ 		list<Curso*> cursosSistema;
+ 		for (IIterator *it = this->sistema->cursos->getIterator();
+ 				it->hasCurrent(); it->next()) {
+ 			cursosSistema.push_back(dynamic_cast<Curso*>(it->getCurrent()));
+ 		}
+
+ 		cursosYaInscripto.sort();
+ 		cursosSistema.sort();
+
+ 		list<Curso*> CursosNoInscripto;
+ 		set_difference(cursosSistema.begin(), cursosSistema.end(),
+ 				cursosYaInscripto.begin(), cursosYaInscripto.end(),
+ 				back_inserter(CursosNoInscripto));
+ 		list<Curso*> CursosNoInscriptoHabilitados;
+
+ 		list<Curso*>::iterator it2;
+ 		for (it2 = CursosNoInscripto.begin(); it2 != CursosNoInscripto.end();
+ 				it2++) {
+ 			if (dynamic_cast<Curso*>(*it2)->esHabilitado() == true) {
+ 				CursosNoInscriptoHabilitados.push_back(
+ 						dynamic_cast<Curso*>(*it2));
+ 			}
+ 		}
+
+ 		//accedo a la lista de inscripciones aprobadas del estudiante y recupero los cursos
+ 		list<Curso*> cursosAprobados = estudiante->getCursosAprobados();
+ 		//recorro la lista de cursos en los que no se ha inscripto y estan habilitados, comparando con la lista de arriba
+ 		list<Curso*>::iterator it3;
+
+ 		for (it3 = CursosNoInscriptoHabilitados.begin();
+ 				it3 != CursosNoInscriptoHabilitados.end(); it3++) {
+
+ 			list<Curso*> previas = dynamic_cast<Curso*>(*it3)->getPrevias();
+ 			previas.sort();
+ 			cursosAprobados.sort();
+ 			bool todasAprovadas = includes(cursosAprobados.begin(), cursosAprobados.end(),
+ 					previas.begin(), previas.end());
+ 			if (todasAprovadas == true) {
+ 				cursos.push_back(dynamic_cast<Curso*>(*it3));
+ 			}
+
+ 		}
+
+
+ 	} else {
+ 		cout << "Ingrese un estudiante" << endl;
+ 	}
+
+ 	list<string> cursosADevolver;
+ 	list<Curso*>::iterator it4;
+
+ 	for(it4 = cursos.begin() ; it4 != cursos.end() ; it4++){
+ 		cursosADevolver.push_back(dynamic_cast<Curso*>(*it4)->getNomCurso());
+ 	}
+ 	return cursosADevolver;
+ }
+
+ bool CursoController::exixteEstudiante(string nick){
+
+ 	if(this->sistema->usuarios->find(new String(nick))){
+ 		Estudiante* estudiante= dynamic_cast<Estudiante*>(this->sistema->usuarios->find(new String(nick)));
+ 		if(estudiante){
+ 			return true;
+ 		}
+ 		return false;
+ 	}
+ 	return false;
+ }
+
+ set<string> CursoController::mostrarInfoCurso(string cur){
+ 	Curso* curso = this->getCursoSistema(cur);
+ 	set<string> info;
+ 	int cantidadLecciones;
+ 	int cantidadEjercicios;
+ 	cantidadLecciones = curso->getTotalLecciones();
+ 	cantidadEjercicios = curso->getTotalEjercicios();
+ 	info.insert(to_string(cantidadLecciones));
+ 	info.insert(to_string(cantidadEjercicios));
+ 	return info;
+ }
+
+
+ void CursoController::nuevaInscripcion(Curso* curso, string nick){
+ 	UsuarioController* aux = new UsuarioController();
+ 	Usuario *usr = aux->getUsuarioSistema(nick);
+ 	Estudiante* est = dynamic_cast<Estudiante*>(usr);
+ 	Incripcion *in = new Incripcion(curso, nullptr);
+ 	est->inscripciones.push_back(*in);
 
  }
 

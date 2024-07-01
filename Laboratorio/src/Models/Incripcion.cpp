@@ -63,3 +63,13 @@ set<string> Incripcion::getEjercicios(){
 				}
 			return auxlecciones;
 }
+
+bool Incripcion::esAprobado(){
+	if(this->aprobado == true){
+		return true;
+	}
+	return false;
+}
+Curso* Incripcion::getCurso(){
+	return this->curso;
+}

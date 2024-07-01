@@ -146,3 +146,47 @@ void Curso::HabilitarCurso(){
 	this->habilitado=true;
 
 }
+void Curso::AgregarPreviaturas(IDictionary *previaturas){
+
+	for (IIterator *it = previaturas->getIterator(); it->hasCurrent(); it->next()) {
+
+				Curso *cur = dynamic_cast<Curso*>(it->getCurrent());
+				this->previaturas->add(new String(cur->getNomCurso()), cur);
+			}
+
+
+
+}
+
+list<Curso*> Curso::getPrevias(){
+	list<Curso*> previas;
+	for(IIterator *it = this->previaturas->getIterator() ; it->hasCurrent() ; it->next()){
+		previas.push_back(dynamic_cast<Curso*>(it));
+	}
+	return previas;
+}
+
+int Curso::getTotalLecciones(){
+	set<string> ::iterator it;
+	set<string> lecciones = this->listarLecciones();
+	int total = 0;
+	for(it = lecciones.begin(); it != lecciones.end(); it++){
+		total++;
+	}
+	cout<<total;
+	return total;
+}
+
+int Curso::getTotalEjercicios(){
+	int total;
+	IDictionary *aux = this->getLecciones();
+	for(IIterator *it = aux->getIterator(); it->hasCurrent(); it->next()){
+		IDictionary *auxEjercicios;
+		auxEjercicios = dynamic_cast<Leccion*>(it->getCurrent())->getEjercicios();
+		for(IIterator *it = auxEjercicios->getIterator() ; it->hasCurrent() ; it->next()){
+			total++;
+		}
+
+	}
+	return total;
+}
