@@ -24,16 +24,15 @@ DTOEstudiante* AltaUsuario::ingresarEstudiante(string nick){
 	string nom;
 	string descrip;
 	string pais;
-
+	cin.ignore();
 	cout << "Ingresar pass:" << endl;
-	cin >> pass;
+	getline(cin,pass);
 	cout << "Ingresar nombre:" << endl;
-	cin >> nom;
+	getline(cin,nom);
 	cout << "Ingresar descripcion:" << endl;
-	cin >> descrip;
-
+	getline(cin,descrip);
 	cout << "Ingresar pais:" << endl;
-	cin >> pais;
+	getline(cin,pais);
 
 	DTOEstudiante *nuevoEstudiante = new DTOEstudiante(nick, pass, nom, descrip, pais);
 
@@ -46,15 +45,15 @@ DTOProfesor* AltaUsuario::ingresarProfesor(string nick){
 	string descrip;
 	string instituto;
 	IDictionary* idiomas;
-
+	cin.ignore();
 	cout << "Ingresar pass:" << endl;
-	cin >> pass;
+	getline(cin, pass);
 	cout << "Ingresar nombre:" << endl;
-	cin >> nom;
+	getline(cin, nom);
 	cout << "Ingresar descripcion:" << endl;
-	cin >> descrip;
+	getline(cin, descrip);
 	cout << "Ingresar instituto:" << endl;
-	cin >> instituto;
+	getline(cin,instituto);
 
 	int agregarIdioma;
 	cout << " ¿Desea agregar idiomas? (1=si 2 =no)? " << endl;
@@ -65,7 +64,6 @@ DTOProfesor* AltaUsuario::ingresarProfesor(string nick){
 		cout << "No se seleccionan idiomas " << endl;
 		idiomas = new OrderedDictionary;
 	}
-
 	DTOProfesor *nuevoProfesor = new DTOProfesor(nick, pass, nom, descrip,instituto, idiomas);
 	return nuevoProfesor;
 }
@@ -103,35 +101,37 @@ IDictionary* AltaUsuario::seleccionarIdiomas() {
 void AltaUsuario::altaUsuario() {
 
 	string nick;
-	cout << "Ingrese nick:"<< endl;
+	cout << "Ingrese nick:            (S/s para salir)" << endl;
 	cin >> nick;
+	if (nick != "S" && nick != "s") {
 
-	set<string> idiomas = this->iusuario->listarIdiomas();
-	set<string>::iterator it;
+		set<string> idiomas = this->iusuario->listarIdiomas();
+		set<string>::iterator it;
 
+		if (this->iusuario->verificarNickname(nick) == true) {
+			cout
+					<< "Es estudiante o profesor? (1 estudiante 2 profesor)(S/s para salir)"
+					<< endl;
+			int tipoUsuario;
 
-	if (this->iusuario->verificarNickname(nick) == true) {
-		cout << "Es estudiante o profesor? (1 estudiante 2 profesor" << endl;
-		int tipoUsuario;
+			cin >> tipoUsuario;
+			if (tipoUsuario == 1) {
+				DTOEstudiante *nuevoUsuario;
+				nuevoUsuario = ingresarEstudiante(nick);
+				this->iusuario->altaEstudiante(nuevoUsuario);
+				cout << "Fin ingreso de usuario " << endl;
 
-		cin >> tipoUsuario;
-		if (tipoUsuario == 1) {
-			DTOEstudiante* nuevoUsuario;
-			nuevoUsuario = ingresarEstudiante(nick);
-			this->iusuario->altaEstudiante(nuevoUsuario);
+			} else if (tipoUsuario == 2) {
+				DTOProfesor *nuevoUsuario;
+				nuevoUsuario = ingresarProfesor(nick);
+				this->iusuario->altaProfesor(nuevoUsuario);
+				cout << "Fin ingreso de usuario " << endl;
+			}else{
+
+			}
+
 		} else {
-
-			DTOProfesor* nuevoUsuario;
-			nuevoUsuario = ingresarProfesor(nick);
-			this->iusuario->altaProfesor(nuevoUsuario);
-
-
+			cout << "Ya existe el usuario. Imposible continuar..." << endl;
 		}
-
-		cout << "Fin ingreso de usuario " << endl;
-
-	} else  {
-		cout << "Ya existe el usuario. Imposible continuar..." << endl;
 	}
-
 }

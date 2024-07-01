@@ -16,6 +16,8 @@ Incripcion::Incripcion(Curso* curso, IDictionary* ejerciciosAprobados) {
 	// TODO Auto-generated constructor stub
 	this->curso = curso;
 	this->ejerciciosAprobados = ejerciciosAprobados;
+
+
 }
 
 Incripcion::~Incripcion() {

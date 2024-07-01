@@ -26,12 +26,12 @@ void ConsultaCurso::consultaCurso() {
 		cout << "Curso: " << *it << endl;
 	}
 
-	cout << "Escriba el curso seleccionado " << endl;
 	string cursoSeleccionado;
 	cout << "Ingrese curso:" << endl;
-	cin >> cursoSeleccionado;
-	Curso *cursoSeleccionadoIntancia = this->icurso->getCursoSistema(
-			cursoSeleccionado);
+	cin.ignore();
+	getline(cin,cursoSeleccionado);
+	Curso *cursoSeleccionadoIntancia = this->icurso->getCursoSistema(cursoSeleccionado);
+
 	if (cursoSeleccionadoIntancia != NULL) {
 		list<string> cursoInfo = cursoSeleccionadoIntancia->mostrarInfo();
 		list<string>::iterator itCursoInfo;
@@ -57,6 +57,8 @@ void ConsultaCurso::consultaCurso() {
 			cout << "e:" << *it << endl;
 			}
 
+	}else{
+		cout << "El curso ingresado no existe" << endl;
 	}
 
 }

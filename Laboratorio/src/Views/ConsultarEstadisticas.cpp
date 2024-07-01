@@ -20,10 +20,20 @@ ConsultarEstadisticas::~ConsultarEstadisticas() {
 }
 
 void ConsultarEstadisticas::consultarEstadisticas(){
+	string opcion;
 	int op = 0;
 	cout << "1-ESTADISTICAS CURSOS" << endl;
 	cout << "2-ESTADISTICAS ESTUDIANTES" << endl;
 	cout << "3-ESTADISTICAS PROFESORES" << endl;
+	if(opcion == "1"){
+		op = 1;
+	}else if(opcion == "2"){
+		op = 2;
+	}else if(opcion == "3"){
+		op = 3;
+	}else{
+		op = 4;
+	}
 	cin >> op;
 	switch (op) {
 	case 1: {
@@ -35,13 +45,20 @@ void ConsultarEstadisticas::consultarEstadisticas(){
 		cout << "Escriba el curso seleccionado " << endl;
 		string cursoSeleccionado;
 		cout << "Ingrese curso:" << endl;
-		cin >> cursoSeleccionado;
+		cin.ignore();
+		getline(cin, cursoSeleccionado);
 		Curso *cursoSeleccionadoIntancia = this->icurso->getCursoSistema(cursoSeleccionado);
-		set<string> cursoInfo = this->icurso->listarCursosStats(cursoSeleccionadoIntancia);
-		set<string>::iterator it2;
-				for (it2 = cursoInfo.begin();it2 != cursoInfo.end(); it2++) {
-					cout << "Curso: " << *it2<< endl;
-				}
+		if (cursoSeleccionadoIntancia != NULL){
+
+			set<string> cursoInfo = this->icurso->listarCursosStats(cursoSeleccionadoIntancia);
+					set<string>::iterator it2;
+							for (it2 = cursoInfo.begin();it2 != cursoInfo.end(); it2++) {
+								cout << "Curso: " << *it2<< endl;
+							}
+		}else{
+			cout << "El curso ingresado no existe" << endl;
+		}
+
 		}
 
 		break;
@@ -55,14 +72,20 @@ void ConsultarEstadisticas::consultarEstadisticas(){
 		}
 		string estSeleccionado;
 		cout << "Ingrese estudiante:" << endl;
-		cin >> estSeleccionado;
+		cin.ignore();
+		getline(cin, estSeleccionado);
 		cout << "CURSOS A LOS QUE ESTA INCRIPTO EL ESTUDIANTE:" << endl;
 		Estudiante *estSeleccionadoIntancia =this->icurso->getEstudianteSistema(estSeleccionado);
-		set<string> cursosExistentes = this->icurso->listarCursos(estSeleccionadoIntancia);
-		set<string>::iterator it2;
-		for (it2 = cursosExistentes.begin();
-				it2 != cursosExistentes.end(); it2++) {
-			cout << "Cursos: " << *it2<< endl;
+		if(estSeleccionadoIntancia != NULL){
+			set<string> cursosExistentes = this->icurso->listarCursos(estSeleccionadoIntancia);
+					set<string>::iterator it2;
+					for (it2 = cursosExistentes.begin();
+							it2 != cursosExistentes.end(); it2++) {
+						cout << "Cursos: " << *it2<< endl;
+		}
+
+		}else{
+			cout << "El estudiante ingresado no existe" << endl;
 		}
 	}
 		break;
@@ -77,44 +100,26 @@ void ConsultarEstadisticas::consultarEstadisticas(){
 		}
 		string profSeleccionado;
 		cout << "Ingrese profesor:" << endl;
-		cin >> profSeleccionado;
+		cin.ignore();
+		getline(cin, profSeleccionado);
 		Profesor *profSeleccionadoIntancia =this->icurso->getProfesorSistema(profSeleccionado);
-		set<string> cursosExistentes = this->icurso->listarCursos(profSeleccionadoIntancia);
-		set<string>::iterator it2;
-				for (it2 = cursosExistentes.begin();
-						it2 != cursosExistentes.end(); it2++) {
-					cout << "Cursos: " << *it2<< endl;
-				}
+		if(profSeleccionadoIntancia != NULL){
+			set<string> cursosExistentes = this->icurso->listarCursos(profSeleccionadoIntancia);
+					set<string>::iterator it2;
+							for (it2 = cursosExistentes.begin();
+									it2 != cursosExistentes.end(); it2++) {
+								cout << "Cursos: " << *it2<< endl;
+							}
+		}else{
+			cout << "El profesor ingresado no existe" << endl;
+		}
+
 
 		break;
 	}
-//
-//	cout << "Escriba el curso seleccionado " << endl;
-//	string cursoSeleccionado;
-//	cout << "Ingrese curso:" << endl;
-//	cin >> cursoSeleccionado;
-//	Curso *cursoSeleccionadoIntancia = this->icurso->getCursoSistema(
-//			cursoSeleccionado);
-//	if (cursoSeleccionadoIntancia != NULL) {
-//		list<string> cursoInfo = cursoSeleccionadoIntancia->mostrarInfo();
-//		list<string>::iterator itCursoInfo;
-//		itCursoInfo = cursoInfo.begin();
-//		cout << "Nombre:" << *itCursoInfo << endl;
-//		advance(itCursoInfo, 1);
-//		cout << "Dificultad:" << *itCursoInfo << endl;
-//		advance(itCursoInfo, 1);
-//		cout << "Profesor:" << *itCursoInfo << endl;
-//		advance(itCursoInfo, 1);
-//		cout << "Idioma:" << *itCursoInfo << endl;
-//		set<string> lecciones = cursoSeleccionadoIntancia->listarLecciones();
-//		set<string> estudiantesInscriptos = this->icurso->listarEstudiantes(cursoSeleccionadoIntancia);
-//
-//		set<string>::iterator it;
-//		cout << "estudiantes inscriptos: "<<endl;
-//			for (it = estudiantesInscriptos.begin(); it != estudiantesInscriptos.end(); it++) {
-//				cout << "e:" << *it << endl;
-//			}
-//
-//	}
+	default:
+				cout << "Opcion desconocida" << endl;
+			}
+
 	}
-}
+

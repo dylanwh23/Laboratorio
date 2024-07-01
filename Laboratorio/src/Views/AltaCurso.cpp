@@ -137,9 +137,6 @@ set<string> AltaCurso::seleccionarPreviaturas() {
 
 
 
-
-
-
 void AltaCurso::altaCurso() {
 
 	string profesor;

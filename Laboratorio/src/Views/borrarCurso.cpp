@@ -25,10 +25,12 @@ BorrarCurso::~BorrarCurso(){
 	for (it = cursosExistentes.begin(); it != cursosExistentes.end(); it++) {
 		cout << "Curso: " << *it << endl;
 	}
-	cout << "Escriba el curso seleccionado " << endl;
+
 	string cursoSeleccionado;
 	cout << "Ingrese curso:" << endl;
-	cin >> cursoSeleccionado;
+	cin.ignore();
+	getline(cin,cursoSeleccionado);
+
 	Curso *cursoSeleccionadoIntancia = this->icurso->getCursoSistema(cursoSeleccionado);
 	if (cursoSeleccionadoIntancia != NULL) {
 		IDictionary* cursoInfo = cursoSeleccionadoIntancia->getLecciones();
@@ -38,10 +40,12 @@ BorrarCurso::~BorrarCurso(){
 				cursoInfo->remove(new String(auxnom->getTemaLec()));
 				auxnom->~Leccion();
 				}
+
+		this->icurso->BorrarIncripciones(cursoSeleccionadoIntancia);
+		this->icurso->BorrarCurso(cursoSeleccionadoIntancia);
 		//cursoInfo->~IDictionary();
-			}
-	this->icurso->BorrarIncripciones(cursoSeleccionadoIntancia);
-	this->icurso->BorrarCurso(cursoSeleccionadoIntancia);
+	}
+
 
 
  }

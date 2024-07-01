@@ -26,6 +26,17 @@ Profesor::Profesor(string nickname, string contraseña, string nombre, string de
 	this->idiomas = idiomas;
 }
 
+Profesor::Profesor(string nickname, string contraseña, string nombre, string descripcion, string instituto) {
+    // TODO Auto-generated constructor stub
+    this->nickname = nickname;
+    this->contraseña = contraseña;
+    this->nombre = nombre;
+    this->descripcion = descripcion;
+    this->instituto = instituto;
+    this->idiomas = new OrderedDictionary();
+}
+
+
 list<string> Profesor::mostrarInfo(){
 	list<string> aux;
 	aux.push_back(this->nickname);

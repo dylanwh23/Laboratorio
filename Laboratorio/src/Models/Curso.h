@@ -24,11 +24,13 @@ private:
 	string dificultad;
 	Profesor* profesor;
 	Idioma* idioma;
+	string descripcion;
 	IDictionary* previaturas;
 	IDictionary* lecciones;
 public:
 	Curso(string nombre, string dificultad, bool habilitado);
 	Curso(string nombre, string dificultad, bool habilitado,Profesor* profesor,Idioma* idioma, IDictionary* previaturas, IDictionary* lecciones);
+	Curso(string nombre, string dificultad, string descripcoin, Profesor* profesor, Idioma* idioma, bool habilitado);
 	list<string> mostrarInfo();
 	virtual ~Curso();
 	string getNomCurso();

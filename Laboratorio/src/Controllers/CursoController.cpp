@@ -304,15 +304,15 @@ cursofinal->HabilitarCurso();
   	return false;
   }
 
-  set<string> CursoController::mostrarInfoCurso(string cur){
+  list<string> CursoController::mostrarInfoCurso(string cur){
   	Curso* curso = this->getCursoSistema(cur);
-  	set<string> info;
+  	list<string> info;
   	int cantidadLecciones;
   	int cantidadEjercicios;
   	cantidadLecciones = curso->getTotalLecciones();
   	cantidadEjercicios = curso->getTotalEjercicios();
-  	info.insert(to_string(cantidadLecciones));
-  	info.insert(to_string(cantidadEjercicios));
+  	info.push_back(to_string(cantidadLecciones));
+  	info.push_back(to_string(cantidadEjercicios));
   	return info;
   }
 

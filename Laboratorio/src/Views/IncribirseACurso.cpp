@@ -34,7 +34,7 @@ void IncribirseACurso::incribirseACurso() {
 
 			list<string>::iterator it;
 			for (it = cursosRecibidos.begin(); it != cursosRecibidos.end(); it++) {
-				set<string> infoCurso = this->icurso->mostrarInfoCurso(*it);
+				list<string> infoCurso = this->icurso->mostrarInfoCurso(*it);
 				cout <<"Nombre: "<<*it <<endl;
 				cout <<"Cantidad Ejercicios: "<<*infoCurso.begin()<<endl;
 				auto it = infoCurso.begin();
@@ -42,12 +42,19 @@ void IncribirseACurso::incribirseACurso() {
 				cout <<"Cantidad Lecciones: "<<*it<<endl;
 			}
 		cout<<"Ingrese el curso al que desea inscribirse:"<<endl;
-		cin>>cur;
+		cin.ignore();
+		getline(cin,cur);
 
 		Curso* nuevoCurso = this->icurso->getCursoSistema(cur);
-		this->icurso->nuevaInscripcion(nuevoCurso, nomUsr);
+		if(nuevoCurso != NULL){
+			this->icurso->nuevaInscripcion(nuevoCurso, nomUsr);
+			cout<<"Usted se ha inscripto correctamete."<<endl;
+		}else{
+			cout << "Escribi bien mongolico :p" <<endl;
+		}
 
-		cout<<"Usted se ha inscripto correctamete."<<endl;
+
+
 
 	}else{
 		cout<<"Ingrese el nickname de un estudiante valido."<<endl;

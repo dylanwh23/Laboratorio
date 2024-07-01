@@ -41,7 +41,7 @@ public:
 	 void agregarLeccion(string tema, string objetivo, IDictionary* ejercicios,string nombreCurso);
 	 bool exixteEstudiante(string nick);
 	 void nuevaInscripcion(Curso* curso, string nick);
-	 set<string> mostrarInfoCurso(string cur);
+	 list<string> mostrarInfoCurso(string cur);
 };
 
 #endif /* CONTROLLERS_CURSOCONTROLLER_H_ */

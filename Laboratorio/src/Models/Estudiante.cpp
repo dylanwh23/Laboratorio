@@ -48,6 +48,7 @@ bool Estudiante::revisarInscripcionesCurso(Curso *curso){
 	}
 }
 int Estudiante::ejerciciosHechosInscripciones(Curso *curso){
+	IDictionary* ejerciciosAprobados = new OrderedDictionary;
 	if (!this->inscripciones.empty()){
 		for (list<Incripcion>::iterator it = this->inscripciones.begin(); it!=this->inscripciones.end(); it++){
 				if(it->compararCursos(curso)==true){

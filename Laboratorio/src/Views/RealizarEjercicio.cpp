@@ -88,7 +88,8 @@ void RealizarEjercicio::realizarEjercicio(string nick, string curso){
 							cout << "Ejercicio: " << *it << endl;
 						}
 		cout << "Ingrese un ejercicio de la lista(s/S para salir): ";
-		cin >> ejercicio;
+		cin.ignore();
+		getline(cin,ejercicio);
 		if(ejercicio != "s" && ejercicio != "S"){
 
 			if (listar == 1) {
@@ -137,7 +138,8 @@ void RealizarEjercicio::hacerEjercicio(string nick, string curso, string ejercic
 		do{
 
 		cout << endl << "Ingrese la solucion del ejercicio: ";
-		cin >> solucion;
+		cin.ignore();
+		getline(cin,solucion);
 
 		if(solucion == solucionEjercicio){
 

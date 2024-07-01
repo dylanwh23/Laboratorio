@@ -29,6 +29,17 @@ Curso::~Curso() {
 	// TODO Auto-generated destructor stub
 }
 
+Curso::Curso(string nombre, string dificultad, string descripcion, Profesor* profesor, Idioma* idioma, bool habilitado){
+    this->nombre = nombre;
+    this->dificultad = dificultad;
+    this->habilitado = habilitado;
+    this->profesor =profesor;
+    this->idioma =idioma;
+    this->descripcion = descripcion;
+    this->previaturas = new OrderedDictionary();
+    this->lecciones = new OrderedDictionary();
+}
+
 list<string> Curso::mostrarInfo(){
 	list<string> aux;
 	aux.push_back(this->nombre);
@@ -178,7 +189,7 @@ int Curso::getTotalLecciones(){
 }
 
 int Curso::getTotalEjercicios(){
-	int total;
+	int total=0 ;
 	IDictionary *aux = this->getLecciones();
 	for(IIterator *it = aux->getIterator(); it->hasCurrent(); it->next()){
 		IDictionary *auxEjercicios;

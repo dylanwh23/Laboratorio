@@ -15,11 +15,7 @@ void AltaIdioma::ingresarIdioma() {
 
 	set<string> idiomasExistentes = this->iidioma->listarIdiomas();
 	set<string>::iterator it;
-
-
-
 	string idioma;
-
 	cout << "Ingrese un idioma:      (S/s para salir)" << endl;
 	cin >> idioma;
 	if (idioma != "S" && idioma != "s") {

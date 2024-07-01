@@ -34,7 +34,7 @@ public:
 	virtual void agregarLeccion(string tema, string objetivo, IDictionary* ejercicios,string nombreCurso)=0;
 	virtual bool exixteEstudiante(string nick)= 0;
 	virtual void nuevaInscripcion(Curso* curso, string nick) = 0;
-	virtual set<string> mostrarInfoCurso(string cur)=0;
+	virtual list<string> mostrarInfoCurso(string cur)=0;
 
 };
 
