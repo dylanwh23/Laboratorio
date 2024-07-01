@@ -18,6 +18,7 @@ public:
 	virtual void altaEstudiante(DTOEstudiante* dto)=0;
 	virtual set<string> listarUsuarios()=0;
 	virtual Usuario* getUsuarioSistema(string nick)= 0;
+	virtual Idioma* getIdiomaSistema(string idioma)=0;
 };
 
 #endif /* CONTROLLERS_IUSUARIO_H_ */

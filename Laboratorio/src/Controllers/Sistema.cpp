@@ -48,21 +48,19 @@ void Sistema::inicializarDatos() {
 	this->idiomas->add(new String("Espaniol"), idioma2);
 	this->idiomas->add(new String("Aleman"), idioma3);
 
+	IDictionary* idiomas = new OrderedDictionary();
 
-	Usuario *usr1 = new Profesor("gualberto666", "asd", "berto", "profesor","cure");
-	Usuario *usr2 = new Profesor("gualberto777", "asd", "berto", "profesor","cure");
-	Usuario *usr3 = new Profesor("gualberto888", "asd", "berto", "profesor","cure");
+	Usuario *usr1 = new Profesor("gualberto666", "asd", "berto", "profesor","cure", idiomas);
+	Usuario *usr2 = new Profesor("gualberto777", "asd", "berto", "profesor","cure", idiomas);
+	Usuario *usr3 = new Profesor("gualberto888", "asd", "berto", "profesor","cure", idiomas);
 	Usuario *usr4 = new Estudiante("est1", "asd", "berto", "profesor","cure");
 	Usuario *usr5 = new Estudiante("est2", "asd", "berto", "profesor","cure");
-	Usuario *usr6 = new Estudiante("dylan", "asd", "asd", "jiji","uy");
-
 
 	this->usuarios->add(new String("gualberto666"), usr1);
 	this->usuarios->add(new String("gualberto777"), usr2);
 	this->usuarios->add(new String("gualberto888"), usr3);
 	this->usuarios->add(new String("est1"), usr4);
 	this->usuarios->add(new String("est2"), usr5);
-	this->usuarios->add(new String("dylan"), usr6);
 
 	IDictionary* ejercicios = new OrderedDictionary();
 	Ejercicio *ej1 = new EjercicioCompletar("deber", "comprtaralgomijo","abnansd", "habansa");
@@ -73,6 +71,12 @@ void Sistema::inicializarDatos() {
 	Ejercicio *ej3= new EjercicioTraduccion("debermeta2", "trduce","abnansd", "habansa");
 	ejercicios2->add(new String("debermeta2"), ej3);
 	ejercicios2->add(new String("debermeta"), ej2);
+
+	IDictionary* ejerciciosRealizados = new OrderedDictionary();
+		//Ejercicio *ej2 = new EjercicioCompletar("debermeta", "ghacxealgo","abnansd", "habansa");
+		//Ejercicio *ej3= new EjercicioTraduccion("debermeta2", "trduce","abnansd", "habansa");
+		ejerciciosRealizados->add(new String("debermeta2"), ej3);
+		ejerciciosRealizados->add(new String("debermeta"), ej2);
 
 	IDictionary* lecciones = new OrderedDictionary();
 	Leccion *leccion1 = new Leccion("historia", "Facil",ejercicios);
@@ -98,12 +102,12 @@ void Sistema::inicializarDatos() {
 	this->cursos->add(new String("Espaniol"), curso3);
 
 	list<Incripcion> inscripciones;
-	Incripcion *inscripcion1 = new Incripcion(curso2,ejercicios2);
+	Incripcion *inscripcion1 = new Incripcion(curso2,ejerciciosRealizados);
 	inscripciones.push_back(*inscripcion1);
 	list<Incripcion> inscripciones2;
-	Incripcion *inscripcion2 = new Incripcion(curso1,ejercicios);
-	Incripcion *inscripcion3 = new Incripcion(curso2,ejercicios);
-	Incripcion *inscripcion4 = new Incripcion(curso3,ejercicios);
+	Incripcion *inscripcion2 = new Incripcion(curso1,ejerciciosRealizados);
+	Incripcion *inscripcion3 = new Incripcion(curso2,ejerciciosRealizados);
+	Incripcion *inscripcion4 = new Incripcion(curso3,ejerciciosRealizados);
 	inscripciones2.push_back(*inscripcion2);
 	inscripciones2.push_back(*inscripcion3);
 	inscripciones2.push_back(*inscripcion4);
@@ -182,11 +186,17 @@ set<string> Sistema::listarIdiomasProfesor(string profesor) {
 
 	Profesor *profesorSeleccionado = static_cast<Profesor*>(usuarioSeleccionado);
 	IDictionary *auxit = profesorSeleccionado->idiomas;
-	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
-	aux.insert(static_cast<Idioma*>(it->getCurrent())->getNomIdioma());
+	if(auxit->isEmpty() == false){
+
+		for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+
+			aux.insert(static_cast<Idioma*>(it->getCurrent())->getNomIdioma());
+
+			}
 
 	}
+
 	return aux;
 
 }

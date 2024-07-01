@@ -45,7 +45,7 @@ DTOProfesor* AltaUsuario::ingresarProfesor(string nick){
 	string nom;
 	string descrip;
 	string instituto;
-	set<string> idiomas;
+	IDictionary* idiomas;
 
 	cout << "Ingresar pass:" << endl;
 	cin >> pass;
@@ -63,15 +63,15 @@ DTOProfesor* AltaUsuario::ingresarProfesor(string nick){
 		idiomas = seleccionarIdiomas();
 	} else {
 		cout << "No se seleccionan idiomas " << endl;
+		idiomas = new OrderedDictionary;
 	}
 
-	DTOProfesor *nuevoProfesor = new DTOProfesor(nick, pass, nom, descrip,
-			instituto, idiomas);
+	DTOProfesor *nuevoProfesor = new DTOProfesor(nick, pass, nom, descrip,instituto, idiomas);
 	return nuevoProfesor;
 }
-set<string> AltaUsuario::seleccionarIdiomas() {
+IDictionary* AltaUsuario::seleccionarIdiomas() {
 	set<string> idiomasExistentes = this->iusuario->listarIdiomas();
-	set<string> idiomasSeleccionados;
+	IDictionary* idiomasSeleccionados = new OrderedDictionary;
 
 	set<string>::iterator it;
 	for (it = idiomasExistentes.begin(); it != idiomasExistentes.end(); it++) {
@@ -86,7 +86,8 @@ set<string> AltaUsuario::seleccionarIdiomas() {
 			it = idiomasExistentes.find(idioma);
 			if (it != idiomasExistentes.end()) {
 				//solo selecciono los idiomas que existen
-				idiomasSeleccionados.insert(idioma);
+				Idioma* aux = this->iusuario->getIdiomaSistema(idioma);
+				idiomasSeleccionados->add(new String(idioma), aux);
 				cout << "Idioma ingresado: " << idioma  << endl;
 			} else {
 				cout << "El idioma ingresado no existe" << endl;
@@ -96,6 +97,7 @@ set<string> AltaUsuario::seleccionarIdiomas() {
 		}
 
 	} while (quiereIngresarIdiomas);
+
 	return idiomasSeleccionados;
 }
 void AltaUsuario::altaUsuario() {

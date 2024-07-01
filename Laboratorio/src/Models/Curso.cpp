@@ -55,7 +55,6 @@ bool Curso::esHabilitado(){
 }
 
 void Curso::agregarLeccion(Leccion *lec){
-	this->lecciones = new OrderedDictionary();
 	this->lecciones->add(new String(lec->getTemaLec()), lec);
 }
 
@@ -146,6 +145,7 @@ void Curso::HabilitarCurso(){
 	this->habilitado=true;
 
 }
+
 void Curso::AgregarPreviaturas(IDictionary *previaturas){
 
 	for (IIterator *it = previaturas->getIterator(); it->hasCurrent(); it->next()) {

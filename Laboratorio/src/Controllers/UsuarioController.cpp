@@ -39,20 +39,23 @@ bool UsuarioController::verificarNickname(string nickname) {
 
 void UsuarioController::altaProfesor(DTOProfesor* dto){
 
-	Profesor* usr = new Profesor(dto->nick,dto->pass,dto->nom,dto->descrip, dto->instituto);
+	Profesor* usr = new Profesor(dto->nick,dto->pass,dto->nom,dto->descrip, dto->instituto, dto->idiomas);
 
 
-	set<string> idiomasRecibido = dto->idiomas;
-
-	set<string>::iterator it;
+	//set<string> idiomasRecibido = dto->idiomas;
+	IDictionary* idiomasRecibido = dto->idiomas;
 
 	IDictionary* aux = new OrderedDictionary();
 	//recorro los idiomas del sistema obteniendo las intancias de los idiomas seleccionados, para cargarlos a la lista de idiomas del profesor
-	for (it = idiomasRecibido.begin(); it != idiomasRecibido.end(); it++) {
-		Idioma* idiomaObtenido = dynamic_cast<Idioma*>(this->sistema->idiomas->find(new String(*it)));
-		aux->add(new String(*it),idiomaObtenido);
+	if(usr->idiomas->isEmpty()==false){
+		for (IIterator *it = idiomasRecibido->getIterator(); it->hasCurrent(); it->next()) {
+				Idioma* idiomaObtenido = dynamic_cast<Idioma*>(it->getCurrent());
+				idiomaObtenido->getNomIdioma();
+				aux->add(new String(idiomaObtenido->getNomIdioma()),idiomaObtenido);
 
+			}
 	}
+
 	usr->idiomas = aux;
 	this->sistema->usuarios->add(new String(dto->nick), usr);
 }
@@ -65,5 +68,8 @@ Usuario* UsuarioController::getUsuarioSistema(string nickname) {
 	return dynamic_cast<Usuario*>(this->sistema->usuarios->find(new String(nickname)));
 }
 
+Idioma* UsuarioController::getIdiomaSistema(string idioma){
 
+	return dynamic_cast<Idioma*>(this->sistema->idiomas->find(new String(idioma)));
+}
 

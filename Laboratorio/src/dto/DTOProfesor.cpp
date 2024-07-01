@@ -16,7 +16,7 @@ DTOProfesor::~DTOProfesor() {
 	// TODO Auto-generated destructor stub
 }
 
-DTOProfesor::DTOProfesor(string nick, string pass,string nom, string descrip, string instituto, set<string> idiomas) {
+DTOProfesor::DTOProfesor(string nick, string pass,string nom, string descrip, string instituto, IDictionary* idiomas) {
 			this->nick = nick;
 			this->pass = pass;
 			this->nom = nom;

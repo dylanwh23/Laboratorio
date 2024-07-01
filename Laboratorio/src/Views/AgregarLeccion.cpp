@@ -8,6 +8,8 @@
 #include "AgregarLeccion.h"
 #include "../Controllers/ILeccion.h"
 #include "../Controllers/LeccionController.h"
+#include "../ICollections/collections/OrderedDictionary.h"
+#include "AgregarEjercicio.h"
 AgregarLeccion::AgregarLeccion() {
 // TODO Auto-generated constructor stub
     this->Ileccion = new LeccionController();
@@ -52,7 +54,7 @@ void AgregarLeccion::agregarLeccion(string curso) {
 	string objetivo;
 	string nombreCurso = curso;
 	string tema;
-	IDictionary *ejercicios;
+	IDictionary *ejercicios = new OrderedDictionary;
 
 	cout << "Ingrese el objetivo de la leccion : " << endl;
 	cin >> objetivo;
@@ -60,14 +62,18 @@ void AgregarLeccion::agregarLeccion(string curso) {
 	cin >> tema;
 
 	int agregarEjercicio;
-	cout << " Â¿Desea agregar ejercicios? (1=si 2 =no)? " << endl;
+	cout << " ¿Desea agregar ejercicios? (1=si 2 =no)? " << endl;
 	cin >> agregarEjercicio;
 	if (agregarEjercicio == 1) {
-		ejercicios = this->agregarEjercicio();
+
+		this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
+		AgregarEjercicio agregareje;
+		agregareje.agregarEjercicio(curso, tema);
 	} else {
 		cout << "No se agregan ejercicios a la leccion " << endl;
+		this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
 	}
 
-	this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
+	//this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
 
 }

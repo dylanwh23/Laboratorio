@@ -19,7 +19,7 @@ public:
 	void altaUsuario();
 	DTOEstudiante* ingresarEstudiante(string nick);
 	DTOProfesor* ingresarProfesor(string nick);
-	set<string> seleccionarIdiomas();
+	IDictionary* seleccionarIdiomas();
 
 };
 

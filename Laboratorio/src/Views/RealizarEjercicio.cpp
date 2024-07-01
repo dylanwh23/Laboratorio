@@ -23,6 +23,7 @@ void RealizarEjercicio::buscarEstudiante(){
 	int mientras=0;
 	string nick;
 	string curso;
+	int mientras2 =0;
 
 	do {
 		cout << "Ingrese nick (S/s para salir): "<< endl;
@@ -38,11 +39,23 @@ void RealizarEjercicio::buscarEstudiante(){
 					mientras = 1;
 
 				}
-				cout << "Ingrese un curso de la lista: ";
-				cin >> curso;
 
-				this->realizarEjercicio(nick, curso);
 
+				do{
+					cout << "Ingrese un curso de la lista(s/S para salir): ";
+					cin >> curso;
+					if(curso != "s" && curso != "S"){
+						if(cursosNoAprobados.find(curso)!=cursosNoAprobados.end()){
+							this->realizarEjercicio(nick, curso);
+							break;
+						}else{
+							cout << "El curso ingresado no esta en la lista " << endl;
+					}
+					}else{
+						mientras2=1;
+					}
+
+				}while(mientras2 == 0);
 			} else {
 
 				cout<< "El nick ingresado no pertenece a un estudiante o no existe"<< endl;

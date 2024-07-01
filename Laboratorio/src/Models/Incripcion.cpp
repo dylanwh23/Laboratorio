@@ -64,6 +64,7 @@ set<string> Incripcion::getEjercicios(){
 			return auxlecciones;
 }
 
+
 bool Incripcion::esAprobado(){
 	if(this->aprobado == true){
 		return true;

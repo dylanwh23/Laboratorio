@@ -7,6 +7,7 @@
 
 #ifndef NEGOCIO_DTO_DTOPROFESOR_H_
 #define NEGOCIO_DTO_DTOPROFESOR_H_
+#include "../ICollections/collections/OrderedDictionary.h"
 
 #include <iostream>
 #include <set>
@@ -22,9 +23,9 @@ public:
 	string nom;
 	string descrip;
 	string instituto;
-	set <string> idiomas;
+	IDictionary* idiomas;
 
-	DTOProfesor(string nick, string pass, string nom, string descrip, string instituto, set<string> idiomas);
+	DTOProfesor(string nick, string pass, string nom, string descrip, string instituto, IDictionary* idiomas);
 	DTOProfesor();
 	virtual ~DTOProfesor();
 

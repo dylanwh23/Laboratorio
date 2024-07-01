@@ -15,7 +15,7 @@ private:
 	string instituto;
 public:
 	Profesor();
-	Profesor(string nickname, string contraseña, string nombre, string descripcion, string instituto);
+	Profesor(string nickname, string contraseña, string nombre, string descripcion, string instituto, IDictionary* idiomas);
 	IDictionary* idiomas;
 	virtual ~Profesor();
 	list<string> mostrarInfo();

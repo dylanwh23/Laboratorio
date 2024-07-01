@@ -30,9 +30,6 @@ public:
 	 set<string> listarEstudiantes(Curso *curso);
 	 Curso* getCursoSistema(string curso);
 	 void BorrarIncripciones(Curso *curso);
-	 bool exixteEstudiante(string nick);
-	 void nuevaInscripcion(Curso* curso, string nick);
-	 set<string> mostrarInfoCurso(string cur);
 	 void BorrarCurso(Curso *curso);
 	 set<string> listarEstudiantes();
 	 Estudiante* getEstudianteSistema(string usuario);
@@ -42,7 +39,9 @@ public:
 	 void ingresarEjercicioCompletar(string curso, string leccion, string nombreEjercicio, string desc, string frase, string palabrasFaltantes);
 	 void ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion);
 	 void agregarLeccion(string tema, string objetivo, IDictionary* ejercicios,string nombreCurso);
-
+	 bool exixteEstudiante(string nick);
+	 void nuevaInscripcion(Curso* curso, string nick);
+	 set<string> mostrarInfoCurso(string cur);
 };
 
 #endif /* CONTROLLERS_CURSOCONTROLLER_H_ */

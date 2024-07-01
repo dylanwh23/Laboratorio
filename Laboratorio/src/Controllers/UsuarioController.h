@@ -19,6 +19,7 @@ public:
 	void altaEstudiante(DTOEstudiante* dto);
 	bool verificarIdioma(string nombreIdioma);
 	Usuario* getUsuarioSistema(string nick);
+	Idioma* getIdiomaSistema(string idioma);
 
 };
 

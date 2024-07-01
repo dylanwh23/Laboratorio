@@ -7,8 +7,7 @@
 
 #include "Estudiante.h"
 
-Estudiante::Estudiante(string nick, string pass, string nom, string descrip,
-		string pais) {
+Estudiante::Estudiante(string nick, string pass, string nom, string descrip, string pais) {
 	//los DTO son un pasamano para no acoplar la capa de presentación con la capa de negocio
 	this->nickname = nick;
 	this->contraseña = pass;
@@ -22,7 +21,7 @@ Estudiante::~Estudiante() {
 	// TODO Auto-generated destructor stub
 }
 
-list<string> Estudiante::mostrarInfo() {
+list<string> Estudiante::mostrarInfo(){
 	list<string> aux;
 	aux.push_back(this->nickname);
 	aux.push_back(this->contraseña);
@@ -32,78 +31,74 @@ list<string> Estudiante::mostrarInfo() {
 	return aux;
 }
 
-string Estudiante::getNick() {
+string Estudiante::getNick(){
 
 	return this->nickname;
 }
-bool Estudiante::revisarInscripcionesCurso(Curso *curso) {
-	if (!this->inscripciones.empty()) {
-		for (list<Incripcion>::iterator it = this->inscripciones.begin();
-				it != this->inscripciones.end(); it++) {
-			if (it->compararCursos(curso) == true) {
-				return true;
-			}
+bool Estudiante::revisarInscripcionesCurso(Curso *curso){
+	if (!this->inscripciones.empty()){
+		for (list<Incripcion>::iterator it = this->inscripciones.begin(); it!=this->inscripciones.end(); it++){
+				if(it->compararCursos(curso)==true){
+						return true;
+				}
 		}
 		return false;
-	} else {
+	}else{
 		return false;
 	}
 }
-int Estudiante::ejerciciosHechosInscripciones(Curso *curso) {
-	if (!this->inscripciones.empty()) {
-		for (list<Incripcion>::iterator it = this->inscripciones.begin();
-				it != this->inscripciones.end(); it++) {
-			if (it->compararCursos(curso) == true) {
-				IDictionary *ejerciciosAprobados = it->getEjerciciosAprobados();
-				return ejerciciosAprobados->getSize();
+int Estudiante::ejerciciosHechosInscripciones(Curso *curso){
+	if (!this->inscripciones.empty()){
+		for (list<Incripcion>::iterator it = this->inscripciones.begin(); it!=this->inscripciones.end(); it++){
+				if(it->compararCursos(curso)==true){
+					IDictionary* ejerciciosAprobados = it->getEjerciciosAprobados();
+					return	ejerciciosAprobados->getSize();
 
-			}
+				}
 		}
 		return 0;
-	} else {
+	}else{
 		return 0;
 	}
 }
 
-void Estudiante::insertarInscripciones(list<Incripcion> inscripciones) {
-	this->inscripciones = inscripciones;
-}
-;
-void Estudiante::borrarInscripcionesCurso(Curso *curso) {
+void Estudiante::insertarInscripciones(list<Incripcion> inscripciones){
+	this->inscripciones =inscripciones;
+};
+void Estudiante::borrarInscripcionesCurso(Curso *curso){
 	if (!this->inscripciones.empty()) {
-		for (auto it = this->inscripciones.begin();
-				it != this->inscripciones.end();) {
-			if (it->compararCursos(curso) == true) {
-				it = this->inscripciones.erase(it); // Actualizar el iterador después de borrar
-			} else {
-				++it;  // Avanzar el iterador sólo si no se borra
-			}
-		}
-	}
+	        for (auto it = this->inscripciones.begin(); it != this->inscripciones.end(); ) {
+	            if (it->compararCursos(curso) == true) {
+	                it = this->inscripciones.erase(it);  // Actualizar el iterador después de borrar
+	            } else {
+	                ++it;  // Avanzar el iterador sólo si no se borra
+	            }
+	        }
+	   }
 }
-set<string> Estudiante::getCursosNoAprobados() {
+set<string> Estudiante::getCursosNoAprobados(){
 	set<string> aux;
 
-	list<Incripcion> auxit = this->inscripciones;
+	        list<Incripcion> auxit = this->inscripciones;
 
-	list<Incripcion>::iterator it;
-	for (it = auxit.begin(); it != auxit.end(); it++) {
+	        list<Incripcion>::iterator it;
+	        	for (it = auxit.begin(); it != auxit.end(); it++) {
 
-		if (it->getAprobado() == false) {
-			aux.insert(it->getNomCurso());
-		}
+	        		if(it->getAprobado()== false){
+	        			aux.insert(it->getNomCurso());
+	        		}
 
-	}
+	        	}
 
-	return aux;
+	        return aux;
 
 }
 
-void Estudiante::insertarEjercicio(string curso, Ejercicio *eje) {
+void Estudiante::insertarEjercicio(string curso, Ejercicio* eje){
 
 	list<Incripcion> inscripciones = this->inscripciones;
 
-	list<Incripcion>::iterator it;
+	 list<Incripcion>::iterator it;
 	for (it = inscripciones.begin(); it != inscripciones.end(); it++) {
 
 		if (it->getNomCurso() == curso) {
@@ -112,7 +107,7 @@ void Estudiante::insertarEjercicio(string curso, Ejercicio *eje) {
 	}
 }
 
-set<string> Estudiante::listarEjerciciosAprobados() {
+set<string> Estudiante::listarEjerciciosAprobados(){
 
 	list<Incripcion> inscripciones = this->inscripciones;
 	list<Incripcion>::iterator it;
@@ -122,14 +117,15 @@ set<string> Estudiante::listarEjerciciosAprobados() {
 
 	for (it = inscripciones.begin(); it != inscripciones.end(); it++) {
 
-		aux = it->getEjercicios();
+			aux = (it->getEjercicios());
+
 
 		for (it2 = aux.begin(); it2 != aux.end(); it2++) {
 
-			ejercicios.insert(*it2);
-		}
+					ejercicios.insert(*it2);
+				}
 
-	}
+		}
 	return ejercicios;
 }
 

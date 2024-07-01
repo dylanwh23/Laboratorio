@@ -16,13 +16,14 @@ Profesor::~Profesor() {
 	// TODO Auto-generated destructor stub
 }
 
-Profesor::Profesor(string nickname, string contraseña, string nombre, string descripcion, string instituto) {
+Profesor::Profesor(string nickname, string contraseña, string nombre, string descripcion, string instituto, IDictionary* idiomas) {
 	// TODO Auto-generated constructor stub
 	this->nickname = nickname;
 	this->contraseña = contraseña;
 	this->nombre = nombre;
 	this->descripcion = descripcion;
 	this->instituto = instituto;
+	this->idiomas = idiomas;
 }
 
 list<string> Profesor::mostrarInfo(){

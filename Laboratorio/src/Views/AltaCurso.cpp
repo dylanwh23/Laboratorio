@@ -20,7 +20,7 @@ AltaCurso::~AltaCurso() {
 string AltaCurso::seleccionarProfesor(){
 
 	set<string> profesoresExistentes = this->Icurso->listarProfesores();
-
+	int quiere=0;
 	set<string>::iterator it;
 	for (it = profesoresExistentes.begin(); it != profesoresExistentes.end();
 			it++) {
@@ -29,7 +29,7 @@ string AltaCurso::seleccionarProfesor(){
 
 	string profesor;
 
-
+	do{
 	cout << "Ingrese un profesor de la lista: (S/s para salir)" << endl;
 	cin >> profesor;
 	if (profesor != "S" && profesor != "s") {
@@ -38,25 +38,36 @@ string AltaCurso::seleccionarProfesor(){
 			//solo selecciono los idiomas que existen
 			cout << "Profesor seleccionado: " << profesor << endl;
 			return profesor;
-		}else{
-			return 0;
 		}
-		return profesor;
-	}
 
+		}else{
+			if(profesor == "s" || profesor == "S"){
+				return "s";
+				quiere=1;
+			}
+
+	}
+	}while(quiere==0);
 	return profesor;
 }
 
 string AltaCurso::seleccionarIdioma(string profesor) {
 
-	set<string> idiomasExistentes = this->Icurso->listarIdiomasProfesor(
-			profesor);
+	set<string> idiomasExistentes = this->Icurso->listarIdiomasProfesor(profesor);
 	set<string> idiomasSeleccionados;
+	string vacio = "vacio";
 
 	set<string>::iterator it;
-	for (it = idiomasExistentes.begin(); it != idiomasExistentes.end(); it++) {
-		cout << "Idioma: " << *it << endl;
+
+	if(idiomasExistentes.empty()== true){
+		return vacio;
+	}else{
+		for (it = idiomasExistentes.begin(); it != idiomasExistentes.end(); it++) {
+				cout << "Idioma: " << *it << endl;
 	}
+
+	}
+
 	string idioma;
 	bool quiereIngresarIdiomas = true;
 	do {
@@ -141,30 +152,76 @@ void AltaCurso::altaCurso() {
 	set<string> previaturas;
 
 	profesor = this->seleccionarProfesor();
+
+	if(profesor != "s" && profesor != "S"){
+
 	idioma = this->seleccionarIdioma(profesor);
 
-	cout << "Ingrese nombre del curso(sin espacios): " << endl;
-	cin >> nombre;
-	cout << "Ingrese dificultad del curso: " << endl;
-	cin >> dificultad;
-	cout << " ¿Desea agregar previaturas? (1=si 2 =no)? " << endl;
-	cin >> agregarIdioma;
-	if (agregarIdioma == 1) {
-		previaturas = this->seleccionarPreviaturas();
-	} else {
-		cout << "El curso no tendra cursos previos " << endl;
+			if(idioma == "vacio"){
+				cout << "El profesor no tiene idiomas ingresados, seleccione otro profesor" << endl;
+				this->seleccionarProfesor();
+			}else{
+
+				cout << "Ingrese nombre del curso(sin espacios): " << endl;
+					cin >> nombre;
+					cout << "Ingrese dificultad del curso: " << endl;
+					cin >> dificultad;
+					cout << " ¿Desea agregar previaturas? (1=si 2 =no)? " << endl;
+					cin >> agregarIdioma;
+					if (agregarIdioma == 1) {
+						previaturas = this->seleccionarPreviaturas();
+					} else {
+						cout << "El curso no tendra cursos previos " << endl;
+					}
+
+					cout << " ¿Desea agregar lecciones? (1=si 2 =no)? " << endl;
+					cin >> agregarLeccion;
+					if (agregarLeccion == 1) {
+						AgregarLeccion agregarleccion;
+						agregarleccion.agregarLeccion(nombre);
+					} else {
+						cout << "El curso no tendra cursos previos " << endl;
+					}
+
+					cout << "Curso Agregado Correctamente";
+					this->Icurso->altaCurso(nombre, dificultad, habilitado, previaturas);
+			}
 	}
 
-	cout << " ¿Desea agregar lecciones? (1=si 2 =no)? " << endl;
-	cin >> agregarLeccion;
-	if (agregarLeccion == 1) {
-		AgregarLeccion agregarleccion;
-		agregarleccion.agregarLeccion(nombre);
-	} else {
-		cout << "El curso no tendra cursos previos " << endl;
-	}
 
-	cout << "Curso Agregado Correctamente";
-	this->Icurso->altaCurso(nombre, dificultad, habilitado, previaturas);
+
+//	idioma = this->seleccionarIdioma(profesor);
+//
+//	if(idioma == "vacio"){
+//		cout << "El profesor no tiene idiomas ingresados, seleccione otro profesor" << endl;
+//		this->seleccionarProfesor();
+//	}else{
+//
+//		cout << "Ingrese nombre del curso(sin espacios): " << endl;
+//			cin >> nombre;
+//			cout << "Ingrese dificultad del curso: " << endl;
+//			cin >> dificultad;
+//			cout << " ¿Desea agregar previaturas? (1=si 2 =no)? " << endl;
+//			cin >> agregarIdioma;
+//			if (agregarIdioma == 1) {
+//				previaturas = this->seleccionarPreviaturas();
+//			} else {
+//				cout << "El curso no tendra cursos previos " << endl;
+//			}
+//
+//			cout << " ¿Desea agregar lecciones? (1=si 2 =no)? " << endl;
+//			cin >> agregarLeccion;
+//			if (agregarLeccion == 1) {
+//				AgregarLeccion agregarleccion;
+//				agregarleccion.agregarLeccion(nombre);
+//			} else {
+//				cout << "El curso no tendra cursos previos " << endl;
+//			}
+//
+//			cout << "Curso Agregado Correctamente";
+//			this->Icurso->altaCurso(nombre, dificultad, habilitado, previaturas);
+//	}
+
+
 
 }
