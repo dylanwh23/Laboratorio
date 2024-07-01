@@ -76,6 +76,22 @@ set<string> Curso::listarLecciones(){
     return auxlecciones;
 
 }
+list<string> Curso::listarLeccionesEjercicio(){
+	list<string> auxlecciones;
+	IDictionary *auxit = this->lecciones;
+	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+		Leccion *auxnom = dynamic_cast<Leccion*>(it->getCurrent());
+		auxlecciones.push_back("-----"+auxnom->getTemaLec());
+		set<string> auxejercicios = auxnom->listarEjerciciosDescr();
+		set<string>::iterator it1;
+		for (it1 = auxejercicios.begin(); it1 != auxejercicios.end(); it1++) {
+			auxlecciones.push_back("--"+*it1);
+		}
+	}
+
+	return auxlecciones;
+
+}
 
 
 IDictionary* Curso::getLecciones(){

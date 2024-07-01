@@ -41,11 +41,7 @@ void Leccion::borrarLecciones(){
 		this->ejercicios->remove(new String(auxEje->getNom()));
 		auxEje->~Ejercicio();
 	}
-
-
 }
-
-
 set<string> Leccion::listarEjercicios(){
 	set<string> auxlecciones;
 				IDictionary *auxit = this->ejercicios;
@@ -55,6 +51,15 @@ set<string> Leccion::listarEjercicios(){
 
 				}
 
+			return auxlecciones;
+}
+set<string> Leccion::listarEjerciciosDescr(){
+	set<string> auxlecciones;
+				IDictionary *auxit = this->ejercicios;
+				for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
+					Ejercicio* auxnom = dynamic_cast<Ejercicio*>(it->getCurrent());
+						auxlecciones.insert(auxnom->getNom()+"/Descripcion:"+auxnom->getDesc());
+				}
 			return auxlecciones;
 }
 

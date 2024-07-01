@@ -26,6 +26,7 @@ public:
 	int contarEjercicios();
 	void borrarLecciones();
 	set<string> listarEjercicios();
+	set<string> listarEjerciciosDescr();
 	IDictionary* getEjercicios();
 };
 

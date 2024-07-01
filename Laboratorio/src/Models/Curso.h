@@ -37,6 +37,7 @@ public:
 	void agregarLeccion(Leccion *lec);
 	int cantidadEjercicios();
 	set<string> listarLecciones();
+	list<string> listarLeccionesEjercicio();
 	IDictionary* getLecciones();
 	set<string>listarEjercicios();
 	void HabilitarCurso();
