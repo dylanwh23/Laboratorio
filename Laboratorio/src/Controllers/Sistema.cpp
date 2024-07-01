@@ -34,7 +34,7 @@ void Sistema::inicializarDatos() {
 	//inicializo los idiomas del sistema
 
 	cout << "Inicializando datos de prueba" << endl;
-	this->cursos = new OrderedDictionary();
+		this->cursos = new OrderedDictionary();
 		this->idiomas = new OrderedDictionary();
 		this->usuarios = new OrderedDictionary();
 

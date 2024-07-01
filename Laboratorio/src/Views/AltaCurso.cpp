@@ -169,19 +169,12 @@ void AltaCurso::altaCurso() {
 					getline(cin, dificultad);
 					cout << "Ingrese descripcion del curso: " << endl;
 					getline(cin, descripcion);
-					cout << " ¿Desea agregar previaturas? (1=si 2 =no)? " << endl;
-					cin >> agregarIdioma;
-					if (agregarIdioma == 1) {
-						previaturas = this->seleccionarPreviaturas();
-					} else {
-						cout << "El curso no tendra cursos previos " << endl;
-					}
-
 					cout << " ¿Desea agregar lecciones? (1=si 2 =no)? " << endl;
 					cin >> agregarLeccion;
 					cin.ignore();
 					if (agregarLeccion == 1) {
-						this->Icurso->altaCurso(nombre, dificultad, habilitado);
+						this->Icurso->altaCurso(nombre, dificultad,descripcion,profe, idi, habilitado);
+
 						AgregarLeccion agregarleccion;
 						agregarleccion.agregarLeccion(nombre);
 
@@ -196,6 +189,15 @@ void AltaCurso::altaCurso() {
 			}
 	}
 
+
+//	cout << " ¿Desea agregar previaturas? (1=si 2 =no)? " << endl;
+//						cin >> agregarIdioma;
+//						if (agregarIdioma == 1) {
+//							previaturas = this->seleccionarPreviaturas();
+//						} else {
+//							cout << "El curso no tendra cursos previos " << endl;
+//						}
+//
 
 
 //	idioma = this->seleccionarIdioma(profesor);

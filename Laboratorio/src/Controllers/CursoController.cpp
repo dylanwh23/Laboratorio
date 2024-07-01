@@ -31,18 +31,18 @@ set<string> CursoController::listarIdiomasProfesor(string profesor) {
 }
 
 
-void CursoController::altaCurso(string nombre,string dificultad,string descripcion,Profesor* profe,Idioma*  idi,bool habilitado,set<string> previaturas){
+void CursoController::altaCurso(string nombre,string dificultad,string descripcion,Profesor* profe,Idioma*  idi,bool habilitado){
 
-	IDictionary* previas = new OrderedDictionary();
+//	IDictionary* previas = new OrderedDictionary();
+//
+////		set<string>::iterator it;
+////		for (it = previaturas.begin(); it != previaturas.end(); it++) {
+////			Curso *aux = dynamic_cast<Curso*>(this->sistema->cursos->find(new String(*it)));
+////			previas->add(new String(*it), aux);
+////		}
 
-		set<string>::iterator it;
-		for (it = previaturas.begin(); it != previaturas.end(); it++) {
-			Curso *aux = dynamic_cast<Curso*>(this->sistema->cursos->find(new String(*it)));
-			previas->add(new String(*it), aux);
-		}
 
-
-		Curso* curso = new Curso(nombre,dificultad,descripcion, profe, idi, habilitado, previas);
+		Curso* curso = new Curso(nombre,dificultad,descripcion, profe, idi, habilitado);
 
 	this->sistema->cursos->add(new String(nombre), curso);
 

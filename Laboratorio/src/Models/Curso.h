@@ -25,12 +25,12 @@ private:
 	Profesor* profesor;
 	Idioma* idioma;
 	string descripcion;
-	IDictionary* previaturas;
+	IDictionary* previaturas = new OrderedDictionary;
 	IDictionary* lecciones;
 public:
 	Curso(string nombre, string dificultad, bool habilitado);
 	Curso(string nombre, string dificultad, bool habilitado,Profesor* profesor,Idioma* idioma, IDictionary* previaturas, IDictionary* lecciones);
-	Curso(string nombre, string dificultad, string descripcion, Profesor* profesor, Idioma* idioma, bool habilitado, IDictionary* previaturas);
+	Curso(string nombre, string dificultad, string descripcion, Profesor* profesor, Idioma* idioma, bool habilitado);
 	list<string> mostrarInfo();
 	virtual ~Curso();
 	string getNomCurso();

@@ -12,7 +12,7 @@
 class ICurso {
 public:
 	virtual set<string> listarProfesores()=0;
-	virtual void altaCurso(string nombre,string dificultad,string descripcion,Profesor* profe,Idioma*  idi,bool habilitado,set<string> previaturas)=0;
+	virtual void altaCurso(string nombre,string dificultad,string descripcion,Profesor* profe,Idioma*  idi,bool habilitado)=0;
 	virtual set<string> listarIdiomasProfesor(string profesor)=0;
 	virtual set<string> listarCursosHabilitados()=0;
 	virtual list<string> listarCursosHabilitadosParaElEstudiante(string nickname) = 0;

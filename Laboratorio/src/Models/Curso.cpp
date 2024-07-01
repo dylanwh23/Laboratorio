@@ -29,14 +29,13 @@ Curso::~Curso() {
 	// TODO Auto-generated destructor stub
 }
 
-Curso::Curso(string nombre, string dificultad, string descripcion, Profesor* profesor, Idioma* idioma, bool habilitado, IDictionary* previaturas){
+Curso::Curso(string nombre, string dificultad, string descripcion, Profesor* profesor, Idioma* idioma, bool habilitado){
     this->nombre = nombre;
     this->dificultad = dificultad;
     this->habilitado = habilitado;
     this->profesor =profesor;
     this->idioma =idioma;
     this->descripcion = descripcion;
-    this->previaturas = previaturas;
     this->lecciones = new OrderedDictionary();
 }
 

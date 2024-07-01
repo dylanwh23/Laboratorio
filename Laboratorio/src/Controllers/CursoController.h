@@ -19,7 +19,7 @@ public:
 	CursoController();
 	virtual ~CursoController();
 	 set<string> listarIdiomasProfesor(string profesor);
-	 void altaCurso(string nombre,string dificultad,string descripcion,Profesor* profe,Idioma*  idi,bool habilitado,set<string> previaturas);
+	 void altaCurso(string nombre,string dificultad,string descripcion,Profesor* profe,Idioma*  idi,bool habilitado);
 	 set<string> listarProfesores();
 	 set<string> listarCursosHabilitados();
 	 set<string> listarCursos();
