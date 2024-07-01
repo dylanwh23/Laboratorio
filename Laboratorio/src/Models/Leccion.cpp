@@ -26,7 +26,7 @@ return this->tema;
 
 void Leccion::agregarEjercicio(Ejercicio *eje){
 
-	this->ejercicios = new OrderedDictionary();
+
 	this->ejercicios->add(new String(eje->getNom()), eje);
 
 

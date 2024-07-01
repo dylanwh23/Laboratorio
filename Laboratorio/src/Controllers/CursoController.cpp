@@ -31,7 +31,7 @@ set<string> CursoController::listarIdiomasProfesor(string profesor) {
 }
 
 
-void CursoController::altaCurso(string nombreCurso, string dificultad, bool habilitado, set<string> previaturas){
+void CursoController::altaCurso(string nombre,string dificultad,string descripcion,Profesor* profe,Idioma*  idi,bool habilitado,set<string> previaturas){
 
 	IDictionary* previas = new OrderedDictionary();
 
@@ -42,9 +42,9 @@ void CursoController::altaCurso(string nombreCurso, string dificultad, bool habi
 		}
 
 
-		Curso* curso = new Curso(nombreCurso, dificultad, habilitado);
+		Curso* curso = new Curso(nombre,dificultad,descripcion, profe, idi, habilitado, previas);
 
-	this->sistema->cursos->add(new String(nombreCurso), curso);
+	this->sistema->cursos->add(new String(nombre), curso);
 
 
 }
@@ -90,6 +90,9 @@ Estudiante* CursoController::getEstudianteSistema(string usuario) {
 }
 Profesor* CursoController::getProfesorSistema(string usuario) {
 	return dynamic_cast<Profesor*>(this->sistema->usuarios->find(new String(usuario)));
+}
+Idioma* CursoController::getIdioma(string idioma){
+	return dynamic_cast<Idioma*>(this->sistema->idiomas->find(new String(idioma)));
 }
 set<string> CursoController::listarCursos(Profesor *profesor){
 	return this->sistema->listarCursos(profesor);

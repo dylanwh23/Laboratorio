@@ -42,6 +42,6 @@ void LeccionController::agregarLeccion(string tema, string objetivo, IDictionary
 
 		}
 
-	cursofinal->agregarLeccion(lec);
+	//cursofinal->agregarLeccion(lec);
 
 }

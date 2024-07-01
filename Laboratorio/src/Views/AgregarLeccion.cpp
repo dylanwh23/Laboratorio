@@ -71,6 +71,7 @@ void AgregarLeccion::agregarLeccion(string curso) {
 	cout << " ¿Desea agregar ejercicios? (1=si 2 =no)(cualquier otro para salir)? " << endl;
 	cin >> agregarEjercicio;
 	if (agregarEjercicio == 1) {
+
 		this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
 		AgregarEjercicio agregareje;
 		agregareje.agregarEjercicio(curso, tema);
