@@ -26,76 +26,99 @@ void AgregarEjercicio::agregarEjercicio(string curso, string leccion) {
 	string desc;
 	string palabrasFaltantes;
 	string traduccion;
-	cout << "Ingrese tipo de ejercicio:" << endl << "(1-Completar 2-Traduccion"<< endl;
-
+	cout << "Ingrese tipo de ejercicio:" << endl << "(1-Completar 2-Traduccion)(cualquier numero para salir)"<< endl;
 	cin >> tipoEjercicio;
-	cin.ignore();
+
 	if (tipoEjercicio == 1) {
+		cin.ignore();
 		cout << "Ingrese el nombre del ejercicio: " << endl;
-		getline(cin, nombreEjercicio);
+		getline(cin,nombreEjercicio);
 		cout << "Ingrese descripcion del ejercicio: " << endl;
-		getline(cin, desc);
-		cout << "Ingrese la frase del ejercicio incompleta: " << endl;
-		getline(cin, frase);
-		cout << "Ingrese la frase completa: " << endl;
-		getline(cin, palabrasFaltantes);
+		getline(cin,desc);
+		cout << "Ingrese la frase del ejercicio completa: " << endl;
+		getline(cin,frase);
+		cout << "Ingrese la frase incompleta: " << endl;
+		getline(cin,palabrasFaltantes);
 		this->Iejercicio->ingresarEjercicioCompletar(curso, leccion, nombreEjercicio, desc, frase, palabrasFaltantes);
-	} else {
-
+		cout << "Ejercicio ingresado " << endl;
+	} else if(tipoEjercicio == 2)  {
+		cin.ignore();
 		cout << "Ingrese el nombre del ejercicio: " << endl;
-		getline(cin, nombreEjercicio);
+		getline(cin,nombreEjercicio);
 		cout << "Ingrese descripcion del ejercicio: " << endl;
-		getline(cin, desc);
+		getline(cin,desc);
 		cout << "Ingrese la frase del ejercicio: " << endl;
-		getline(cin, frase);
+		getline(cin,frase);
 		cout << "Ingrese la traduccion del ejercicio: " << endl;
-		getline(cin, traduccion);
+		getline(cin,traduccion);
 		this->Iejercicio->ingresarEjercicioTraducir(curso, leccion, nombreEjercicio, desc, frase, traduccion);
+		cout << "Ejercicio ingresado " << endl;
+	}else{
+
 	}
+}
 
-	cout << "Ejercicio ingresado " << endl;
+set<string> AgregarEjercicio::listarCursosInhabilitados() {
+	set<string> aux;
+		set<string> cursosInhabilitados = this->Iejercicio->listarCursosInhabilitados();
+		set<string>::iterator it;
 
+		for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();
+				it++) {
+				aux.insert(*it);
+		}
+		return aux;
+}
+
+set<string> AgregarEjercicio::listarLeccionesCurso(string curso) {
+	set<string> aux;
+	set<string> lecciones = this->Iejercicio->listarLeccionesCurso(curso);
+		set<string>::iterator it;
+
+		for (it = lecciones.begin(); it != lecciones.end(); it++) {
+			aux.insert(*it);
+		}
+
+	return aux;
 }
 
 
 
-void AgregarEjercicio::listarCursosInhabilitados() {
-	set<string> cursosInhabilitados =this->Iejercicio->listarCursosInhabilitados();
+void AgregarEjercicio::llamarAgregarEjercicio() {
+	string leccion;
+	string curso;
+	set<string> cursosInhabilitados = this->listarCursosInhabilitados();
+	set<string> lecciones;
 	set<string>::iterator it;
 
 	for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();
 			it++) {
 		cout << "Curso Inhabilitado: " << *it << endl;
 	}
-}
+	cout << "Ingrese un curso de la lista: (uno que no esta en la lista para salir)" << endl;
+	cin.ignore();
+	getline(cin,curso);
+	for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();
+			it++) {
+		if (curso == *it) {
+			lecciones = this->listarLeccionesCurso(curso);
+			set<string>::iterator it2;
+			for (it2 = lecciones.begin();
+					it2 != lecciones.end(); it2++) {
+				cout << "lecciones: " << *it2 << endl;
+			}
+			cout << "Ingrese una Leccion de la lista: (uno que no esta en la lista para salir)" << endl;
 
-void AgregarEjercicio::listarLeccionesCurso(string curso) {
-	set<string> lecciones = this->Iejercicio->listarLeccionesCurso(curso);
-	set<string>::iterator it;
+			getline(cin,leccion);
+			for (it2 = lecciones.begin();it2 != lecciones.end(); it2++) {
 
-	for (it = lecciones.begin(); it != lecciones.end(); it++) {
-		cout << "Leccion: " << *it << endl;
+				if (leccion == *it2) {
+					this->agregarEjercicio(curso, leccion);
+				}
+			}
+
+		}
 	}
-}
-
-
-
-void AgregarEjercicio::llamarAgregarEjercicio(){
-
-	string curso;
-	string leccion;
-	this->listarCursosInhabilitados();
-	cout << "Ingrese un curso de la lista: " << endl;
-		cin >> curso;
-
-	this->listarLeccionesCurso(curso);
-	cout << "Ingrese una Leccion de la lista: " << endl;
-		cin >> leccion;
-
-
-	this->agregarEjercicio(curso, leccion);
-
-
 }
 
 void AgregarEjercicio::ingresarEjercicioTraducir(string curso, string leccion, string nombreEjercicio, string desc, string frase, string traduccion){

@@ -23,7 +23,6 @@ class Sistema{
 private:
 	Sistema(); //declaro el constructor como privado
 	static Sistema* miSistema;	//puntero a la unica intancia de Sistema
-	void inicializarDatos();
 public:
 	IDictionary* usuarios;
 	IDictionary* idiomas;
@@ -47,7 +46,7 @@ public:
 	void BorrarIncripciones(Curso *curso);
 	void BorrarCurso(Curso *curso);
 	set<string> listarEstudiantes();
-
+	void inicializarDatos();
 	set<string> listarCursosNoAprobados(string nick);
 	set<string> listarEjerciciosEstudiante(string nick, string curso);
 	list<string> mostrarEjercicio(string nick, string curso, string ejercicio);

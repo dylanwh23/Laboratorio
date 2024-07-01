@@ -12,6 +12,7 @@ class IIdioma {
 public:
 	virtual void altaIdioma(string nombreIdioma)=0;
 	virtual set<string> listarIdiomas()=0;
+	virtual void inicializarDatos()=0;
 };
 
 #endif /* CONTROLLERS_IIDIOMA_H_ */

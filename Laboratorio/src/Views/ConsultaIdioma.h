@@ -17,6 +17,7 @@ public:
 	void consultaIdioma();
 	ConsultaIdioma();
 	virtual ~ConsultaIdioma();
+	void inicializarDatos();
 };
 
 #endif /* VIEWS_CONSULTAIDIOMA_H_ */

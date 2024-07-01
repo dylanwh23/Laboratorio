@@ -20,6 +20,7 @@ public:
 	set<string> listarIdiomas();
 	void altaIdioma(string nomreIdioma);
 	bool verificarIdioma(string nombreIdioma);
+	void inicializarDatos();
 
 };
 

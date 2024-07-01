@@ -28,3 +28,7 @@ set<string> IdiomaController::listarIdiomas(){
 bool IdiomaController::verificarIdioma(string nombreIdioma){
 	return this->sistema->verificarIdioma(nombreIdioma);
 }
+
+void IdiomaController::inicializarDatos(){
+	this->sistema->inicializarDatos();
+}

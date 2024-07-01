@@ -26,28 +26,34 @@ IDictionary* AgregarLeccion::agregarEjercicio() {
 	return coso;
 }
 
-void AgregarLeccion::listarCursosInhabilitados() {
-
+set<string> AgregarLeccion::listarCursosInhabilitados() {
+	set<string> aux;
 	set<string> cursosInhabilitados = this->Ileccion->listarCursosInhabilitados();
 	set<string>::iterator it;
 
 	for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();
 			it++) {
-		cout << "Curso Inhabilitado: " << *it << endl;
+			aux.insert(*it);
 	}
-
+	return aux;
 }
 
 void AgregarLeccion::llamarAgregarLeccion() {
 	string curso;
-
-	this->listarCursosInhabilitados();
-
-	cout << "Ingrese un curso de la lista: " << endl;
-	cin >> curso;
-
-	this->agregarLeccion(curso);
-
+	set<string> cursosInhabilitados = this->listarCursosInhabilitados();
+	set<string>::iterator it;
+	for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();
+			it++) {
+		cout << "Curso Inhabilitado: " << *it << endl;
+	}
+	cout << "Ingrese un curso de la lista(presione enter 2 veces): "<< endl;
+	cin.ignore();
+	getline(cin,curso);
+	for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();	it++) {
+		if (curso == *it) {
+			this->agregarLeccion(curso);
+		}
+	}
 }
 
 void AgregarLeccion::agregarLeccion(string curso) {
@@ -57,23 +63,23 @@ void AgregarLeccion::agregarLeccion(string curso) {
 	IDictionary *ejercicios = new OrderedDictionary;
 
 	cout << "Ingrese el objetivo de la leccion : " << endl;
-	cin >> objetivo;
+	getline(cin,objetivo);
 	cout << "Ingrese el tema de la leccion : " << endl;
-	cin >> tema;
+	getline(cin,tema);
 
 	int agregarEjercicio;
-	cout << " ¿Desea agregar ejercicios? (1=si 2 =no)? " << endl;
+	cout << " ¿Desea agregar ejercicios? (1=si 2 =no)(cualquier otro para salir)? " << endl;
 	cin >> agregarEjercicio;
 	if (agregarEjercicio == 1) {
-
 		this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
 		AgregarEjercicio agregareje;
 		agregareje.agregarEjercicio(curso, tema);
-	} else {
+	} else if (agregarEjercicio == 2){
+
 		cout << "No se agregan ejercicios a la leccion " << endl;
-		this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
+		this->Ileccion->agregarLeccion(tema, objetivo, new OrderedDictionary, nombreCurso);
+	}else{
+		cout << "salir " << endl;
 	}
-
 	//this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
-
 }

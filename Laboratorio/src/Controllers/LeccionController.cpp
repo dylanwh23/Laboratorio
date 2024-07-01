@@ -29,13 +29,14 @@ void LeccionController::agregarLeccion(string tema, string objetivo, IDictionary
 	Curso *cursofinal;
 	IDictionary *auxit = this->sistema->cursos;
 
-
+	cout << nombreCurso;
 
 	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
 			Curso *auxnom = dynamic_cast<Curso*>(it->getCurrent());
 			if (auxnom->getNomCurso() == nombreCurso) {
 				cursofinal = auxnom;
+				cursofinal->agregarLeccion(lec);
 				break;
 			}
 

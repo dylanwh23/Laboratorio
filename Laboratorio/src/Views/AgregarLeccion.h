@@ -15,7 +15,7 @@ ILeccion* Ileccion;
 public:
 AgregarLeccion();
 virtual ~AgregarLeccion();
-void listarCursosInhabilitados();
+set<string> listarCursosInhabilitados();
 void agregarLeccion(string curso);
 IDictionary* agregarEjercicio();
 void llamarAgregarLeccion();

@@ -30,3 +30,7 @@ void ConsultaIdioma::consultaIdioma(){
 		cout << "Idioma: " << *it << endl;
 	}
 }
+
+void ConsultaIdioma::inicializarDatos(){
+	this->iidioma->inicializarDatos();
+}

@@ -46,7 +46,8 @@ void MenuPrincipal::mostrarMenu() {
 				cout << "11) Inscribirse a curso" << endl;
 				cout << "12) Realizar ejercicio" << endl;
 				cout << "13) Consultar estadísticas" << endl;
-				cout << "14) Salir " << endl;
+				cout << "14) Cargar datos de prueba " << endl;
+				cout << "15) Salir " << endl;
 				cout << "Ingrese una opcion: " << endl;
 		cin >> op;
 		switch (op) {
@@ -116,13 +117,18 @@ void MenuPrincipal::mostrarMenu() {
 			consultarestadisticas.consultarEstadisticas();
 		}
 			break;
-		case 14:
+		case 14:{
+			ConsultaIdioma cargardatos;
+			cargardatos.inicializarDatos();
+		}
 			break;
+		case 15:
+					break;
 		default:
 			cout << "Opcion desconocida" << endl;
 		}
 
-	} while (op != 14);
+	} while (op != 15);
 
 	cout << "Fin del programa" << endl;
 }
