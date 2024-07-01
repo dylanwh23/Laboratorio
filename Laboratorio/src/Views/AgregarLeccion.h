@@ -19,6 +19,7 @@ set<string> listarCursosInhabilitados();
 void agregarLeccion(string curso);
 IDictionary* agregarEjercicio();
 void llamarAgregarLeccion();
+void agregarLeccionObligatorio(string curso);
 };
 
 #endif /* VIEWS_AGREGARLECCION_H_ */

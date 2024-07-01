@@ -40,10 +40,10 @@ void RealizarEjercicio::buscarEstudiante(){
 
 				}
 
-
+cin.ignore();
 				do{
 					cout << "Ingrese un curso de la lista(s/S para salir): ";
-					cin >> curso;
+					getline(cin,curso);
 					if(curso != "s" && curso != "S"){
 						if(cursosNoAprobados.find(curso)!=cursosNoAprobados.end()){
 							this->realizarEjercicio(nick, curso);
@@ -88,7 +88,6 @@ void RealizarEjercicio::realizarEjercicio(string nick, string curso){
 							cout << "Ejercicio: " << *it << endl;
 						}
 		cout << "Ingrese un ejercicio de la lista(s/S para salir): ";
-		cin.ignore();
 		getline(cin,ejercicio);
 		if(ejercicio != "s" && ejercicio != "S"){
 
@@ -138,9 +137,8 @@ void RealizarEjercicio::hacerEjercicio(string nick, string curso, string ejercic
 		do{
 
 		cout << endl << "Ingrese la solucion del ejercicio: ";
-		cin.ignore();
-		getline(cin,solucion);
 
+		getline(cin,solucion);
 		if(solucion == solucionEjercicio){
 
 			cout << "Felicidades, ha aprobado el ejercicio!" << endl;
@@ -161,4 +159,3 @@ void RealizarEjercicio::hacerEjercicio(string nick, string curso, string ejercic
 
 
 }
-

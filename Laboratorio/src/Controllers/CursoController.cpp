@@ -200,14 +200,15 @@ cursofinal->HabilitarCurso();
 	 	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
 	 			Curso *auxnom = dynamic_cast<Curso*>(it->getCurrent());
-	 			if (auxnom->getNomCurso() == nombreCurso) {
-	 				cursofinal = auxnom;
-	 				break;
+	 				if (auxnom->getNomCurso() == nombreCurso) {
+	 					cursofinal = auxnom;
+	 					cursofinal->agregarLeccion(lec);
+	 					break;
+	 				}
+
 	 			}
 
-	 		}
 
-	 	cursofinal->agregarLeccion(lec);
 
 
  }

@@ -10,6 +10,7 @@
 #include "../Controllers/ICurso.h"
 #include "../Controllers/CursoController.h"
 #include "AgregarLeccion.h"
+#include "AgregarEjercicio.h"
 
 HabilitarCurso::HabilitarCurso() {
 	// TODO Auto-generated constructor stub
@@ -38,9 +39,10 @@ void HabilitarCurso::SeleccionarCurso(){
 	int mientras = 0;
 
 	do {
+		cin.ignore();
 		string curso;
 		cout<<"ingrese un curso(S/s para salir): "<<endl;
-		cin>>curso;
+		getline(cin,curso);
 		if (curso != "s" && curso != "S"){
 
 			if(cursosInhabilitados.find(curso)!=cursosInhabilitados.end()){
@@ -92,44 +94,45 @@ void HabilitarCurso::agregarEjercicio(string curso){
 		string objetivo;
 		IDictionary* ejercicios;
 
+		AgregarLeccion coso2;
+		coso2.agregarLeccionObligatorio(curso);
 
-			cout << "Ingrese el objetivo de la leccion : " << endl;
-			cin >> objetivo;
-			cout << "Ingrese el tema de la leccion : " << endl;
-			cin >> leccion;
-
-			this->Icurso->agregarLeccion(leccion, objetivo, ejercicios, curso);
-
-		cout << "Ingrese tipo de ejercicio:" << endl << "(1-Completar 2-Traduccion"<< endl;
-
-		cin >> tipoEjercicio;
-
-		if (tipoEjercicio == 1) {
-
-			cout << "Ingrese el nombre del ejercicio: " << endl;
-			cin >> nombreEjercicio;
-			cout << "Ingrese descripcion del ejercicio: " << endl;
-			cin >> desc;
-			cout << "Ingrese la frase del ejercicio completa: " << endl;
-			cin >> frase;
-			cout << "Ingrese la frase incompleta: " << endl;
-			cin >> palabrasFaltantes;
-
-			this->Icurso->ingresarEjercicioCompletar(curso, leccion, nombreEjercicio, desc, frase, palabrasFaltantes);
-
-		} else {
-
-
-			cout << "Ingrese el nombre del ejercicio: " << endl;
-			cin >> nombreEjercicio;
-			cout << "Ingrese descripcion del ejercicio: " << endl;
-			cin >> desc;
-			cout << "Ingrese la frase del ejercicio: " << endl;
-			cin >> frase;
-			cout << "Ingrese la traduccion del ejercicio: " << endl;
-					cin >> traduccion;
-			this->Icurso->ingresarEjercicioTraducir(curso, leccion, nombreEjercicio, desc, frase, traduccion);
-		}
+//			cout << "Ingrese el objetivo de la leccion : " << endl;
+//			getline(cin,objetivo);
+//			cout << "Ingrese el tema de la leccion : " << endl;
+//			getline(cin,leccion);
+//
+//			this->Icurso->agregarLeccion(leccion, objetivo, ejercicios, curso);
+//		cout << "Ingrese tipo de ejercicio:" << endl << "(1-Completar 2-Traduccion)"<< endl;
+//		cin >> tipoEjercicio;
+//		cin.ignore();
+//		if (tipoEjercicio == 1) {
+//
+//			cout << "Ingrese el nombre del ejercicio: " << endl;
+//			getline(cin,nombreEjercicio);
+//			cout << "Ingrese descripcion del ejercicio: " << endl;
+//			getline(cin,desc);
+//			cout << "Ingrese la frase del ejercicio completa: " << endl;
+//			getline(cin,frase);
+//			cout << "Ingrese la frase incompleta: " << endl;
+//			getline(cin,palabrasFaltantes);
+//
+//			this->Icurso->ingresarEjercicioCompletar(curso, leccion, nombreEjercicio, desc, frase, palabrasFaltantes);
+//
+//		} else {
+//
+//
+//			cout << "Ingrese el nombre del ejercicio: " << endl;
+//			getline(cin,nombreEjercicio);
+//			cout << "Ingrese descripcion del ejercicio: " << endl;
+//			getline(cin,desc);
+//			cout << "Ingrese la frase del ejercicio: " << endl;
+//			getline(cin,frase);
+//			cout << "Ingrese la traduccion del ejercicio: " << endl;
+//			getline(cin,traduccion);
+//			this->Icurso->ingresarEjercicioTraducir(curso, leccion, nombreEjercicio, desc, frase, traduccion);
+//
+//		}
 
 		cout << "Ejercicio ingresado " << endl;
       this->Icurso->habilitarCurso(curso);

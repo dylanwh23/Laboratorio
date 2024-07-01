@@ -84,3 +84,24 @@ void AgregarLeccion::agregarLeccion(string curso) {
 	}
 	//this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
 }
+
+
+void AgregarLeccion::agregarLeccionObligatorio(string curso){
+	string objetivo;
+	string nombreCurso = curso;
+	string tema;
+	IDictionary *ejercicios = new OrderedDictionary;
+
+	cout << "Ingrese el objetivo de la leccion : " << endl;
+	getline(cin,objetivo);
+	cout << "Ingrese el tema de la leccion : " << endl;
+	getline(cin,tema);
+
+
+	this->Ileccion->agregarLeccion(tema, objetivo, ejercicios, nombreCurso);
+
+	AgregarEjercicio agregareje;
+	agregareje.agregarEjercicio(curso, tema);
+	cout << "salir " << endl;
+
+}

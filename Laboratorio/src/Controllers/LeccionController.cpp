@@ -29,7 +29,6 @@ void LeccionController::agregarLeccion(string tema, string objetivo, IDictionary
 	Curso *cursofinal;
 	IDictionary *auxit = this->sistema->cursos;
 
-	cout << nombreCurso;
 
 	for (IIterator *it = auxit->getIterator(); it->hasCurrent(); it->next()) {
 
