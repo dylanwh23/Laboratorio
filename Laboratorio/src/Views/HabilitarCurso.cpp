@@ -37,7 +37,8 @@ void HabilitarCurso::SeleccionarCurso(){
 	set<string> cursosInhabilitados = this->Icurso->listarCursosInhabilitados();
 	set<string>::iterator it;
 	int mientras = 0;
-
+	cout << "Lista: " << endl;
+	cout << "(Si la lista esta vacia, es porque no existen cursos)" << endl;
 	do {
 		cin.ignore();
 		string curso;

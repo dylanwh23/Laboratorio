@@ -61,6 +61,7 @@ cin.ignore();
 				cout<< "El nick ingresado no pertenece a un estudiante o no existe"<< endl;
 			}
 		} else{
+			cout << "El estudiante ingresado no existe" << endl;
 			mientras = 1;
 		}
 

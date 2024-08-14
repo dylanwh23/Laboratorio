@@ -22,13 +22,23 @@ Sistema::~Sistema() {
 	// TODO Auto-generated destructor stub
 }
 
+
 Sistema* Sistema::getInstance() {
 	if (Sistema::miSistema == nullptr) {
 		Sistema::miSistema = new Sistema();
+		miSistema->inicializarDatosPrueba();
 	}
+
 	return Sistema::miSistema;
 
 }
+
+void Sistema::inicializarDatosPrueba(){
+	this->cursos = new OrderedDictionary();
+	this->idiomas = new OrderedDictionary();
+	this->usuarios = new OrderedDictionary();
+}
+
 
 void Sistema::inicializarDatos() {
 	//inicializo los idiomas del sistema
@@ -272,6 +282,7 @@ set<string> Sistema::listarIdiomas() {
 		Idioma *auxnom = dynamic_cast<Idioma*>(it->getCurrent());
 		aux.insert(auxnom->getNomIdioma());
 	}
+
 	return aux;
 }
 bool Sistema::verificarNickname(string nickname){

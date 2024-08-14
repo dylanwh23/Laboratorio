@@ -25,6 +25,8 @@ void ConsultarEstadisticas::consultarEstadisticas(){
 	cout << "1-ESTADISTICAS CURSOS" << endl;
 	cout << "2-ESTADISTICAS ESTUDIANTES" << endl;
 	cout << "3-ESTADISTICAS PROFESORES" << endl;
+	cout << "4 SALIR" << endl;
+	cin >> op;
 	if(opcion == "1"){
 		op = 1;
 	}else if(opcion == "2"){
@@ -34,7 +36,7 @@ void ConsultarEstadisticas::consultarEstadisticas(){
 	}else{
 		op = 4;
 	}
-	cin >> op;
+
 	switch (op) {
 	case 1: {
 		set<string> cursosExistentes = this->icurso->listarCursos();

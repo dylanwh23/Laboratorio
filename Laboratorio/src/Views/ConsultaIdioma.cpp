@@ -25,8 +25,9 @@ void ConsultaIdioma::consultaIdioma(){
 	set<string> idiomasExistentes = this->iidioma->listarIdiomas();
 
 	set<string>::iterator it;
-	for (it = idiomasExistentes.begin(); it != idiomasExistentes.end();
-			it++) {
+	cout << "Lista: " << endl;
+	cout << "(Si la lista esta vacia, es porque no existen idiomas)" << endl;
+	for (it = idiomasExistentes.begin(); it != idiomasExistentes.end();	it++) {
 		cout << "Idioma: " << *it << endl;
 	}
 }

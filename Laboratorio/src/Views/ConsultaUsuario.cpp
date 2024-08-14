@@ -24,6 +24,8 @@ void ConsultaUsuario::consultaUsuario() {
 	int coincideUsr = 0;
 	set<string> usuariosExistentes = this->iusuario->listarUsuarios();
 	set<string>::iterator it;
+	cout << "Lista: " << endl;
+	cout << "(Si la lista esta vacia, es porque no existen usuarios)" << endl;
 	for (it = usuariosExistentes.begin(); it != usuariosExistentes.end();
 			it++) {
 		cout << "Usuario: " << *it << endl;
@@ -35,8 +37,7 @@ void ConsultaUsuario::consultaUsuario() {
 		cout << "Ingrese nick:           (S/s para salir)" << endl;
 		cin >> usuarioSeleccionado;
 
-		if ((usuarioSeleccionado != "S" && usuarioSeleccionado != "s")
-				|| coincideUsr != 1) {
+		if ((usuarioSeleccionado != "S" && usuarioSeleccionado != "s") && coincideUsr != 1) {
 			for (it = usuariosExistentes.begin();
 					it != usuariosExistentes.end(); it++) {
 				if (usuarioSeleccionado == *it) {

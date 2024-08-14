@@ -49,6 +49,7 @@ void MenuPrincipal::mostrarMenu() {
 				cout << "14) Cargar datos de prueba " << endl;
 				cout << "15) Salir " << endl;
 				cout << "Ingrese una opcion: " << endl;
+		//cin.ignore();
 		cin >> op;
 		switch (op) {
 		case 1: {

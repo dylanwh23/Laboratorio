@@ -51,6 +51,7 @@ public:
 	set<string> listarEjerciciosEstudiante(string nick, string curso);
 	list<string> mostrarEjercicio(string nick, string curso, string ejercicio);
 	string getSolucion(string curso, string ejercicio);
+	void inicializarDatosPrueba();
 
 };
 

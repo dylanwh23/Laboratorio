@@ -30,7 +30,8 @@ set<string> AgregarLeccion::listarCursosInhabilitados() {
 	set<string> aux;
 	set<string> cursosInhabilitados = this->Ileccion->listarCursosInhabilitados();
 	set<string>::iterator it;
-
+	cout << "Lista: " << endl;
+	cout << "(Si la lista esta vacia, es porque no existen cursos)" << endl;
 	for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();
 			it++) {
 			aux.insert(*it);
@@ -42,11 +43,12 @@ void AgregarLeccion::llamarAgregarLeccion() {
 	string curso;
 	set<string> cursosInhabilitados = this->listarCursosInhabilitados();
 	set<string>::iterator it;
+
 	for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();
 			it++) {
 		cout << "Curso Inhabilitado: " << *it << endl;
 	}
-	cout << "Ingrese un curso de la lista(presione enter 2 veces): "<< endl;
+	cout << "Ingrese un curso de la lista(S/s salir): "<< endl;
 	cin.ignore();
 	getline(cin,curso);
 	for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();	it++) {
@@ -54,6 +56,7 @@ void AgregarLeccion::llamarAgregarLeccion() {
 			this->agregarLeccion(curso);
 		}
 	}
+
 }
 
 void AgregarLeccion::agregarLeccion(string curso) {

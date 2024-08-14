@@ -90,7 +90,8 @@ void AgregarEjercicio::llamarAgregarEjercicio() {
 	set<string> cursosInhabilitados = this->listarCursosInhabilitados();
 	set<string> lecciones;
 	set<string>::iterator it;
-
+	cout << "Lista: " << endl;
+	cout << "(Si la lista esta vacia, es porque no existen cursos)" << endl;
 	for (it = cursosInhabilitados.begin(); it != cursosInhabilitados.end();
 			it++) {
 		cout << "Curso Inhabilitado: " << *it << endl;

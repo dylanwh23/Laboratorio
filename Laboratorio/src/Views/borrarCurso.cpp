@@ -22,12 +22,15 @@ BorrarCurso::~BorrarCurso(){
  void BorrarCurso::borrarCurso() {
 	set<string> cursosExistentes = this->icurso->listarCursos();
 	set<string>::iterator it;
+	cout << "Lista: " << endl;
+	cout << "(Si la lista esta vacia, es porque no existen cursos)" << endl;
+
 	for (it = cursosExistentes.begin(); it != cursosExistentes.end(); it++) {
 		cout << "Curso: " << *it << endl;
 	}
 
 	string cursoSeleccionado;
-	cout << "Ingrese curso:" << endl;
+	cout << "Ingrese curso (uno que no esta en la lista para salir):" << endl;
 	cin.ignore();
 	getline(cin,cursoSeleccionado);
 
